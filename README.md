@@ -6,7 +6,7 @@
 
 ## ✨ install and setup vmbox and cluster:
 1. vớ vmbox cài rancher:
-- sử dụng (đổi tên thành Vagrantfile) [Vagrant-master](https://github.com/nnbaocuong99/details-k8s-project/blob/main/document/vagrantfile-master)
+- sử dụng [Vagrant-master](https://github.com/nnbaocuong99/details-k8s-project/blob/main/document/vagrantfile-master) đổi tên thành Vagrantfile.
 - 
 
 
