@@ -1,0 +1,14 @@
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: napas-allow-trafic
+  namespace: napas
+spec:
+  podSelector:
+    matchLabels:
+      app: napas
+  ingress:
+    - from:
+        podSelector:           # chooses pods with type=monitoring
+          matchLabels:
+            app: apiserver
