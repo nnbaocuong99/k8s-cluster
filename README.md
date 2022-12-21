@@ -4,9 +4,14 @@
 
 ---
 
-# install and setup vmbox and cluster:
+# setup vmbox and cluster:
 
 ## B1. cài đặt máy ảo - vmbox:
+- install [VirtualBox](https://www.virtualbox.org/wiki/Downloads) and [Vagrant](https://developer.hashicorp.com/vagrant/downloads)
+> for VirtualBox recommend 6.0 version, (easier to setup and provider) and the latest version for Vagrant.
+
+
+
 - sử dụng [Vagrant-master](https://github.com/nnbaocuong99/details-k8s-project/blob/main/document/vagrantfile-master) đổi tên thành Vagrantfile và chạy command `vagrant up` để cài máy ảo master
 - sử dụng [Vagrant-worker](https://github.com/nnbaocuong99/details-k8s-project/blob/main/document/Vagrantfile-worker) đổ tên thàhh Vagrantfile và chạy command `vagrant up` để cà máy ảo worker (node)
 
