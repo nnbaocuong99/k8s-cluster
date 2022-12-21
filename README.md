@@ -32,7 +32,7 @@ $ useradd --comment 'ur-username-go-here' --create-home ur-username-go-here --sh
 ```
 $ docker run -d --name=rancher-server --restart=unless-stopped -p 80:80 -p 443:443 --privileged rancher/rancher:v2.7-091ed163cc5c53efc50bd1a580cb4e54fa097e82-linux-amd64
 ```
-- access to https://192.168.56.200 and setup cluster. 
+- access to https://192.168.56.200 or https://192.168.56.200/g and setup cluster. 
 
 
 
@@ -41,7 +41,7 @@ $ docker run -d --name=rancher-server --restart=unless-stopped -p 80:80 -p 443:4
 
 
 - `copy token`
-- truy cập https://192.168.56.200/g để chuyển giao diện và lấy config cuả kube
+- để chuyển giao diện và lấy config cuả kube
 
 2. vmbox worker:
 - ssh vào máy ảo.
