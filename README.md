@@ -19,7 +19,7 @@ $ vagrant up
 
 ## ⚒ cài đặt rancher và k8s:
 
-### 1. on the master node:
+### 1. on the master node (IP: 192.168.56.200): 
 - get urself a terminal and ssh into the node with this command `ssh username@IP`
 - if u r using vscode or any remote control method, u will need to add an user. replace `ur-username-go-here` with the name u r expecting:
 ```
@@ -32,19 +32,10 @@ $ useradd --comment 'ur-username-go-here' --create-home ur-username-go-here --sh
 ```
 $ docker run -d --name=rancher-server --restart=unless-stopped -p 80:80 -p 443:443 --privileged rancher/rancher:v2.7-091ed163cc5c53efc50bd1a580cb4e54fa097e82-linux-amd64
 ```
-- access to https://192.168.56.200 or https://192.168.56.200/g and setup cluster. 
+- access to https://192.168.56.200 or https://192.168.56.200/g finish the cluster setup. then `copy config` of the cluster
 
-
-
-
-
-
-
-- `copy token`
-- để chuyển giao diện và lấy config cuả kube
-
-2. vmbox worker:
-- ssh vào máy ảo.
+### 2. vmbox worker (IP: 192.168.56.201):
+- ssh into it same step up there.
 - tạo cluster và paste token lấy đc từ bứớc `copy token` bên trên và thêm thuộc tính `--address worker_IP` vào trc `-etcd` để tránh việc 2 máy ảo bị trùng dải IP 
 
 example:
