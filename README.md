@@ -4,32 +4,42 @@
 
 ---
 
-# setup vmbox and cluster:
+# ❗️ part 1: setup vmbox and cluster
 
-## B1. cài đặt máy ảo - vmbox:
-- install [VirtualBox](https://www.virtualbox.org/wiki/Downloads) and [Vagrant](https://developer.hashicorp.com/vagrant/downloads)
-> for VirtualBox recommend 6.0 version, (easier to setup and provider) and the latest version for Vagrant.
+## ⚒ install vmbox and setup:
+1. install [VirtualBox](https://www.virtualbox.org/wiki/Downloads) and [Vagrant](https://developer.hashicorp.com/vagrant/downloads) <sup> for VirtualBox recommend 6.0 version, (easier to setup and provider) and the latest version for Vagrant. </sup>
 
+2. create 2 folders for 2 vagrant files, change name of them to `Vagrantfile` and use the terminal in each:
+   - use [Vagrant-master](https://github.com/nnbaocuong99/details-k8s-project/blob/main/document/vagrantfile-master) for the <ins>*master node*</ins>
+   - use [Vagrant-worker](https://github.com/nnbaocuong99/details-k8s-project/blob/main/document/Vagrantfile-worker) for the <ins>*worker node*</ins>
+3. run the command in the terminal u opened ealier:
+```
+$ vagrant up
+```
 
+## ⚒ cài đặt rancher và k8s:
 
-- sử dụng [Vagrant-master](https://github.com/nnbaocuong99/details-k8s-project/blob/main/document/vagrantfile-master) đổi tên thành Vagrantfile và chạy command `vagrant up` để cài máy ảo master
-- sử dụng [Vagrant-worker](https://github.com/nnbaocuong99/details-k8s-project/blob/main/document/Vagrantfile-worker) đổ tên thàhh Vagrantfile và chạy command `vagrant up` để cà máy ảo worker (node)
-
-
-## B2. cài đặt rancher và k8s:
-
-1. vmbox master:
-- ssh vào máy ảo bằng terminal (cú pháp `ssh username@IP`), với trường hợp ssh bằng vscode không dc thì phải add user bằng command:
+### 1. on the master node:
+- get urself a terminal and ssh into the node with this command `ssh username@IP`
+- if u r using vscode or any remote control method, u will need to add an user. replace `ur-username-go-here` with the name u r expecting:
 ```
 $ useradd --comment 'ur-username-go-here' --create-home ur-username-go-here --shell /bin/bash
 ```
-- `sudo su` để chuyển sang root user. 
-- `docker version` (optional) để kiểm tra docker đã cài đặt chưa bằng 
-- chạy commands để cài rancher. (lựa chọn tag để cài đặt phiên bản compatible với máy. for example đây là bả 2.7)
+   
+- switch to the root user: `$ sudo su`
+- check if ur docker has been installed yet: `$ docker version` (optional)
+- run the command below to install rancher. (choose ur compatible version)
 ```
 $ docker run -d --name=rancher-server --restart=unless-stopped -p 80:80 -p 443:443 --privileged rancher/rancher:v2.7-091ed163cc5c53efc50bd1a580cb4e54fa097e82-linux-amd64
 ```
-- truy cập https://192.168.56.200 để setup cluster. 
+- access to https://192.168.56.200 and setup cluster. 
+
+
+
+
+
+
+
 - `copy token`
 - truy cập https://192.168.56.200/g để chuyển giao diện và lấy config cuả kube
 
