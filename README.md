@@ -33,19 +33,25 @@ $ useradd --comment 'ur-username-go-here' --create-home ur-username-go-here --sh
 $ docker run -d --name=rancher-server --restart=unless-stopped -p 80:80 -p 443:443 --privileged rancher/rancher:v2.7-091ed163cc5c53efc50bd1a580cb4e54fa097e82-linux-amd64
 ```
 - access to https://192.168.56.200 or https://192.168.56.200/g finish the cluster setup. then `copy config` of the cluster
+- cd and paste it into your `~/.kube/config`
+
+
+
 
 ### 2. vmbox worker (IP: 192.168.56.201):
-- ssh into it same step up there.
-- tạo cluster và paste token lấy đc từ bứớc `copy token` bên trên và thêm thuộc tính `--address worker_IP` vào trc `-etcd` để tránh việc 2 máy ảo bị trùng dải IP 
-
-example:
+- ssh into it.
+- _*during the creating cluster step*_: because of rancher will help u to setup the whole entire clusters but in this situation the master and worker are on the same IP so they could be conflict. so in the token u copied from upthere u need to to add the `--address worker_IP` before the `-etcd`. thats gonna be:
 ```
-sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/kubernetes:/etc/kubernetes -v /var/run:/var/run  rancher/rancher-agent:v2.7-091ed163cc5c53efc50bd1a580cb4e54fa097e82-head --server https://192.168.56.200/ --token p5zcnnpcb5cx8pg89vkk5nkx8gbzltk9wbkmfjp6rsn9n6kf729vjp --ca-checksum 37bde28c0dc9fbd360146f727ff4b1cd254d9f17490789f93775fb2ce15b58da --address worker_IP --etcd --controlplane --worker
+$ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/kubernetes:/etc/kubernetes -v /var/run:/var/run  rancher/rancher-agent:v2.7-091ed163cc5c53efc50bd1a580cb4e54fa097e82-head --server https://192.168.56.200/ --token p5zcnnpcb5cx8pg89vkk5nkx8gbzltk9wbkmfjp6rsn9n6kf729vjp --ca-checksum 37bde28c0dc9fbd360146f727ff4b1cd254d9f17490789f93775fb2ce15b58da --address worker_IP --etcd --controlplane --worker
 ```
 
-3. trên cụm k8s
-- vào https://192.168.56.200/g để copy file config 
-- làm theo huongdan. cd và paste config vào `~/.kube/config` để cấu hình máy local ăn với cluster.
+
+
+
+
+
+
+
 
 ## B3. trên terminal cuả máy local
 - cài đặt từng thành phần cuar k8s 
