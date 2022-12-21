@@ -16,11 +16,11 @@
 1. vmbox master:
 - ssh vào máy ảo bằng terminal (cú pháp `ssh username@IP`), với trường hợp ssh bằng vscode không dc thì phải add user bằng command:
 ```
-$ useradd --comment 'CuongNNB' --create-home cuongnnb --shell /bin/bash
+$ useradd --comment 'ur-username-go-here' --create-home ur-username-go-here --shell /bin/bash
 ```
 - `sudo su` để chuyển sang root user. 
 - `docker version` (optional) để kiểm tra docker đã cài đặt chưa bằng 
-- chạy commands để cài rancher. (lựa chọn tag để cài đặt phiên bản compatible với máy)
+- chạy commands để cài rancher. (lựa chọn tag để cài đặt phiên bản compatible với máy. for example đây là bả 2.7)
 ```
 $ docker run -d --name=rancher-server --restart=unless-stopped -p 80:80 -p 443:443 --privileged rancher/rancher:v2.7-091ed163cc5c53efc50bd1a580cb4e54fa097e82-linux-amd64
 ```
