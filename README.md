@@ -47,3 +47,4 @@ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/kube
 apt-get update 
 apt-get install -y kubelet kubeadm kubectl 
 ```
+- cài đặt argocd
