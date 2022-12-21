@@ -90,7 +90,8 @@ $ echo "$(cat kubectl.sha256)  kubectl" | sha256sum --check
 
 # install kubectl
 $ sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
-
+$ apt-get install -y kubelet kubeadm kubectl 
+```
 
 
 
