@@ -39,3 +39,11 @@ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/kube
 
 3. local
 - vào https://192.168.56.200/g để copy file config 
+- làm theo huongdan. cd và paste config vào `~/.kube/config` để cấu hình máy local ăn với cluster.
+
+4. trên terminal cuar máy local
+- cài đặt từng thành phần cuar k8s 
+```
+apt-get update 
+apt-get install -y kubelet kubeadm kubectl 
+```
