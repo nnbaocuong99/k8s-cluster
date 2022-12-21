@@ -63,21 +63,52 @@ sudo apt-get install apt-transport-https
 # check the virtualization supported onr ur device or not:
 $ grep -E --color 'vmx|svm' /proc/cpuinfo
 
-# if u installe it thru the package, u totally can download the binary
+# if u installe it thru the package, u totally can download the binary:
 $ curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && chmod +x minikube
 
 # add it into the env path
 $ sudo mkdir -p /usr/local/bin/
 $ sudo install minikube /usr/local/bin/
 
-# or use the homebrew
+# or use the homebrew:
 $ brew install minikube
 
-# check it
+# check
 $ minikube version
 ```
 
 - install kubectl
+```
+# download the lastest release:
+$ curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+
+# download the checksum file:
+$ curl -LO "https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"
+
+# Validate
+$ echo "$(cat kubectl.sha256)  kubectl" | sha256sum --check
+
+# install kubectl
+$ sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
