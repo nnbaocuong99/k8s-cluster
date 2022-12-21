@@ -36,8 +36,6 @@ $ docker run -d --name=rancher-server --restart=unless-stopped -p 80:80 -p 443:4
 - cd and paste it into your `~/.kube/config`
 
 
-
-
 ### 2. vmbox worker (IP: 192.168.56.201):
 - ssh into it.
 - _*during the creating cluster step*_: because of rancher will help u to setup the whole entire clusters but in this situation the master and worker are on the same IP so they could be conflict. so in the token u copied from upthere u need to to add the `--address worker_IP` before the `-etcd`. thats gonna be:
@@ -46,15 +44,8 @@ $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/ku
 ```
 
 
-
-
-
-
-
-
-
-## B3. trên terminal cuả máy local
-- cài đặt từng thành phần cuar k8s 
+## ⚒ install tools to interac, work with k8s on local:
+- install tools
 ```
 apt-get update 
 apt-get install -y kubelet kubeadm kubectl 
