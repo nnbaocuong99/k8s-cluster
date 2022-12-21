@@ -1,10 +1,10 @@
-<h1 align="center"> chi tiết các bước cài k8s </h1> 
+<h1 align="center"> ✨ how to install k8s step by step (my research) ✨ </h1> 
 
 [figma file for details](https://github.com/nnbaocuong99/details-k8s-project/tree/main/figma)
 
 ---
 
-# ✨ install and setup vmbox and cluster:
+# install and setup vmbox and cluster:
 
 ## B1. cài đặt máy ảo - vmbox:
 - sử dụng [Vagrant-master](https://github.com/nnbaocuong99/details-k8s-project/blob/main/document/vagrantfile-master) đổi tên thành Vagrantfile và chạy command `vagrant up` để cài máy ảo master
