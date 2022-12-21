@@ -47,4 +47,8 @@ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/kube
 apt-get update 
 apt-get install -y kubelet kubeadm kubectl 
 ```
-- cài đặt argocd
+- cài đặt argocd: (đã cài kubectl và config file default)
+```
+kubectl create namespace argocd
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+```
