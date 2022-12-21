@@ -45,7 +45,7 @@ $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/ku
 ---
 
 # ❗️ part 2: install tools to interac, work with k8s.
-1. all about the kube.
+## ⚒ all about the kube.
 - update ur system:
 ```
 sudo apt-get update -y
