@@ -52,7 +52,7 @@ sudo apt-get update -y
 sudo apt-get upgrade -y
 ```
 
-- install curl:
+- install curl (even [Homebrew](https://brew.sh)) if u need:
 ```
 sudo apt-get install curl
 sudo apt-get install apt-transport-https
@@ -70,17 +70,20 @@ $ curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/mini
 $ sudo mkdir -p /usr/local/bin/
 $ sudo install minikube /usr/local/bin/
 
-# or use the [Homebrew](https://brew.sh) if u r using macos
+# or use the homebrew
 $ brew install minikube
+
+# check it
+$ minikube version
 ```
 
+- install kubectl
 
 
 
 
 
-
-
+<!--
 ```
 apt-get update 
 apt-get install -y kubelet kubeadm kubectl 
@@ -90,3 +93,4 @@ apt-get install -y kubelet kubeadm kubectl
 kubectl create namespace argocd
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 ```
+-->
