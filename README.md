@@ -17,7 +17,7 @@
 $ vagrant up
 ```
 
-## ⚒ cài đặt rancher và k8s:
+## ⚒ install rancher và k8s:
 
 ### 1. on the master node (IP: 192.168.56.200): 
 - get urself a terminal and ssh into the node with this command `ssh username@IP`
@@ -44,8 +44,8 @@ $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/ku
 ```
 
 
-## ⚒ install tools to interac, work with k8s on local:
-- install tools
+# ❗️ part 2: install tools to interac, work with k8s.
+1. kube.
 ```
 apt-get update 
 apt-get install -y kubelet kubeadm kubectl 
