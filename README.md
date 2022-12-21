@@ -69,6 +69,9 @@ $ curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/mini
 # add it into the env path
 $ sudo mkdir -p /usr/local/bin/
 $ sudo install minikube /usr/local/bin/
+
+# or use the [Homebrew](https://brew.sh) if u r using macos
+$ brew install minikube
 ```
 
 
