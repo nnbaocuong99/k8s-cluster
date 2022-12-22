@@ -46,19 +46,19 @@ $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/ku
 
 # ❗️ part 2: install tools to interac, work with k8s.
 ## ⚒ all about the kube.
-- update ur system:
+1. update ur system:
 ```
 $ sudo apt-get update -y
 $ sudo apt-get upgrade -y
 ```
 
-- install curl (and even [Homebrew](https://brew.sh)) if u need:
+2. install curl (and even [Homebrew](https://brew.sh)) if u need:
 ```
 $ sudo apt-get install curl
 $ sudo apt-get install apt-transport-https
 ```
 
-- install minikube:
+3. install minikube:
 ```
 # check the virtualization supported onr ur device or not:
 $ grep -E --color 'vmx|svm' /proc/cpuinfo
@@ -77,7 +77,7 @@ $ brew install minikube
 $ minikube version
 ```
 
-- install kubectl:
+4. install kubectl:
 ```
 # download the lastest release:
 $ curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
@@ -93,10 +93,23 @@ $ sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 $ apt-get install -y kubectl 
 ```
 
-- install kubeadm, kubelet:
+5. install kubeadm, kubelet:
+```
+# update the apt package index and install packages needed to use the k8s `apt` repository:
+$ sudo apt-get update
+$ sudo apt-get install -y apt-transport-https ca-certificates curl
 
+# download signing key:
+$ sudo curl -fsSLo /etc/apt/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
 
+# add the k8s apt repository:
+$ echo "deb [signed-by=/etc/apt/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
 
+# update apt package index, install kubelet, kubeadm and kubectl, and pin their version:
+$ sudo apt-get update
+$ sudo apt-get install -y kubelet kubeadm kubectl
+$ sudo apt-mark hold kubelet kubeadm kubectl
+```
 
 
 
@@ -116,10 +129,6 @@ $ apt-get install -y kubectl
 
 
 <!--
-```
-apt-get update 
-apt-get install -y kubelet kubeadm kubectl 
-```
 - cài đặt argocd: (đã cài kubectl và config file default)
 ```
 kubectl create namespace argocd
