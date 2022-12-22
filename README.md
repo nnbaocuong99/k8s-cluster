@@ -48,14 +48,14 @@ $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/ku
 ## ⚒ all about the kube.
 - update ur system:
 ```
-sudo apt-get update -y
-sudo apt-get upgrade -y
+$ sudo apt-get update -y
+$ sudo apt-get upgrade -y
 ```
 
-- install curl (even [Homebrew](https://brew.sh)) if u need:
+- install curl (and even [Homebrew](https://brew.sh)) if u need:
 ```
-sudo apt-get install curl
-sudo apt-get install apt-transport-https
+$ sudo apt-get install curl
+$ sudo apt-get install apt-transport-https
 ```
 
 - install minikube:
@@ -77,7 +77,7 @@ $ brew install minikube
 $ minikube version
 ```
 
-- install kubectl
+- install kubectl:
 ```
 # download the lastest release:
 $ curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
@@ -90,10 +90,10 @@ $ echo "$(cat kubectl.sha256)  kubectl" | sha256sum --check
 
 # install kubectl
 $ sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
-$ apt-get install -y kubelet kubeadm kubectl 
+$ apt-get install -y kubectl 
 ```
 
-
+- install kubeadm, kubelet:
 
 
 
