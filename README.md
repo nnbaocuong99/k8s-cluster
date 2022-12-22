@@ -12,12 +12,9 @@
 2. create 2 folders for 2 vagrant files, change name of them to `Vagrantfile` and use the terminal in each:
    - use [Vagrant-master](https://github.com/nnbaocuong99/details-k8s-project/blob/main/document/vagrantfile-master) for the <ins>*master node*</ins>
    - use [Vagrant-worker](https://github.com/nnbaocuong99/details-k8s-project/blob/main/document/Vagrantfile-worker) for the <ins>*worker node*</ins>
-3. run the command in the terminal u opened ealier:
-```
-$ vagrant up
-```
+3. run the command in the terminal u opened ealier: `$ vagrant up`
 
-## ⚒ install rancher và k8s:
+## ⚒ install rancher and k8s:
 
 ### 1. on the master node (IP: 192.168.56.200): 
 - get urself a terminal and ssh into the node with this command `ssh username@IP`
