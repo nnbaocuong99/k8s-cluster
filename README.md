@@ -61,15 +61,19 @@ $ sudo apt-get install apt-transport-https
 # check the virtualization supported onr ur device or not:
 $ grep -E --color 'vmx|svm' /proc/cpuinfo
 
+
 # if u installe it thru the package, u totally can download the binary:
 $ curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && chmod +x minikube
+
 
 # add it into the env path
 $ sudo mkdir -p /usr/local/bin/
 $ sudo install minikube /usr/local/bin/
 
+
 # or use the homebrew:
 $ brew install minikube
+
 
 # check
 $ minikube version
@@ -80,11 +84,14 @@ $ minikube version
 # download the lastest release:
 $ curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 
+
 # download the checksum file:
 $ curl -LO "https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"
 
+
 # Validate
 $ echo "$(cat kubectl.sha256)  kubectl" | sha256sum --check
+
 
 # install kubectl
 $ sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
@@ -97,11 +104,14 @@ $ apt-get install -y kubectl
 $ sudo apt-get update
 $ sudo apt-get install -y apt-transport-https ca-certificates curl
 
+
 # download signing key:
 $ sudo curl -fsSLo /etc/apt/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
 
+
 # add the k8s apt repository:
 $ echo "deb [signed-by=/etc/apt/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+
 
 # update apt package index, install kubelet, kubeadm and kubectl, and pin their version:
 $ sudo apt-get update
@@ -125,6 +135,7 @@ $ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/
 
 # download cli. installation instructions can be found via the CLI installation documentation.
 $ https://github.com/argoproj/argo-cd/releases/latest. 
+
 
 # mac, linux and WSL Homebrew:
 $ brew install argocd
