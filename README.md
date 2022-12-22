@@ -118,18 +118,14 @@ $ sudo apt-mark hold kubelet kubeadm kubectl
 
 ### 2. install
 ```
+# install
 $ kubectl create namespace argocd
 $ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+
+
+# download cli. installation instructions can be found via the CLI installation documentation.
+$ https://github.com/argoproj/argo-cd/releases/latest. 
+
+# mac, linux and WSL Homebrew:
+$ brew install argocd
 ```
-
-
-
-
-
-
-
-
-
-
-
-
