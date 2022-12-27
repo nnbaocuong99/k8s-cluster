@@ -140,3 +140,5 @@ $ https://github.com/argoproj/argo-cd/releases/latest.
 # mac, linux and WSL Homebrew:
 $ brew install argocd
 ```
+
+## ⚒ helm
