@@ -175,5 +175,6 @@ $ make
 
 ---
 
-# ❗️ part 4: deploy a service using helm.
-## ⚒ argocd
+# ❗️ part 4: [practicing] - deploy a service using helm.
+
+## 1. getting started
