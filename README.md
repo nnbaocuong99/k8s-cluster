@@ -177,4 +177,4 @@ $ make
 
 # ❗️ part 4: [practicing] - deploy a service using helm.
 
-## 1. getting started
+## ⚒ 1. getting started
