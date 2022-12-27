@@ -119,7 +119,9 @@ $ sudo apt-get install -y kubelet kubeadm kubectl
 $ sudo apt-mark hold kubelet kubeadm kubectl
 ```
 
-# ❗️ part 3: install argocd and deploy a service using helm.
+---
+
+# ❗️ part 3: install argocd and helm.
 ## ⚒ argocd
 
 ### 1. requirements
@@ -170,3 +172,8 @@ $ git clone https://github.com/helm/helm.git
 $ cd helm
 $ make
 ```
+
+---
+
+# ❗️ part 4: deploy a service using helm.
+## ⚒ argocd
