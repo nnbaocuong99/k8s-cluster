@@ -43,7 +43,9 @@ $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/ku
 ---
 
 # ❗️ part 2: install tools to interac, work with k8s.
+
 ## ⚒ all about the kube.
+
 ### 1. update ur system:
 ```
 $ sudo apt-get update -y
@@ -178,3 +180,6 @@ $ make
 # ❗️ part 4: [practicing] - deploy a service using helm.
 
 ## ⚒ getting started
+
+### 1. setup helm
+- create a helm chart and config it with urs k8s
