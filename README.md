@@ -179,7 +179,8 @@ $ make
 
 # ❗️ part 4: [practicing] - deploy a service using helm.
 
-## ⚒ getting started
+## ⚒ deploy a service with helm
 
-### 1. setup helm
-- create a helm chart and config it with urs k8s
+### 1. for example: nginx
+```
+
