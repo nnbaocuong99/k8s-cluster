@@ -183,4 +183,6 @@ $ make
 
 ### 1. for example: nginx
 ```
-
+helm repo add nginx-stable https://helm.nginx.com/stable
+helm repo update
+```
