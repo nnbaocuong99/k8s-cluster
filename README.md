@@ -183,8 +183,13 @@ $ make
 
 ### 1. for example: nginx
 ```
-helm repo add nginx-stable https://helm.nginx.com/stable
-helm repo update
+# To install an NGINX Ingress controller using Helm, add the nginx-stable repository to helm, then run helm repo update . After we have added the repository we can deploy using the chart nginx-stable/nginx-ingress.
+$ helm repo add nginx-stable https://helm.nginx.com/stable
+$ helm repo update
+
+
+# The following command installs the chart with the release name nginx-ingress
+$ helm install nginx-ingress nginx-stable/nginx-ingress --set rbac.create=true
 ```
 
 
