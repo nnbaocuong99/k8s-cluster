@@ -191,5 +191,3 @@ $ helm repo update
 # The following command installs the chart with the release name nginx-ingress
 $ helm install nginx-ingress nginx-stable/nginx-ingress --set rbac.create=true
 ```
-
-### 2. ingress and egress?
