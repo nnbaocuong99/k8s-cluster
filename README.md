@@ -72,7 +72,7 @@ $ apt-get install -y kubectl
 
 ## ⚒ not important 
 
-### 1. curl and [Homebrew](https://brew.sh))
+### 1. curl and [Homebrew](https://brew.sh)
 ```
 $ sudo apt-get install curl
 $ sudo apt-get install apt-transport-https
