@@ -72,13 +72,13 @@ $ apt-get install -y kubectl
 
 ## ⚒ not important 
 
-### 2. install curl (and even [Homebrew](https://brew.sh)) if u need:
+### 1. install curl (and even [Homebrew](https://brew.sh)) if u need:
 ```
 $ sudo apt-get install curl
 $ sudo apt-get install apt-transport-https
 ```
 
-### 3. install minikube:
+### 2. install minikube:
 ```
 # check the virtualization supported onr ur device or not:
 $ grep -E --color 'vmx|svm' /proc/cpuinfo
@@ -101,9 +101,7 @@ $ brew install minikube
 $ minikube version
 ```
 
-
-
-### 5. install kubeadm, kubelet:
+### 3. install kubeadm, kubelet:
 ```
 # update the apt package index and install packages needed to use the k8s `apt` repository:
 $ sudo apt-get update
