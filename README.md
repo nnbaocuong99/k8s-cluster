@@ -44,13 +44,33 @@ $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/ku
 
 # ❗️ part 2: install tools to interac, work with k8s.
 
-## ⚒ all about the kube.
-
+## ⚒ important and need to be install (for real)
 ### 1. update ur system:
 ```
 $ sudo apt-get update -y
 $ sudo apt-get upgrade -y
 ```
+
+### 2. install kubectl:
+```
+# download the lastest release:
+$ curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+
+
+# download the checksum file:
+$ curl -LO "https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"
+
+
+# Validate
+$ echo "$(cat kubectl.sha256)  kubectl" | sha256sum --check
+
+
+# install kubectl
+$ sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+$ apt-get install -y kubectl 
+```
+
+## ⚒ not important 
 
 ### 2. install curl (and even [Homebrew](https://brew.sh)) if u need:
 ```
@@ -81,24 +101,7 @@ $ brew install minikube
 $ minikube version
 ```
 
-### 4. install kubectl:
-```
-# download the lastest release:
-$ curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 
-
-# download the checksum file:
-$ curl -LO "https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"
-
-
-# Validate
-$ echo "$(cat kubectl.sha256)  kubectl" | sha256sum --check
-
-
-# install kubectl
-$ sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
-$ apt-get install -y kubectl 
-```
 
 ### 5. install kubeadm, kubelet:
 ```
