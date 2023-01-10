@@ -31,11 +31,10 @@ $ docker run -d --name=rancher-server --restart=unless-stopped -p 80:80 -p 443:4
 ```
 - access to https://192.168.56.200 or https://192.168.56.200/g 
 
-- login and get the password by run the command below and login to setup the cluster.
+- login and get the password by run the command below and login to setup the cluster (during this step, move to the worker VM)
 ```
 $ docker logs  container-id  2>&1 | grep "Bootstrap Password:"
 ```
-
 - then `copy config` of the cluster
 - cd and paste it into your `~/.kube/config`
 
@@ -47,11 +46,19 @@ $ docker logs  container-id  2>&1 | grep "Bootstrap Password:"
 ```
 $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/kubernetes:/etc/kubernetes -v /var/run:/var/run  rancher/rancher-agent:v2.7-091ed163cc5c53efc50bd1a580cb4e54fa097e82-head --server https://192.168.56.200/ --token p5zcnnpcb5cx8pg89vkk5nkx8gbzltk9wbkmfjp6rsn9n6kf729vjp --ca-checksum 37bde28c0dc9fbd360146f727ff4b1cd254d9f17490789f93775fb2ce15b58da --address worker_IP --etcd --controlplane --worker
 ```
-- *new error!!!* `curl: (60) SSL certificate problem: self signed certificate in certificate chain`
 
--explain: the new version of rancher now using curl and the command gonna be: `curl -fL https://192.168.56.200/system-agent-install.sh | sudo  sh -s - --server https://192.168.56.200 --label 'cattle.io/os=linux' --token kbsl8cbpkz48pxdcr24bz4862fpjqslz98b8sg9b4k774p2jwxbjdz --ca-checksum e45e675a2c76868ec0d39c847fc1a79aeea78e7b56c710396b5b2536113ca85f --etcd --controlplane --worker` 
-- solve: replce the `token` and `checksum` or tick on the `select to skip the TLS`
 
+```
+*new error!!!* `curl: (60) SSL certificate problem: self signed certificate in certificate chain`
+
+#explain: 
+the new version of rancher now using curl and the command gonna be: `curl -fL https://192.168.56.200/system-agent-install.sh | sudo  sh -s - --server https://192.168.56.200 --label 'cattle.io/os=linux' --token kbsl8cbpkz48pxdcr24bz4862fpjqslz98b8sg9b4k774p2jwxbjdz --ca-checksum e45e675a2c76868ec0d39c847fc1a79aeea78e7b56c710396b5b2536113ca85f --etcd --controlplane --worker` 
+
+
+#solve: 
+=> replce the `token` and `checksum` 
+=> tick on the `select to skip the TLS verification if your server has a self-signed certificate`
+```
 
 ---
 
