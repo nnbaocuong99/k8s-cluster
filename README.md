@@ -29,11 +29,13 @@ $ useradd --comment 'ur-username-go-here' --create-home ur-username-go-here --sh
 ```
 $ docker run -d --name=rancher-server --restart=unless-stopped -p 80:80 -p 443:443 --privileged rancher/rancher:v2.7-091ed163cc5c53efc50bd1a580cb4e54fa097e82-linux-amd64
 ```
+- access to https://192.168.56.200 or https://192.168.56.200/g finish the cluster setup.
+
 - login and get the password by run the command 
 ```
 $ docker logs  container-id  2>&1 | grep "Bootstrap Password:"
 ```
-- access to https://192.168.56.200 or https://192.168.56.200/g finish the cluster setup. then `copy config` of the cluster
+ then `copy config` of the cluster
 - cd and paste it into your `~/.kube/config`
 
 
