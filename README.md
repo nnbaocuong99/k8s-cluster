@@ -18,7 +18,7 @@
 
 ### guide / step by step:
 
-- step 1: get urself a terminal and ssh into the master node `ssh username@IP` 
+- step 1: get urself a terminal and ssh into the master-node `ssh username@IP` 
 > (on this one the command is gonna be: `ssh cuongnnb@192.168.26.200`)
 - *step (optional)*: if u r using vscode or any remote control method, u will need to add an user. replace `ur-username-go-here` with the name u r expecting:
 ```
@@ -35,7 +35,7 @@ docker run -d --name=rancher-server --restart=unless-stopped -p 80:80 -p 443:443
 $ docker logs  container-id  2>&1 | grep "Bootstrap Password:"
 ```
 - step 6: copy and paste the password u got from step 5. once u got it, start to login into the rancher and setup the cluster.
-
+- step 7: switch to the worker-node
 
 
 
