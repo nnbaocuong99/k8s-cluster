@@ -35,7 +35,12 @@ docker run -d --name=rancher-server --restart=unless-stopped -p 80:80 -p 443:443
 $ docker logs  container-id  2>&1 | grep "Bootstrap Password:"
 ```
 - step 6: copy and paste the password u got from step 5. once u got it, start to login into the rancher and setup the cluster.
-- step 7: switch to the worker-node
+- step 7: switch to the worker-node and paste the script to setup the cluster on it.
+```
+#for example the script would be
+$ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/kubernetes:/etc/kubernetes -v /var/run:/var/run  rancher/rancher-agent:v2.7-091ed163cc5c53efc50bd1a580cb4e54fa097e82-head --server https://192.168.56.200/ --token p5zcnnpcb5cx8pg89vkk5nkx8gbzltk9wbkmfjp6rsn9n6kf729vjp --ca-checksum 37bde28c0dc9fbd360146f727ff4b1cd254d9f17490789f93775fb2ce15b58da --address worker_IP --etcd --controlplane --worker
+```
+- step 8: once u done with the setup part. head into it and copy the config, back to the local, cd into the `~/,kube/config` and paste to save the config
 
 
 
