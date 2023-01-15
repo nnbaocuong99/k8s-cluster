@@ -42,7 +42,7 @@ $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/ku
 ```
 - step 8: once u done with the setup part. head into it and copy the config, back to the local, cd into the `~/,kube/config` and paste to save the config
 
-### error research
+### error research (myself)
 
 <!--
 ### 1. on the master node (IP: 192.168.56.200): 
