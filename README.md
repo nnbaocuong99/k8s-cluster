@@ -60,7 +60,7 @@ curl -fL https://192.168.56.200/system-agent-install.sh | sudo  sh -s - --server
 
 
 <!--
-### 1. on the master node (IP: 192.168.56.200): 
+### 1. on the master node (IP: 192.168.56.200): ffffffff
 - get urself a terminal and ssh into the node with this command `ssh username@IP`
 - if u r using vscode or any remote control method, u will need to add an user. replace `ur-username-go-here` with the name u r expecting:
 ```
