@@ -16,7 +16,7 @@
 
 ## ⚒ install rancher and k8s:
 
-### guide / step by step:
+### 1. guide / step by step:
 
 - step 1: get urself a terminal and ssh into the master-node `ssh username@IP` 
 > (on this one the command is gonna be: `ssh cuongnnb@192.168.26.200`)
@@ -42,7 +42,7 @@ $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/ku
 ```
 - step 8: once u done with the setup part. head into it and copy the config, back to the local, cd into the `~/,kube/config` and paste to save the config
 
-### error research (myself)
+### 2. error research (myself)
 - error: `curl: (60) SSL certificate problem: self signed certificate in certificate chain`
 - explain: the new version of rancher now using curl and the command gonna be: 
 ```
@@ -244,7 +244,7 @@ $ make
 
 ---
 
-# ❗️ part 4: [practicing] - deploy a service using helm.
+# ❗️ part 4: [practicing] - deploy a service using helm in
 
 ## ⚒ deploy a service with helm
 
