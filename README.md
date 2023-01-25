@@ -42,7 +42,7 @@ $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/ku
 ```
 - step 8: once u done with the setup part. head into it and copy the config, back to the local, cd into the `~/,kube/config` and paste to save the config
 
-### 2. error research (myself)
+### 2. error research report ()
 - error: `curl: (60) SSL certificate problem: self signed certificate in certificate chain`
 - explain: the new version of rancher now using curl and the command gonna be: 
 ```
