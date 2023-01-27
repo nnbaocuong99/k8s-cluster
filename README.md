@@ -50,7 +50,7 @@ $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/ku
 curl -fL https://192.168.56.200/system-agent-install.sh | sudo  sh -s - --server https://192.168.56.200 --label 'cattle.io/os=linux' --token kbsl8cbpkz48pxdcr24bz4862fpjqslz98b8sg9b4k774p2jwxbjdz --ca-checksum e45e675a2c76868ec0d39c847fc1a79aeea78e7b56c710396b5b2536113ca85f --etcd --controlplane --worker` 
 ```
 
-- solved in research: 
+- solved in research re-do: 
 
 => replce the `token` and `checksum` 
 
