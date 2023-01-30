@@ -47,12 +47,12 @@ $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/ku
 - explain: the new version of rancher now using curl and the command gonna be: 
 ```
 
-curl -fL https://192.168.56.200/system-agent-install.sh | sudo  sh -s - --server https://192.168.56.200 --label 'cattle.io/os=linux' --token kbsl8cbpkz48pxdcr24bz4862fpjqslz98b8sg9b4k774p2jwxbjdz --ca-checksum e45e675a2c76868ec0d39c847fc1a79aeea78e7b56c710396b5b2536113ca85f --etcd --controlplane --worker` 
+$ curl -fL https://192.168.56.200/system-agent-install.sh | sudo  sh -s - --server https://192.168.56.200 --label 'cattle.io/os=linux' --token kbsl8cbpkz48pxdcr24bz4862fpjqslz98b8sg9b4k774p2jwxbjdz --ca-checksum e45e675a2c76868ec0d39c847fc1a79aeea78e7b56c710396b5b2536113ca85f --etcd --controlplane --worker` 
 ```
 
-- solved in research re-do: 
+- still trying solving this problem with some ways:
 
-=> replce the `token` and `checksum` 
+1. replace both the `token` and `checksum` of the old to new script 
 
 => tick on the `select to skip the TLS verification if your server has a self-signed certificate`
 
