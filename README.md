@@ -191,7 +191,7 @@ $ sudo apt-mark hold kubelet kubeadm kubectl
 ---
 
 # ❗️ part 3: install argocd and helm.
-## ⚒ argocd
+## ⚒ [argocd](https://argo-cd.readthedocs.io/en/stable/)
 
 ### 1. requirements
 - installed kubectl
@@ -212,7 +212,7 @@ $ https://github.com/argoproj/argo-cd/releases/latest.
 $ brew install argocd
 ```
 
-## ⚒ helm
+## ⚒ [helm](https://helm.sh/docs)
 
 ### 1. from script
 ```
