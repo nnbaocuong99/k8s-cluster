@@ -7,18 +7,16 @@
 # ❗️ part 1: setup vmbox and cluster
 
 ## ⚒ install vmbox and setup:
-### 1. install [VirtualBox](https://www.virtualbox.org/wiki/Downloads) and [Vagrant](https://developer.hashicorp.com/vagrant/downloads) <sup> for VirtualBox recommend 6.0 version, (easier to setup and provider) and the latest version for Vagrant. </sup>
+1. install [VirtualBox](https://www.virtualbox.org/wiki/Downloads) and [Vagrant](https://developer.hashicorp.com/vagrant/downloads) <sup> for VirtualBox recommend 6.0 version, (easier to setup and provider) and the latest version for Vagrant. </sup>
 
-### 2. create 2 folders for 2 vagrant files, change name of them to `Vagrantfile` and use the terminal in each:
+2. create 2 folders for 2 vagrant files, change name of them to `Vagrantfile` and use the terminal in each:
    - use [Vagrant-master](https://github.com/nnbaocuong99/details-k8s-project/blob/main/document/vagrantfile-master) for the <ins>*master node*</ins>
    - use [Vagrant-worker](https://github.com/nnbaocuong99/details-k8s-project/blob/main/document/Vagrantfile-worker) for the <ins>*worker node*</ins>
-### 3. run the command in the terminal u opened ealier: `vagrant up`
+3. run the command in the terminal u opened ealier: `vagrant up`
 
 ## ⚒ install rancher and k8s:
 
-### 1. guide / step by step:
-
-#### ✏️ <ins>step 1</ins>: get urself a terminal and ssh into the master-node `ssh username@IP` 
+✏️ <ins>step 1</ins>: get urself a terminal and ssh into the master-node `ssh username@IP` 
 > (on this one the command is gonna be: `ssh cuongnnb@192.168.26.200`)
 - *step (optional)*: if u r using vscode or any remote control method, u will need to add an user. replace `ur-username-go-here` with the name u r expecting:
 ```
