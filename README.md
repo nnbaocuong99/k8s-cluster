@@ -15,7 +15,7 @@
 - On:
   - Window: [Scoop](https://scoop.sh/) <sup>recommend</sup>, [Chocolatey](https://chocolatey.org/) or [winget](https://learn.microsoft.com/en-us/windows/package-manager/winget/)
   - MacOS: [Homebew](https://brew.sh/)
-  - Linux, Ubuntu: use apt (
+  - Linux, Ubuntu: Already has apt
 ### 2. Create 2 folders for 2 vagrant files, change name of them to `Vagrantfile` and use the terminal in each:
    - Use [Vagrant-master](https://github.com/nnbaocuong99/details-k8s-project/blob/main/document/vagrantfile-master) for the <ins>*master node*</ins>.
    - Use [Vagrant-worker](https://github.com/nnbaocuong99/details-k8s-project/blob/main/document/Vagrantfile-worker) for the <ins>*worker node*</ins>.
