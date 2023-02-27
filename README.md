@@ -40,16 +40,14 @@ $ useradd --comment 'ur-username-go-here' --create-home your-username-go-here --
 
 ### ✏️ <ins>Step 3:</ins>
 - Choose a tag on [rancher/rancher Tags](https://hub.docker.com/r/rancher/rancher/tags)
-- Replace `tag` with the one you choose then run:
+- Replace `tag` with the one you've been choosing
 ```
 $ docker run -d --name=rancher-server --restart=unless-stopped -p 80:80 -p 443:443 --privileged rancher/rancher:tag
 ```
-- Get the container id
+- Wait until the image successfully pulled then get the container id
 ```
-# commands
 $ docker ps
 $ sudo docker ps -aqf "name=containername"`
-
 
 ----------------
 # explaination
@@ -65,7 +63,8 @@ $ sudo docker ps -aqf "name=containername"`
 $ docker logs  container-id  2>&1 | grep "Bootstrap Password:"
 ```
 
-### ✏️ 6. copy and paste the password u got from step 5. once u got it, start to login into the rancher and setup the cluster.
+### ✏️ <ins>Step 5:</ins> 
+- copy and paste the password u got from step 5. once u got it, start to login into the rancher and setup the cluster.
 
 ### ✏️ 7. switch to the worker-node and paste the script and add the `--address worker_IP` to setup the cluster on it.
 ```
