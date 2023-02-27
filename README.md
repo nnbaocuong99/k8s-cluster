@@ -19,8 +19,9 @@
 - Download 2 files below, re-name to `Vagrantfile` and put each into 2 different folders
    - Use [Vagrant-master](https://github.com/nnbaocuong99/details-k8s-project/blob/main/document/vagrantfile-master) for the <ins>*master node*</ins>
    - Use [Vagrant-worker](https://github.com/nnbaocuong99/details-k8s-project/blob/main/document/Vagrantfile-worker) for the <ins>*worker node*</ins>
-- Open 2 terminals each separate folder
-### 3. Run the command in the terminal u opened ealier: 
+- Open 2 terminals in each separate folder.
+### 3. Scripts
+- Run this command in the terminals you've been opened ealier:
 ```
 $ vagrant up
 ```
@@ -36,8 +37,8 @@ $ useradd --comment 'ur-username-go-here' --create-home your-username-go-here --
 ```
 
 ### ✏️ <ins>Step 2:</ins>
-- Switch to the root user: `sudo su` 
-- Check if ur docker has been installed yet: `docker version` 
+- Switch to the root user: `$ sudo su` 
+- Check if ur docker has been installed yet: `$ docker version` 
 
 ### ✏️ <ins>Step 3:</ins>
 - Choose a tag on [rancher/rancher Tags](https://hub.docker.com/r/rancher/rancher/tags)
