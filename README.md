@@ -16,87 +16,42 @@
 
 ## ⚒ install rancher and k8s:
 
-✏️ <ins>step 1</ins>: get urself a terminal and ssh into the master-node `ssh username@IP` 
+### ✏️ 1. get urself a terminal and ssh into the master-node `ssh username@IP` 
 > (on this one the command is gonna be: `ssh cuongnnb@192.168.26.200`)
 - *step (optional)*: if u r using vscode or any remote control method, u will need to add an user. replace `ur-username-go-here` with the name u r expecting:
 ```
 useradd --comment 'ur-username-go-here' --create-home ur-username-go-here --shell /bin/bash
 ```
 
-#### ✏️ <ins>step 2</ins>: switch to the root user with command: `sudo su` then check if ur docker has been installed yet: `docker version` 
+### ✏️ 2. switch to the root user with command: `sudo su` then check if ur docker has been installed yet: `docker version` 
 
-#### ✏️ <ins>step 3</ins>: run the command to install rancher (u can choose another tag/version for u)
+### ✏️ 3. run the command to install rancher (u can choose another tag/version for u)
 ```
 docker run -d --name=rancher-server --restart=unless-stopped -p 80:80 -p 443:443 --privileged rancher/rancher:v2.7-091ed163cc5c53efc50bd1a580cb4e54fa097e82-linux-amd64
 ```
 
-#### ✏️ <ins>step 4</ins>: access to https://192.168.56.200 or https://192.168.56.200/g and starting setup the cluster.
+### ✏️ 4. access to https://192.168.56.200 or https://192.168.56.200/g and starting setup the cluster.
 
-#### ✏️<ins>step 5</ins>: run the command: `docker ps` to the terminal <sup>(on the VMbox)</sup> to copy the *container id*, replace it into the command below to get the password. 
+### ✏️ 5: run the command: `docker ps` to the terminal <sup>(on the VMbox)</sup> to copy the *container id*, replace it into the command below to get the password. 
 ```
 $ docker logs  container-id  2>&1 | grep "Bootstrap Password:"
 ```
 
-#### ✏️ <ins>step 6</ins>: copy and paste the password u got from step 5. once u got it, start to login into the rancher and setup the cluster.
+### ✏️ 6. copy and paste the password u got from step 5. once u got it, start to login into the rancher and setup the cluster.
 
-#### ✏️ <ins>step 7</ins>: switch to the worker-node and paste the script and add the `--address worker_IP` to setup the cluster on it.
+### ✏️ 7. switch to the worker-node and paste the script and add the `--address worker_IP` to setup the cluster on it.
 ```
 #for example the script would be
 $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/kubernetes:/etc/kubernetes -v /var/run:/var/run  rancher/rancher-agent:v2.7-091ed163cc5c53efc50bd1a580cb4e54fa097e82-head --server https://192.168.56.200/ --token p5zcnnpcb5cx8pg89vkk5nkx8gbzltk9wbkmfjp6rsn9n6kf729vjp --ca-checksum 37bde28c0dc9fbd360146f727ff4b1cd254d9f17490789f93775fb2ce15b58da --address worker_IP --etcd --controlplane --worker
 ```
 
-#### ✏️ <ins>step 8</ins>: once u done with the setup part. head into it and copy the config, back to the local, cd into the `~/,kube/config` and paste to save the config
+### ✏️ 8. once u done with the setup part. head into it and copy the config, back to the local, cd into the `~/,kube/config` and paste to save the config
 
 
 
 
 
-<!--
-### 1. on the master node (IP: 192.168.56.200): ffffffff
-- get urself a terminal and ssh into the node with this command `ssh username@IP`
-- if u r using vscode or any remote control method, u will need to add an user. replace `ur-username-go-here` with the name u r expecting:
-```
-$ useradd --comment 'ur-username-go-here' --create-home ur-username-go-here --shell /bin/bash
-```
-   
-- switch to the root user: `$ sudo su`
-- check if ur docker has been installed yet: `$ docker version` (optional)
-- run the command below to install rancher. (choose ur compatible version)
-```
-$ docker run -d --name=rancher-server --restart=unless-stopped -p 80:80 -p 443:443 --privileged rancher/rancher:v2.7-091ed163cc5c53efc50bd1a580cb4e54fa097e82-linux-amd64
-```
-- access to https://192.168.56.200 or https://192.168.56.200/g 
 
-- login and get the password by run the command below and login to setup the cluster (during this step, move to the worker VM)
-```
-$ docker logs  container-id  2>&1 | grep "Bootstrap Password:"
-```
-- then `copy config` of the cluster
-- cd and paste it into your `~/.kube/config`
-
-
-### 2. vmbox worker (IP: 192.168.56.201):
-- ssh into it.
-- _*during the creating cluster step*_: because of rancher will help u to setup the whole entire clusters but in this situation the master and worker are on the same IP so they could be conflict. so in the token u copied from upthere u need to to add the `--address worker_IP` before the `-etcd` 
-- thats gonna be:
-```
-$ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/kubernetes:/etc/kubernetes -v /var/run:/var/run  rancher/rancher-agent:v2.7-091ed163cc5c53efc50bd1a580cb4e54fa097e82-head --server https://192.168.56.200/ --token p5zcnnpcb5cx8pg89vkk5nkx8gbzltk9wbkmfjp6rsn9n6kf729vjp --ca-checksum 37bde28c0dc9fbd360146f727ff4b1cd254d9f17490789f93775fb2ce15b58da --address worker_IP --etcd --controlplane --worker
-```
-- *!!! new error !!!*
-
-
-```
-curl: (60) SSL certificate problem: self signed certificate in certificate chain
-
-#explain: 
-the new version of rancher now using curl and the command gonna be: `curl -fL https://192.168.56.200/system-agent-install.sh | sudo  sh -s - --server https://192.168.56.200 --label 'cattle.io/os=linux' --token kbsl8cbpkz48pxdcr24bz4862fpjqslz98b8sg9b4k774p2jwxbjdz --ca-checksum e45e675a2c76868ec0d39c847fc1a79aeea78e7b56c710396b5b2536113ca85f --etcd --controlplane --worker` 
-
-
-#solve: 
-=> replce the `token` and `checksum` 
-=> tick on the `select to skip the TLS verification if your server has a self-signed certificate`
-```
--->
 ---
 
 
@@ -266,3 +221,50 @@ $ curl -fL https://192.168.56.200/system-agent-install.sh | sudo  sh -s - --serv
 1. replace both the `token` and `checksum` of the old to new script 
 
 => tick on the `select to skip the TLS verification if your server has a self-signed certificate`
+
+<!--
+### 1. on the master node (IP: 192.168.56.200): ffffffff
+- get urself a terminal and ssh into the node with this command `ssh username@IP`
+- if u r using vscode or any remote control method, u will need to add an user. replace `ur-username-go-here` with the name u r expecting:
+```
+$ useradd --comment 'ur-username-go-here' --create-home ur-username-go-here --shell /bin/bash
+```
+   
+- switch to the root user: `$ sudo su`
+- check if ur docker has been installed yet: `$ docker version` (optional)
+- run the command below to install rancher. (choose ur compatible version)
+```
+$ docker run -d --name=rancher-server --restart=unless-stopped -p 80:80 -p 443:443 --privileged rancher/rancher:v2.7-091ed163cc5c53efc50bd1a580cb4e54fa097e82-linux-amd64
+```
+- access to https://192.168.56.200 or https://192.168.56.200/g 
+
+- login and get the password by run the command below and login to setup the cluster (during this step, move to the worker VM)
+```
+$ docker logs  container-id  2>&1 | grep "Bootstrap Password:"
+```
+- then `copy config` of the cluster
+- cd and paste it into your `~/.kube/config`
+
+
+### 2. vmbox worker (IP: 192.168.56.201):
+- ssh into it.
+- _*during the creating cluster step*_: because of rancher will help u to setup the whole entire clusters but in this situation the master and worker are on the same IP so they could be conflict. so in the token u copied from upthere u need to to add the `--address worker_IP` before the `-etcd` 
+- thats gonna be:
+```
+$ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/kubernetes:/etc/kubernetes -v /var/run:/var/run  rancher/rancher-agent:v2.7-091ed163cc5c53efc50bd1a580cb4e54fa097e82-head --server https://192.168.56.200/ --token p5zcnnpcb5cx8pg89vkk5nkx8gbzltk9wbkmfjp6rsn9n6kf729vjp --ca-checksum 37bde28c0dc9fbd360146f727ff4b1cd254d9f17490789f93775fb2ce15b58da --address worker_IP --etcd --controlplane --worker
+```
+- *!!! new error !!!*
+
+
+```
+curl: (60) SSL certificate problem: self signed certificate in certificate chain
+
+#explain: 
+the new version of rancher now using curl and the command gonna be: `curl -fL https://192.168.56.200/system-agent-install.sh | sudo  sh -s - --server https://192.168.56.200 --label 'cattle.io/os=linux' --token kbsl8cbpkz48pxdcr24bz4862fpjqslz98b8sg9b4k774p2jwxbjdz --ca-checksum e45e675a2c76868ec0d39c847fc1a79aeea78e7b56c710396b5b2536113ca85f --etcd --controlplane --worker` 
+
+
+#solve: 
+=> replce the `token` and `checksum` 
+=> tick on the `select to skip the TLS verification if your server has a self-signed certificate`
+```
+-->
