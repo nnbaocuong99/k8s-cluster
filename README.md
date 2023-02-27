@@ -16,9 +16,10 @@
   - Window: [Scoop](https://scoop.sh/) <sup>recommend</sup>, [Chocolatey](https://chocolatey.org/) or [winget](https://learn.microsoft.com/en-us/windows/package-manager/winget/)
   - MacOS: [Homebew](https://brew.sh/)
 ### 2. Create virtual machines: 
-- 2 folders for 2 vagrant files, change name of them to `Vagrantfile` and use the terminal in each:
-   - Use [Vagrant-master](https://github.com/nnbaocuong99/details-k8s-project/blob/main/document/vagrantfile-master) for the <ins>*master node*</ins>.
-   - Use [Vagrant-worker](https://github.com/nnbaocuong99/details-k8s-project/blob/main/document/Vagrantfile-worker) for the <ins>*worker node*</ins>.
+- Download 2 files below, re-name to `Vagrantfile` and put each into 2 different folders
+   - Use [Vagrant-master](https://github.com/nnbaocuong99/details-k8s-project/blob/main/document/vagrantfile-master) for the <ins>*master node*</ins>
+   - Use [Vagrant-worker](https://github.com/nnbaocuong99/details-k8s-project/blob/main/document/Vagrantfile-worker) for the <ins>*worker node*</ins>
+- Open 2 terminals each separate folder
 ### 3. Run the command in the terminal u opened ealier: 
 ```
 $ vagrant up
