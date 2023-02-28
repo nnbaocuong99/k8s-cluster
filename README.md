@@ -32,7 +32,7 @@ $ vagrant up
 ## ⚒ Install Rancher & K8s:
 
 ### ✏️ 1. <ins>Step 1:</ins>
-- Get yourself a terminal and ssh into the master-node `ssh username@your_ipaddress`
+- Get yourself a terminal and ssh into the master-node `ssh username@your_ip_address`
 - Optional: if you're using *VScode* or any remote control method, you'll need to add an user. replace `your-username-go-here` with the name you're expecting:
 ```
 $ useradd --comment 'ur-username-go-here' --create-home your-username-go-here --shell /bin/bash
@@ -71,9 +71,77 @@ $ docker logs  container-id  2>&1 | grep "Bootstrap Password:"
 - Choose the <ins>**custom**</ins> mode, set a name and finish the setup
 
 ### ✏️ <ins>Step 5:</ins> 
-- Once you've done the setup session Rancher will show you a script like this
+- Finish setup session and Rancher will show you a <ins>**script**</ins>
+- Copy it and add `--address your_worker_IP` before the `--etcd` and you'll get the final script like this:
 ```
-$ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/kubernetes:/etc/kubernetes -v /var/run:/var/run  rancher/rancher-agent:v2.7-091ed163cc5c53efc50bd1a580cb4e54fa097e82-head --server https://192.168.56.200/ --token p5zcnnpcb5cx8pg89vkk5nkx8gbzltk9wbkmfjp6rsn9n6kf729vjp --ca-checksum 37bde28c0dc9fbd360146f727ff4b1cd254d9f17490789f93775fb2ce15b58da --address worker_IP --etcd --controlplane --worker
+$ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/kubernetes:/etc/kubernetes -v /var/run:/var/run  rancher/rancher-agent:v2.7-091ed163cc5c53efc50bd1a580cb4e54fa097e82-head --server https://192.168.56.200/ --token p5zcnnpcb5cx8pg89vkk5nkx8gbzltk9wbkmfjp6rsn9n6kf729vjp --ca-checksum 37bde28c0dc9fbd360146f727ff4b1cd254d9f17490789f93775fb2ce15b58da --address your_worker_IP --etcd --controlplane --worker
+```
+
+### ✏️ <ins>Step 6:</ins>  
+- SSH into the worker-node: `ssh username@your_ip_address`
+- `$ sudo su` & `$ docker version`
+- Paste and run the script to finish the cluster setup
+- Get into the masternode and copy the config file
+```
+apiVersion: v1
+kind: Config
+clusters:
+- name: "masternode"
+  cluster:
+    server: "https://192.168.56.200/k8s/clusters/c-2mvpn"
+    certificate-authority-data: "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUJ2RENDQ\
+      VdPZ0F3SUJBZ0lCQURBS0JnZ3Foa2pPUFFRREFqQkdNUnd3R2dZRFZRUUtFeE5rZVc1aGJXbGoKY\
+      kdsemRHVnVaWEl0YjNKbk1TWXdKQVlEVlFRRERCMWtlVzVoYldsamJHbHpkR1Z1WlhJdFkyRkFNV\
+      FkzTnpJNQpNekU1TVRBZUZ3MHlNekF5TWpVd01qUTJNekZhRncwek16QXlNakl3TWpRMk16RmFNR\
+      Vl4SERBYUJnTlZCQW9UCkUyUjVibUZ0YVdOc2FYTjBaVzVsY2kxdmNtY3hKakFrQmdOVkJBTU1IV\
+      1I1Ym1GdGFXTnNhWE4wWlc1bGNpMWoKWVVBeE5qYzNNamt6TVRreE1Ga3dFd1lIS29aSXpqMENBU\
+      VlJS29aSXpqMERBUWNEUWdBRVk3WkZxYVp2a0k3NQoyRG1vSTFEa2ZyZG5hNG5PWllZK2V1NVlzQ\
+      Tg2ZFRpK0VPd2RWb1c1dm5va2tsQ0RDZE5zMGhjT1NEWnBhVVgzClhjMXRmWm15MEtOQ01FQXdEZ\
+      1lEVlIwUEFRSC9CQVFEQWdLa01BOEdBMVVkRXdFQi93UUZNQU1CQWY4d0hRWUQKVlIwT0JCWUVGR\
+      UlyN0Vkakl3MStCUmc4UDFuYW5XWi9IZ080TUFvR0NDcUdTTTQ5QkFNQ0EwY0FNRVFDSUR1bgorT\
+      0tHQldlUE5DYkRXQ2JrdTdaVXRncmpBa1MvU1RXSGpLc2tJa3lUQWlCSktXSWRHT0NqR1d1dmhRa\
+      VFDWnlHCkZRdm4rclBiMENhU2hZak1PSmNzSUE9PQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0t"
+- name: "masternode-worker-node01"
+  cluster:
+    server: "https://192.168.56.201:6443"
+    certificate-authority-data: "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUM0VENDQ\
+      WNtZ0F3SUJBZ0lCQURBTkJna3Foa2lHOXcwQkFRc0ZBREFTTVJBd0RnWURWUVFERXdkcmRXSmwKT\
+      FdOaE1CNFhEVEl6TURJeU5UQXpNVEl3TjFvWERUTXpNREl5TWpBek1USXdOMW93RWpFUU1BNEdBM\
+      VVFQXhNSAphM1ZpWlMxallUQ0NBU0l3RFFZSktvWklodmNOQVFFQkJRQURnZ0VQQURDQ0FRb0NnZ\
+      0VCQU5SM3BWck0wWFJ0CnV2RVlEb1JFMFA4M1BSVjl0eXNxRkNzSmpoYktCM1RBMmlKT3plbXdFM\
+      mVxOFI4ZFU4Q2lzbjk1T3dTSEF0QTkKSlBKS1BGNGc5SDJXVk1JQUlhNXFFZE40cGxOdWU3bHN3d\
+      EdIODZqVktodGJmRlF1MlF6cS9Ub2JKNko1Tks3QgpPUG40YnJhaHVkY0tDQ1NzSzM5Y2VGeS9HU\
+      29KOFNpd3VIU3V5dzNhRmhoc1Y4dXdXMEdyNEhSNDdBcnkydXpmCk85TDZ2K3F4bWhUUk05K09DN\
+      FZ3UE1DcW9ReTA5d1VWU054UVZRRmsyV3pOcHRYQ3F3cUFhd2tMRVpVUG9tUDYKbzkzd2RCVlY3d\
+      UN3QTBhV3ZFcDkwQnFkZmU4UGFiVDI3b0Q3R05vS3dpUHFXZ1lpT0lPSGsrcHBVSnFEOFU2RgpXc\
+      EQ3UEt4TnpZRUNBd0VBQWFOQ01FQXdEZ1lEVlIwUEFRSC9CQVFEQWdLa01BOEdBMVVkRXdFQi93U\
+      UZNQU1CCkFmOHdIUVlEVlIwT0JCWUVGSnFSSUJtaGtIRmY0UGh6R1pESGhEblkwdXcxTUEwR0NTc\
+      UdTSWIzRFFFQkN3VUEKQTRJQkFRQWtYaHVRcTNRU0xhQzRMUTQ4dG5yeFBVNFpYMVh0b1MyUEtjU\
+      09jdzAwLzIwTkIzczhyRGF2SVhqUApWYzZ6aEIxTWsvVTJYYU9PTjZ6bWYyM2tjcE5UMWFRVTFjd\
+      HFxYi9yQUt0dWNjR1I2ODVENEtPeVpQLy9MSDB6CmtJektQK0RzVDU1c3hobUlzTjdMNlMyNzBHc\
+      npWZnVFQmsyMG9Yc3Q3Zkh4VlFVTHhSSy91NmQvVmZPNkxpM1kKRTdjeVg1U1pkaWxBRERmZktUM\
+      Dg0MkNzQ0V5c1EyT3ptbWhWcUNFdHhQRTFBLzBBSDdSRW5zeG9BTGQxWG1QRApSZks4RXZTWGNHa\
+      XBDNGlieWQ2NFVibndIQnk3OHp0eit4MzlTbUhOdDFESTZsWEQyN1J6U1NQK1VpZDdZMWdpCmxvT\
+      G54SEg1NjhIVnVyTm45VVRmV05oalRYNzQKLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo="
+
+users:
+- name: "masternode"
+  user:
+    token: "kubeconfig-user-cxtwrfxgql:cx6tmfj84pqrgm24crgcws8hl96jvkt86wm6v4mvxhjzbh4749qg7n"
+
+
+contexts:
+- name: "masternode"
+  context:
+    user: "masternode"
+    cluster: "masternode"
+- name: "masternode-worker-node01"
+  context:
+    user: "masternode"
+    cluster: "masternode-worker-node01"
+
+current-context: "masternode"
+
 ```
 
 
@@ -84,10 +152,6 @@ $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/ku
 
 
 
-
-
-
-### ✏️ 7. switch to the worker-node and paste the script and add the `--address worker_IP` to setup the cluster on it.
 
 
 ### ✏️ 8. once u done with the setup part. head into it and copy the config, back to the local, cd into the `~/,kube/config` and paste to save the config
