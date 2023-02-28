@@ -15,11 +15,13 @@
 - On:
   - Window: [Scoop](https://scoop.sh/) <sup>recommend</sup>, [Chocolatey](https://chocolatey.org/) or [winget](https://learn.microsoft.com/en-us/windows/package-manager/winget/)
   - MacOS: [Homebew](https://brew.sh/)
+
 ### 2. Create virtual machines: 
 - Download 2 files below, re-name to `Vagrantfile` and put each into 2 different folders
    - Use [Vagrant-master](https://github.com/nnbaocuong99/details-k8s-project/blob/main/document/vagrantfile-master) for the <ins>*master node*</ins>
    - Use [Vagrant-worker](https://github.com/nnbaocuong99/details-k8s-project/blob/main/document/Vagrantfile-worker) for the <ins>*worker node*</ins>
 - Open 2 terminals in each separate folder.
+
 ### 3. Scripts
 - Run this command in the terminals you've been opened ealier:
 ```
@@ -60,19 +62,33 @@ $ sudo docker ps -aqf "name=containername"`
 
 ### ✏️ <ins>Step 4:</ins>
 - Access: https://192.168.56.200 or https://192.168.56.200/g 
-- 
+- Use the container id, replace `container id` in the command below to get the password
 ```
 $ docker logs  container-id  2>&1 | grep "Bootstrap Password:"
 ```
+- Copy the <ins>**red-line**</ins> key/code, thats the password. 
+- Login to the Rancher `admin / password`
+- Choose the <ins>**custom**</ins> mode, set a name and finish the setup
 
 ### ✏️ <ins>Step 5:</ins> 
-- copy and paste the password u got from step 5. once u got it, start to login into the rancher and setup the cluster.
-
-### ✏️ 7. switch to the worker-node and paste the script and add the `--address worker_IP` to setup the cluster on it.
+- Once you've done the setup session Rancher will show you a script like this
 ```
-#for example the script would be
 $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/kubernetes:/etc/kubernetes -v /var/run:/var/run  rancher/rancher-agent:v2.7-091ed163cc5c53efc50bd1a580cb4e54fa097e82-head --server https://192.168.56.200/ --token p5zcnnpcb5cx8pg89vkk5nkx8gbzltk9wbkmfjp6rsn9n6kf729vjp --ca-checksum 37bde28c0dc9fbd360146f727ff4b1cd254d9f17490789f93775fb2ce15b58da --address worker_IP --etcd --controlplane --worker
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+### ✏️ 7. switch to the worker-node and paste the script and add the `--address worker_IP` to setup the cluster on it.
+
 
 ### ✏️ 8. once u done with the setup part. head into it and copy the config, back to the local, cd into the `~/,kube/config` and paste to save the config
 
