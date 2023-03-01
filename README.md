@@ -21,10 +21,10 @@
    - Use [Vagrant-master](https://github.com/nnbaocuong99/details-k8s-project/blob/main/document/vagrantfile-master) for the <ins>*master node*</ins>
    - Use [Vagrant-worker](https://github.com/nnbaocuong99/details-k8s-project/blob/main/document/Vagrantfile-worker) for the <ins>*worker node*</ins>
 - Open 2 terminals in each separate folder.
-> this is my directory
+> This is my directory
 ```
-C:\Users\spagbo\Desktop\vmb\master> vagrant up
-C:\Users\spagbo\Desktop\vmb\node> vagrant up
+C:\Users\spagbo\Desktop\vmb\master>
+C:\Users\spagbo\Desktop\vmb\node>
 ```
 
 ### 3. Scripts
@@ -78,10 +78,21 @@ $ docker logs  container-id  2>&1 | grep "Bootstrap Password:"
 ```
 - Copy the <ins>**red-line**</ins> key/code, thats the password. 
 - Login to the Rancher `admin / password`
-- Choose the <ins>**custom**</ins> mode, set a name and finish the setup
+- Choose the <ins>**custom**</ins> mode:
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/100349044/222045349-2a57a602-aa60-4621-ba25-01b6fb166668.png" alt="uvu" width="800">
+    <br>
+    <br>
+</div>
+
+- Set a name then click next, tick on the `etcd` and `control panel` it will show you a script:
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/100349044/222045781-fed45b98-6a0a-4dc0-ae70-7daa7db23490.png" alt="uvu" width="800">
+    <br>
+    <br>
+</div>
 
 ### ✏️ <ins>Step 5:</ins> 
-- Finish setup session and Rancher will show you a <ins>**script**</ins>
 - Copy it and add `--address your_worker_IP` before the `--etcd` and you'll get the final script like this:
 ```
 $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/kubernetes:/etc/kubernetes -v /var/run:/var/run  rancher/rancher-agent:v2.7-091ed163cc5c53efc50bd1a580cb4e54fa097e82-head --server https://192.168.56.200/ --token p5zcnnpcb5cx8pg89vkk5nkx8gbzltk9wbkmfjp6rsn9n6kf729vjp --ca-checksum 37bde28c0dc9fbd360146f727ff4b1cd254d9f17490789f93775fb2ce15b58da --address your_worker_IP --etcd --controlplane --worker
