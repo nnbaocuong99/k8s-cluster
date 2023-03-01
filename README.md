@@ -77,11 +77,11 @@ $ docker logs  container-id  2>&1 | grep "Bootstrap Password:"
 $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/kubernetes:/etc/kubernetes -v /var/run:/var/run  rancher/rancher-agent:v2.7-091ed163cc5c53efc50bd1a580cb4e54fa097e82-head --server https://192.168.56.200/ --token p5zcnnpcb5cx8pg89vkk5nkx8gbzltk9wbkmfjp6rsn9n6kf729vjp --ca-checksum 37bde28c0dc9fbd360146f727ff4b1cd254d9f17490789f93775fb2ce15b58da --address your_worker_IP --etcd --controlplane --worker
 ```
 
-### ✏️ <ins>Step 6:</ins>  
+### ✏️ <ins>Step 6:</ins>
 - SSH into the worker-node: `ssh username@your_ip_address`
-- `$ sudo su` & `$ docker version`
-- Paste and run the script to finish the cluster setup
-- Get into the masternode and copy the config file
+- Run`$ sudo su` & `$ docker version`
+- Run the copied script 
+- Get into the masternode and copy the config file. Its look like this:
 ```
 apiVersion: v1
 kind: Config
@@ -100,7 +100,7 @@ clusters:
       1lEVlIwUEFRSC9CQVFEQWdLa01BOEdBMVVkRXdFQi93UUZNQU1CQWY4d0hRWUQKVlIwT0JCWUVGR\
       UlyN0Vkakl3MStCUmc4UDFuYW5XWi9IZ080TUFvR0NDcUdTTTQ5QkFNQ0EwY0FNRVFDSUR1bgorT\
       0tHQldlUE5DYkRXQ2JrdTdaVXRncmpBa1MvU1RXSGpLc2tJa3lUQWlCSktXSWRHT0NqR1d1dmhRa\
-      VFDWnlHCkZRdm4rclBiMENhU2hZak1PSmNzSUE9PQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0t"
+      VFDWnlHCkZRdm4rclBiMENhU2hZak1PSmNzSUE9PQotLS0tLUVORCBDRVJUSUZJQ0xxxxxxxxxx"
 - name: "masternode-worker-node01"
   cluster:
     server: "https://192.168.56.201:6443"
@@ -122,7 +122,7 @@ clusters:
       npWZnVFQmsyMG9Yc3Q3Zkh4VlFVTHhSSy91NmQvVmZPNkxpM1kKRTdjeVg1U1pkaWxBRERmZktUM\
       Dg0MkNzQ0V5c1EyT3ptbWhWcUNFdHhQRTFBLzBBSDdSRW5zeG9BTGQxWG1QRApSZks4RXZTWGNHa\
       XBDNGlieWQ2NFVibndIQnk3OHp0eit4MzlTbUhOdDFESTZsWEQyN1J6U1NQK1VpZDdZMWdpCmxvT\
-      G54SEg1NjhIVnVyTm45VVRmV05oalRYNzQKLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo="
+      G54SEg1NjhIVnVyTm45VVRmV05oalRYNzQKLS0tLS1FTkQgQ0VSVElGSUNBVxxxxxxxxxx="
 
 users:
 - name: "masternode"
@@ -144,18 +144,14 @@ current-context: "masternode"
 
 ```
 
-
-
-
-
-
-
-
-
-
-
-### ✏️ 8. once u done with the setup part. head into it and copy the config, back to the local, cd into the `~/,kube/config` and paste to save the config
-
+### ✏️ <ins>Step 6:</ins>
+- Back to the local, open a terminal
+- With: 
+  - Linux, Ubuntu, MacOS: `$ cd ~/.kube/config` and paste to save the config
+  - Windows 10: 
+    - Download [latest release v1.26.0](https://dl.k8s.io/release/v1.26.0/bin/windows/amd64/kubectl.exe)
+    - Create a folder, name it <ins>**KubeTools**</ins> and copy the `kubectl.exe` into it.
+    - Open `C:\Users\%USERNAME%` and make a folder `.kube`
 
 ---
 
