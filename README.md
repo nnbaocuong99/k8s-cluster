@@ -21,12 +21,22 @@
    - Use [Vagrant-master](https://github.com/nnbaocuong99/details-k8s-project/blob/main/document/vagrantfile-master) for the <ins>*master node*</ins>
    - Use [Vagrant-worker](https://github.com/nnbaocuong99/details-k8s-project/blob/main/document/Vagrantfile-worker) for the <ins>*worker node*</ins>
 - Open 2 terminals in each separate folder.
+> this is my directory
+```
+C:\Users\spagbo\Desktop\vmb\master> vagrant up
+C:\Users\spagbo\Desktop\vmb\node> vagrant up
+```
 
 ### 3. Scripts
 - Run this command in the terminals you've been opened ealier:
 ```
 $ vagrant up
 ```
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/100349044/222043942-022f202d-065d-49fb-a8b4-8d390b9720f4.png" alt="uvu" width="800">
+    <br>
+    <br>
+</div>
 
 
 ## ⚒ Install Rancher & K8s:
