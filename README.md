@@ -82,69 +82,57 @@ $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/ku
 - Run`$ sudo su` & `$ docker version`
 - Run the copied script 
 - Get into the masternode and copy the config file. Its look like this:
-```
-apiVersion: v1
-kind: Config
-clusters:
-- name: "masternode"
-  cluster:
-    server: "https://192.168.56.200/k8s/clusters/c-2mvpn"
-    certificate-authority-data: "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUJ2RENDQ\
-      VdPZ0F3SUJBZ0lCQURBS0JnZ3Foa2pPUFFRREFqQkdNUnd3R2dZRFZRUUtFeE5rZVc1aGJXbGoKY\
-      kdsemRHVnVaWEl0YjNKbk1TWXdKQVlEVlFRRERCMWtlVzVoYldsamJHbHpkR1Z1WlhJdFkyRkFNV\
-      FkzTnpJNQpNekU1TVRBZUZ3MHlNekF5TWpVd01qUTJNekZhRncwek16QXlNakl3TWpRMk16RmFNR\
-      Vl4SERBYUJnTlZCQW9UCkUyUjVibUZ0YVdOc2FYTjBaVzVsY2kxdmNtY3hKakFrQmdOVkJBTU1IV\
-      1I1Ym1GdGFXTnNhWE4wWlc1bGNpMWoKWVVBeE5qYzNNamt6TVRreE1Ga3dFd1lIS29aSXpqMENBU\
-      VlJS29aSXpqMERBUWNEUWdBRVk3WkZxYVp2a0k3NQoyRG1vSTFEa2ZyZG5hNG5PWllZK2V1NVlzQ\
-      Tg2ZFRpK0VPd2RWb1c1dm5va2tsQ0RDZE5zMGhjT1NEWnBhVVgzClhjMXRmWm15MEtOQ01FQXdEZ\
-      1lEVlIwUEFRSC9CQVFEQWdLa01BOEdBMVVkRXdFQi93UUZNQU1CQWY4d0hRWUQKVlIwT0JCWUVGR\
-      UlyN0Vkakl3MStCUmc4UDFuYW5XWi9IZ080TUFvR0NDcUdTTTQ5QkFNQ0EwY0FNRVFDSUR1bgorT\
-      0tHQldlUE5DYkRXQ2JrdTdaVXRncmpBa1MvU1RXSGpLc2tJa3lUQWlCSktXSWRHT0NqR1d1dmhRa\
-      VFDWnlHCkZRdm4rclBiMENhU2hZak1PSmNzSUE9PQotLS0tLUVORCBDRVJUSUZJQ0xxxxxxxxxx"
-- name: "masternode-worker-node01"
-  cluster:
-    server: "https://192.168.56.201:6443"
-    certificate-authority-data: "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUM0VENDQ\
-      WNtZ0F3SUJBZ0lCQURBTkJna3Foa2lHOXcwQkFRc0ZBREFTTVJBd0RnWURWUVFERXdkcmRXSmwKT\
-      FdOaE1CNFhEVEl6TURJeU5UQXpNVEl3TjFvWERUTXpNREl5TWpBek1USXdOMW93RWpFUU1BNEdBM\
-      VVFQXhNSAphM1ZpWlMxallUQ0NBU0l3RFFZSktvWklodmNOQVFFQkJRQURnZ0VQQURDQ0FRb0NnZ\
-      0VCQU5SM3BWck0wWFJ0CnV2RVlEb1JFMFA4M1BSVjl0eXNxRkNzSmpoYktCM1RBMmlKT3plbXdFM\
-      mVxOFI4ZFU4Q2lzbjk1T3dTSEF0QTkKSlBKS1BGNGc5SDJXVk1JQUlhNXFFZE40cGxOdWU3bHN3d\
-      EdIODZqVktodGJmRlF1MlF6cS9Ub2JKNko1Tks3QgpPUG40YnJhaHVkY0tDQ1NzSzM5Y2VGeS9HU\
-      29KOFNpd3VIU3V5dzNhRmhoc1Y4dXdXMEdyNEhSNDdBcnkydXpmCk85TDZ2K3F4bWhUUk05K09DN\
-      FZ3UE1DcW9ReTA5d1VWU054UVZRRmsyV3pOcHRYQ3F3cUFhd2tMRVpVUG9tUDYKbzkzd2RCVlY3d\
-      UN3QTBhV3ZFcDkwQnFkZmU4UGFiVDI3b0Q3R05vS3dpUHFXZ1lpT0lPSGsrcHBVSnFEOFU2RgpXc\
-      EQ3UEt4TnpZRUNBd0VBQWFOQ01FQXdEZ1lEVlIwUEFRSC9CQVFEQWdLa01BOEdBMVVkRXdFQi93U\
-      UZNQU1CCkFmOHdIUVlEVlIwT0JCWUVGSnFSSUJtaGtIRmY0UGh6R1pESGhEblkwdXcxTUEwR0NTc\
-      UdTSWIzRFFFQkN3VUEKQTRJQkFRQWtYaHVRcTNRU0xhQzRMUTQ4dG5yeFBVNFpYMVh0b1MyUEtjU\
-      09jdzAwLzIwTkIzczhyRGF2SVhqUApWYzZ6aEIxTWsvVTJYYU9PTjZ6bWYyM2tjcE5UMWFRVTFjd\
-      HFxYi9yQUt0dWNjR1I2ODVENEtPeVpQLy9MSDB6CmtJektQK0RzVDU1c3hobUlzTjdMNlMyNzBHc\
-      npWZnVFQmsyMG9Yc3Q3Zkh4VlFVTHhSSy91NmQvVmZPNkxpM1kKRTdjeVg1U1pkaWxBRERmZktUM\
-      Dg0MkNzQ0V5c1EyT3ptbWhWcUNFdHhQRTFBLzBBSDdSRW5zeG9BTGQxWG1QRApSZks4RXZTWGNHa\
-      XBDNGlieWQ2NFVibndIQnk3OHp0eit4MzlTbUhOdDFESTZsWEQyN1J6U1NQK1VpZDdZMWdpCmxvT\
-      G54SEg1NjhIVnVyTm45VVRmV05oalRYNzQKLS0tLS1FTkQgQ0VSVElGSUNBVxxxxxxxxxx="
 
-users:
-- name: "masternode"
-  user:
-    token: "kubeconfig-user-cxtwrfxgql:cx6tmfj84pqrgm24crgcws8hl96jvkt86wm6v4mvxhjzbh4749qg7n"
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/100349044/222042743-1cf31c2b-ed01-4eb1-8ef9-45a4de0dd9b4.png" alt="uvu" width="1000">
+    <br>
+    <br>
+</div>
 
-
-contexts:
-- name: "masternode"
-  context:
-    user: "masternode"
-    cluster: "masternode"
-- name: "masternode-worker-node01"
-  context:
-    user: "masternode"
-    cluster: "masternode-worker-node01"
-
-current-context: "masternode"
-
-```
 
 ### ✏️ <ins>Step 6:</ins>
+- `Copy to clipboard` or save that config to `.txt` if you need it. 
+- Default Kubeconfig location in:
+
+<div align="center">
+  1. Linux, Ubuntu:
+</div>
+
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/100349044/222038197-c05c1c93-b440-4b14-afcf-cbb43a33a7d8.png" alt="uvu" width="200">
+    <br>
+    <br>
+</div>
+
+<div align="center">
+  2. Windows:
+</div>
+
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/100349044/222041299-5ed55daf-ec51-4cbe-a973-96cc6b7123a7.png" alt="uvu" width="300">
+    <br>
+    <br>
+</div>
+
+<div align="center">
+  3. MacOS:
+</div>
+
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/100349044/222041470-074745c4-39a7-432c-bf3b-3c7ec75ba988.png" alt="uvu" width="200">
+    <br>
+    <br>
+</div>
+
+
+
+---
+
+
+# ❗️ part 2: install tools to interac, work with k8s.
+## ⚒ important and need to be install (for real)
+
+### ✏️ <ins>On Window:</ins>
 - Back to the local, open a terminal
 - With: 
   - Linux, Ubuntu, MacOS: `$ cd ~/.kube/config` and paste to save the config
@@ -153,12 +141,9 @@ current-context: "masternode"
     - Create a folder, name it <ins>**KubeTools**</ins> and copy the `kubectl.exe` into it.
     - Open `C:\Users\%USERNAME%` and make a folder `.kube`
 
----
 
 
-# ❗️ part 2: install tools to interac, work with k8s.
 
-## ⚒ important and need to be install (for real)
 ### 1. update ur system:
 ```
 $ sudo apt-get update -y
