@@ -17,10 +17,11 @@
   - MacOS: [Homebew](https://brew.sh/)
 
 ### 2. Create virtual machines: 
-- Download 2 files below, re-name to `Vagrantfile` and put each into 2 different folders
+- Download 2 files below, re-name to `Vagrantfile`
+- Put each into 2 different folders
    - Use [Vagrant-master](https://github.com/nnbaocuong99/details-k8s-project/blob/main/document/vagrantfile-master) for the <ins>*master node*</ins>
    - Use [Vagrant-worker](https://github.com/nnbaocuong99/details-k8s-project/blob/main/document/Vagrantfile-worker) for the <ins>*worker node*</ins>
-- Open 2 terminals in each separate folder.
+- Open 2 terminals in each separate folder:
 > This is my directory
 ```
 C:\Users\spagbo\Desktop\vmb\master>
@@ -164,7 +165,7 @@ $ irm get.scoop.sh | iex
 ```
 
 ### ✏️ <ins>Kubectl</ins>
-- Basically run ([Scoop](https://scoop.sh/) / [Chocolatey](https://community.chocolatey.org/) installed require)
+- Basically run command below | [Scoop](https://scoop.sh/) / [Chocolatey](https://community.chocolatey.org/) installed require
 ```
 $ scoop install kubectl
 $ choco install kubernetes-cli
@@ -182,7 +183,7 @@ or
 $ curl -LO https://dl.k8s.io/release/v1.21.0/bin/windows/amd64/kubectl.exe  
 ```
 <div align="center">
-    <img src="https://user-images.githubusercontent.com/100349044/222653672-2035576f-732b-4355-9553-a9b08ce9ce46.png" alt="uvu" width="1000">
+    <img src="https://user-images.githubusercontent.com/100349044/222653672-2035576f-732b-4355-9553-a9b08ce9ce46.png" alt="uvu" width="800">
     <br>
     <br>
 </div>
@@ -191,10 +192,10 @@ $ curl -LO https://dl.k8s.io/release/v1.21.0/bin/windows/amd64/kubectl.exe
 - [Scoop](https://scoop.sh/) / [Chocolatey](https://community.chocolatey.org/) installed require:
 - Commands line: 
 ```  
-$ choco install kubernetes-helm
 $ scoop install helm
+$ choco install kubernetes-helm
 ```
-- [Helm package](https://community.chocolatey.org/packages/kubernetes-helm) build to Chocolatey.
+- If you prefer Chocolatey here is the [Helm package](https://community.chocolatey.org/packages/kubernetes-helm) build to Chocolatey
 
 
 
