@@ -18,17 +18,17 @@
 
 ### 2. Create virtual machines: 
 - Download 2 files below, re-name to `Vagrantfile`
-- Put each into 2 different folders
-   - Use [Vagrant-master](https://github.com/nnbaocuong99/details-k8s-project/blob/main/document/vagrantfile-master) for the <ins>*master node*</ins>
-   - Use [Vagrant-worker](https://github.com/nnbaocuong99/details-k8s-project/blob/main/document/Vagrantfile-worker) for the <ins>*worker node*</ins>
-- Open 2 terminals in each separate folder:
+- Put each into 2 different folders:
+   - [Vagrant-master](https://github.com/nnbaocuong99/details-k8s-project/blob/main/document/vagrantfile-master) for the <ins>*master node*</ins>
+   - [Vagrant-worker](https://github.com/nnbaocuong99/details-k8s-project/blob/main/document/Vagrantfile-worker) for the <ins>*worker node*</ins>
+
+### 3. Scripts
+- Open 2 terminals each separate folders:
 > This is my directory
 ```
 C:\Users\spagbo\Desktop\vmb\master>
 C:\Users\spagbo\Desktop\vmb\node>
 ```
-
-### 3. Scripts
 - Run this command in the terminals you've been opened ealier:
 ```
 $ vagrant up
