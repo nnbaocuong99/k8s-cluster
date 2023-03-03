@@ -112,7 +112,8 @@ $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/ku
 
 
 ### ✏️ <ins>Step 6:</ins>
-- `Copy to clipboard` or save that config to `.txt` if you need it. 
+- `Copy to clipboard` or save that config to `.txt` if you need it.
+- Paste the config to <ins>**default Kubeconfig**</ins> file connect to the cluster
 - Default Kubeconfig location in:
 
 <div align="center">
@@ -129,11 +130,14 @@ $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/ku
   2. Windows:
 </div>
 
+> you need to open `C:\Users\%USERNAME%` and make a folder `.kube` and create a config file in it 
+
 <div align="center">
     <img src="https://user-images.githubusercontent.com/100349044/222041299-5ed55daf-ec51-4cbe-a973-96cc6b7123a7.png" alt="uvu" width="300">
     <br>
     <br>
 </div>
+
 
 <div align="center">
   3. MacOS:
@@ -150,21 +154,17 @@ $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/ku
 ---
 
 
-# ❗️ part 2: install tools to interac, work with k8s.
-## ⚒ important and need to be install (for real)
+# ❗️ part 2: install tools to work with k8s (at the local)
+## ⚒ kubectl
 
 ### ✏️ <ins>On Window:</ins>
-- Back to the local, open a terminal
-- With: 
-  - Linux, Ubuntu, MacOS: `$ cd ~/.kube/config` and paste to save the config
-  - Windows 10: 
-    - Download [latest release v1.26.0](https://dl.k8s.io/release/v1.26.0/bin/windows/amd64/kubectl.exe)
-    - Create a folder, name it <ins>**KubeTools**</ins> and copy the `kubectl.exe` into it.
-    - Open `C:\Users\%USERNAME%` and make a folder `.kube`
+- Download [latest release](https://dl.k8s.io/release/v1.26.0/bin/windows/amd64/kubectl.exe)
+- Create a folder `C:\Program Files` and name it <ins>**KubeTools**</ins>, copy the downloaded file (<ins>*kubectl.exe*</ins>) into it.
+- Open `C:\Users\%USERNAME%` and make a folder `.kube`
 
 
 
-
+<!--
 ### 1. update ur system:
 ```
 $ sudo apt-get update -y
@@ -329,7 +329,7 @@ $ curl -fL https://192.168.56.200/system-agent-install.sh | sudo  sh -s - --serv
 
 => tick on the `select to skip the TLS verification if your server has a self-signed certificate`
 
-<!--
+
 ### 1. on the master node (IP: 192.168.56.200): ffffffff
 - get urself a terminal and ssh into the node with this command `ssh username@IP`
 - if u r using vscode or any remote control method, u will need to add an user. replace `ur-username-go-here` with the name u r expecting:
