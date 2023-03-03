@@ -4,7 +4,7 @@
 
 ---
 
-# ❗️ part 1: Setup VMBox & Cluster
+# ❗️ Part 1: Setup VMBox & Cluster
 ## ⚒ Setup:
 
 ### 1. Install: 
@@ -130,7 +130,7 @@ $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/ku
   2. Windows:
 </div>
 
-> you need to open `C:\Users\%USERNAME%` and make a folder `.kube` and create a config file in it 
+> you need to open `C:\Users\%USERNAME%` and make a folder `.kube` and create a file name `config` 
 
 <div align="center">
     <img src="https://user-images.githubusercontent.com/100349044/222041299-5ed55daf-ec51-4cbe-a973-96cc6b7123a7.png" alt="uvu" width="300">
@@ -154,13 +154,58 @@ $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/ku
 ---
 
 
-# ❗️ part 2: install tools to work with k8s (at the local)
-## ⚒ kubectl
+# ❗️ Part 2: install tools to work with k8s (at the local)
+## ⚒ On Windows:
 
-### ✏️ <ins>On Window:</ins>
+### ✏️ <ins>Kubectl</ins>
 - Download [latest release](https://dl.k8s.io/release/v1.26.0/bin/windows/amd64/kubectl.exe)
 - Create a folder `C:\Program Files` and name it <ins>**KubeTools**</ins>, copy the downloaded file (<ins>*kubectl.exe*</ins>) into it.
-- Open `C:\Users\%USERNAME%` and make a folder `.kube`
+- Add the folder location to the Windows PATH environment variable (optional): 
+  - Right click `This PC` -> `Properties` -> `Advanced system settings` -> `Environment variables`
+  - In the `System variables` choose `Path` -> `Edit` -> `New` -> `C:\Program Files\KubeTools`
+- `$ cd .\KubeTools\` and run the curl command below to download the kubectl command
+```
+$ curl -LO https://dl.k8s.io/release/v1.21.0/bin/windows/amd64/kubectl.exe  
+```
+
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/100349044/222653672-2035576f-732b-4355-9553-a9b08ce9ce46.png" alt="uvu" width="800">
+    <br>
+    <br>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
