@@ -150,14 +150,28 @@ $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/ku
 </div>
 
 
-
 ---
 
 
-# ❗️ Part 2: install tools to work with k8s (at the local)
+# ❗️ Part 2: install tools to work with k8s
 ## ⚒ On Windows:
 
+### ✏️ <ins>curl</ins>
+- Open a PowerShell terminal then run:
+```
+$ Set-ExecutionPolicy RemoteSigned -Scope CurrentUser # Optional: Needed to run a remote script the first time
+$ irm get.scoop.sh | iex
+```
+
 ### ✏️ <ins>Kubectl</ins>
+- Basically run ([Scoop](https://scoop.sh/) / [Chocolatey](https://community.chocolatey.org/) installed require)
+```
+$ scoop install kubectl
+$ choco install kubernetes-cli
+```
+
+or
+
 - Download [latest release](https://dl.k8s.io/release/v1.26.0/bin/windows/amd64/kubectl.exe)
 - Create a folder `C:\Program Files` and name it <ins>**KubeTools**</ins>, copy the downloaded file (<ins>*kubectl.exe*</ins>) into it.
 - Add the folder location to the Windows PATH environment variable (optional): 
@@ -167,17 +181,20 @@ $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/ku
 ```
 $ curl -LO https://dl.k8s.io/release/v1.21.0/bin/windows/amd64/kubectl.exe  
 ```
-
 <div align="center">
-    <img src="https://user-images.githubusercontent.com/100349044/222653672-2035576f-732b-4355-9553-a9b08ce9ce46.png" alt="uvu" width="800">
+    <img src="https://user-images.githubusercontent.com/100349044/222653672-2035576f-732b-4355-9553-a9b08ce9ce46.png" alt="uvu" width="1000">
     <br>
     <br>
 </div>
 
-
-
-
-
+### ✏️ <ins>Helm</ins>
+- [Scoop](https://scoop.sh/) / [Chocolatey](https://community.chocolatey.org/) installed require:
+- Commands line: 
+```  
+$ choco install kubernetes-helm
+$ scoop install helm
+```
+- [Helm package](https://community.chocolatey.org/packages/kubernetes-helm) build to Chocolatey.
 
 
 
