@@ -212,28 +212,34 @@ $ sudo apt update
 $ sudo apt upgrade
 ```
 
-- Type the following `apt command` or `apt-get command`:
+- Type the following `apt command` or `apt-get command`
 ```
 $ sudo apt install curl
 ```
 
 ### ✏️ <ins>Kubectl</ins>
-- Download the latest release:
+- Update your system:
+```
+$ sudo apt-get update -y
+$ sudo apt-get upgrade -y
+```
+
+- Download the lastest release:
 ```
 $ curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 ```
-> Note:
-> To download a specific version, replace the `$(curl -L -s https://dl.k8s.io/release/stable.txt)` with the specific version. For example, to download version v1.26.0 on Linux, type: `curl -LO https://dl.k8s.io/release/v1.26.0/bin/linux/amd64/kubectl`
 
-- Download checksum file and validate 
+- download the checksum file and validate:
 ```
 $ curl -LO "https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"
 $ echo "$(cat kubectl.sha256)  kubectl" | sha256sum --check
+```
 
-kubectl: OK
-``
-
-
+- Install kubectl
+```
+$ sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+$ apt-get install -y kubectl 
+```
 
 
 
@@ -250,85 +256,6 @@ kubectl: OK
 
 
 <!--
-
-### 1. update ur system:
-```
-$ sudo apt-get update -y
-$ sudo apt-get upgrade -y
-```
-
-### 2. install kubectl:
-```
-# download the lastest release:
-$ curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-
-
-# download the checksum file:
-$ curl -LO "https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"
-
-
-# Validate
-$ echo "$(cat kubectl.sha256)  kubectl" | sha256sum --check
-
-
-# install kubectl
-$ sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
-$ apt-get install -y kubectl 
-```
-
-## ⚒ not important 
-
-### 1. curl and [Homebrew](https://brew.sh)
-```
-$ sudo apt-get install curl
-$ sudo apt-get install apt-transport-https
-```
-
-### 2. minikube:
-```
-# check the virtualization supported onr ur device or not:
-$ grep -E --color 'vmx|svm' /proc/cpuinfo
-
-
-# if u installe it thru the package, u totally can download the binary:
-$ curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && chmod +x minikube
-
-
-# add it into the env path
-$ sudo mkdir -p /usr/local/bin/
-$ sudo install minikube /usr/local/bin/
-
-
-# or use the homebrew:
-$ brew install minikube
-
-
-# check
-$ minikube version
-```
-
-### 3. kubeadm, kubelet:
-```
-# update the apt package index and install packages needed to use the k8s `apt` repository:
-$ sudo apt-get update
-$ sudo apt-get install -y apt-transport-https ca-certificates curl
-
-
-# download signing key:
-$ sudo curl -fsSLo /etc/apt/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
-
-
-# add the k8s apt repository:
-$ echo "deb [signed-by=/etc/apt/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
-
-
-# update apt package index, install kubelet, kubeadm and kubectl, and pin their version:
-$ sudo apt-get update
-$ sudo apt-get install -y kubelet kubeadm kubectl
-$ sudo apt-mark hold kubelet kubeadm kubectl
-```
-
----
 
 # ❗️ part 3: install argocd and helm.
 ## ⚒ [argocd](https://argo-cd.readthedocs.io/en/stable/)
