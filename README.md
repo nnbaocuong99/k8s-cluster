@@ -163,6 +163,13 @@ $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/ku
 $ Set-ExecutionPolicy RemoteSigned -Scope CurrentUser # Optional: Needed to run a remote script the first time
 $ irm get.scoop.sh | iex
 ```
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/100349044/222875034-ca5f633f-37ee-4180-ae9d-c37fb248d745.png" alt="uvu" width="800">
+    <br>
+    <br>
+</div>
+
+
 
 ### ✏️ <ins>curl</ins>
 - Download it from official page: [curl - Download](https://curl.se/download.html)
@@ -200,6 +207,12 @@ $ scoop install helm
 $ choco install kubernetes-helm
 ```
 - If you prefer Chocolatey here is the [Helm package](https://community.chocolatey.org/packages/kubernetes-helm) build to Chocolatey
+
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/100349044/222875084-4fc95ebd-88b4-44e6-8ed1-85ef43c08b26.png" alt="uvu" width="800">
+    <br>
+    <br>
+</div>
 
 
 ## ⚒ On Linux, Ubuntu:
@@ -244,7 +257,11 @@ $ apt-get install -y kubectl
 
 
 
-
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/100349044/222874944-c71242a7-d782-4c8e-818f-5f41e1b8c665.png" alt="uvu" width="800">
+    <br>
+    <br>
+</div>
 
 
 
