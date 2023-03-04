@@ -113,7 +113,7 @@ $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/ku
 
 
 ### ✏️ <ins>Step 6:</ins>
-- `Copy to clipboard` or save that config to `.txt` if you need it.
+- Copy to clipboard or save that config to `.txt` if you need it.
 - Paste the config to <ins>**default Kubeconfig**</ins> file connect to the cluster
 - Default Kubeconfig location in:
 
@@ -157,28 +157,33 @@ $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/ku
 # ❗️ Part 2: install tools to work with k8s
 ## ⚒ On Windows:
 
-### ✏️ <ins>curl</ins>
+### ✏️ <ins>Scoop</ins>
 - Open a PowerShell terminal then run:
 ```
 $ Set-ExecutionPolicy RemoteSigned -Scope CurrentUser # Optional: Needed to run a remote script the first time
 $ irm get.scoop.sh | iex
 ```
 
+### ✏️ <ins>curl</ins>
+- Download it from official page: [curl - Download](https://curl.se/download.html)
+> or
+```
+$ scoop install curl
+```
+
 ### ✏️ <ins>Kubectl</ins>
-- Basically run command below | [Scoop](https://scoop.sh/) / [Chocolatey](https://community.chocolatey.org/) installed require
+- Basically run command below | [Scoop](https://scoop.sh/) or [Chocolatey](https://community.chocolatey.org/) installed require
 ```
 $ scoop install kubectl
 $ choco install kubernetes-cli
 ```
-
-or
-
+> or
 - Download [latest release](https://dl.k8s.io/release/v1.26.0/bin/windows/amd64/kubectl.exe)
-- Create a folder `C:\Program Files` and name it <ins>**KubeTools**</ins>, copy the downloaded file (<ins>*kubectl.exe*</ins>) into it.
+- Create a folder `C:\Program Files` and name it <ins>**KubeTools**</ins>, copy the downloaded file (<ins>**kubectl.exe**</ins>) into it.
 - Add the folder location to the Windows PATH environment variable (optional): 
   - Right click `This PC` -> `Properties` -> `Advanced system settings` -> `Environment variables`
   - In the `System variables` choose `Path` -> `Edit` -> `New` -> `C:\Program Files\KubeTools`
-- `$ cd .\KubeTools\` and run the curl command below to download the kubectl command
+- `cd .\KubeTools\` and run the curl command below to download the kubectl command:
 ```
 $ curl -LO https://dl.k8s.io/release/v1.21.0/bin/windows/amd64/kubectl.exe  
 ```
@@ -189,8 +194,7 @@ $ curl -LO https://dl.k8s.io/release/v1.21.0/bin/windows/amd64/kubectl.exe
 </div>
 
 ### ✏️ <ins>Helm</ins>
-- [Scoop](https://scoop.sh/) / [Chocolatey](https://community.chocolatey.org/) installed require:
-- Commands line: 
+- Commands line to install | [Scoop](https://scoop.sh/) or [Chocolatey](https://community.chocolatey.org/) installed require
 ```  
 $ scoop install helm
 $ choco install kubernetes-helm
@@ -198,18 +202,36 @@ $ choco install kubernetes-helm
 - If you prefer Chocolatey here is the [Helm package](https://community.chocolatey.org/packages/kubernetes-helm) build to Chocolatey
 
 
+## ⚒ On Linux, Ubuntu:
 
+### ✏️ <ins>curl</ins>
 
+- Update the system, get latest stable version:
+```
+$ sudo apt update
+$ sudo apt upgrade
+```
 
+- Type the following `apt command` or `apt-get command`:
+```
+$ sudo apt install curl
+```
 
+### ✏️ <ins>Kubectl</ins>
+- Download the latest release:
+```
+$ curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+```
+> Note:
+> To download a specific version, replace the `$(curl -L -s https://dl.k8s.io/release/stable.txt)` with the specific version. For example, to download version v1.26.0 on Linux, type: `curl -LO https://dl.k8s.io/release/v1.26.0/bin/linux/amd64/kubectl`
 
+- Download checksum file and validate 
+```
+$ curl -LO "https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"
+$ echo "$(cat kubectl.sha256)  kubectl" | sha256sum --check
 
-
-
-
-
-
-
+kubectl: OK
+``
 
 
 
@@ -228,6 +250,7 @@ $ choco install kubernetes-helm
 
 
 <!--
+
 ### 1. update ur system:
 ```
 $ sudo apt-get update -y
@@ -437,4 +460,5 @@ the new version of rancher now using curl and the command gonna be: `curl -fL ht
 => replce the `token` and `checksum` 
 => tick on the `select to skip the TLS verification if your server has a self-signed certificate`
 ```
+
 -->
