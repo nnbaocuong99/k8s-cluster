@@ -283,10 +283,62 @@ $ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scr
 $ chmod 700 get_helm.sh
 $ ./get_helm.sh
 ```
-Helm now has an installer script that will automatically grab the latest version of Helm and install it locally. You can fetch that script, and then execute it locally. It's well documented so that you can read through it and understand what it is doing before you run it.
+> Helm now has an installer script that will automatically grab the latest version of Helm and install it locally. You can fetch that script, and then execute it locally. It's well documented so that you can read through it and understand what it is doing before you run it.
 
+## ⚒ On MacOS:
+- <ins>*On MacOS there is a package manager similar to Scoop or Chocolatey,... on Windows called Homebrew and highly recommended by so many users*</ins>
+- You can simply install it on your MacOS by run this command:
+```
+$ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/100349044/223048033-004366f1-e936-4579-854e-48810e7c8664.png" alt="uvu" width="700">
+    <br>
+    <br>
+</div>
+- And if you choosing others installation method. or the version selection:
+  - `amd` for Intel chip
+  - `arm` for Apple Silicon chip
 
+### ✏️ <ins>curl</ins>
+- Run the command below in the terminal:
+```
+$ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" < /dev/null 2> /dev/null
+```
+- If a password is required after running the command enter your Mac's user password to continue. Wait until the installation finish. 
 
+- Run the command below in the terminal:
+```
+$ brew install curl
+```
+
+### ✏️ <ins>Kubectl</ins>
+
+- Run the installation command:
+```
+$ brew install kubectl | brew install kubernetes-cli
+```
+
+> or
+
+- Download the latest release:
+```
+$ curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/darwin/amd64/kubectl"
+```
+
+- Downlad the checksum & validate:
+```
+$ curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/darwin/amd64/kubectl.sha256"
+$ 
+``` 
+
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/100349044/223046588-e725db8c-3561-4244-9147-6e4b76e39dbf.png" alt="uvu" width="1000">
+    <br>
+    <br>
+</div>
+
+### ✏️ <ins>Helm</ins>
 
 
 <!--
