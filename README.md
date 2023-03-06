@@ -371,7 +371,9 @@ $ cd helm
 $ make
 ```
 
+---
 
+# ❗️ part 3: install argocd
 
 
 
