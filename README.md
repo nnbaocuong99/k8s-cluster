@@ -316,7 +316,8 @@ $ brew install curl
 
 - Run the installation command:
 ```
-$ brew install kubectl | brew install kubernetes-cli
+$ brew install kubectl
+$ brew install kubernetes-cli
 ```
 
 > or
@@ -329,8 +330,19 @@ $ curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/sta
 - Downlad the checksum & validate:
 ```
 $ curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/darwin/amd64/kubectl.sha256"
-$ 
+$ echo "$(cat kubectl.sha256)  kubectl" | shasum -a 256 --check
 ``` 
+
+- Make the kubectl binary executable.
+```
+$ chmod +x ./kubectl
+```
+
+- Move the kubectl binary to a file location on your system PATH.
+```
+$ sudo mv ./kubectl /usr/local/bin/kubectl
+$ sudo chown root: /usr/local/bin/kubectl
+```
 
 <div align="center">
     <img src="https://user-images.githubusercontent.com/100349044/223046588-e725db8c-3561-4244-9147-6e4b76e39dbf.png" alt="uvu" width="1000">
@@ -339,6 +351,40 @@ $
 </div>
 
 ### ✏️ <ins>Helm</ins>
+- Install Helm with Homebrew:
+```
+$ brew install helm
+$ brew install kubernetes-helm
+```
+
+- From script: 
+```
+$ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+$ chmod 700 get_helm.sh
+$ ./get_helm.sh
+```
+
+- From Source (also for Linux)
+```
+$ git clone https://github.com/helm/helm.git
+$ cd helm
+$ make
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <!--
