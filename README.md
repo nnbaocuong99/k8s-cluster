@@ -373,7 +373,7 @@ $ make
 
 ---
 
-# ❗️ part 3: install argocd
+# ❗️ part 3: argocd
 
 
 
