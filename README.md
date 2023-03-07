@@ -157,7 +157,7 @@ $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/ku
 # ❗️ Part 2: install tools to work with k8s
 ## ⚒ On Windows:
 
-### ✏️ <ins>Scoop</ins>
+### <ins>1. Scoop</ins>
 - Open a PowerShell terminal then run:
 ```
 $ Set-ExecutionPolicy RemoteSigned -Scope CurrentUser # Optional: Needed to run a remote script the first time
@@ -171,14 +171,14 @@ $ irm get.scoop.sh | iex
 
 
 
-### ✏️ <ins>curl</ins>
+### <ins>2. curl</ins>
 - Download it from official page: [curl - Download](https://curl.se/download.html)
 > or
 ```
 $ scoop install curl
 ```
 
-### ✏️ <ins>Kubectl</ins>
+### <ins>3. Kubectl</ins>
 - Basically run command below | [Scoop](https://scoop.sh/) or [Chocolatey](https://community.chocolatey.org/) installed require
 ```
 $ scoop install kubectl
@@ -200,7 +200,7 @@ $ curl -LO https://dl.k8s.io/release/v1.21.0/bin/windows/amd64/kubectl.exe
     <br>
 </div>
 
-### ✏️ <ins>Helm</ins>
+### <ins>3. Helm</ins>
 - Commands line to install | [Scoop](https://scoop.sh/) or [Chocolatey](https://community.chocolatey.org/) installed require
 ```  
 $ scoop install helm
@@ -217,7 +217,7 @@ $ choco install kubernetes-helm
 
 ## ⚒ On Linux, Ubuntu:
 
-### ✏️ <ins>curl</ins>
+### <ins>1. curl</ins>
 
 - Update the system, get latest stable version:
 ```
@@ -230,7 +230,7 @@ $ sudo apt upgrade
 $ sudo apt install curl
 ```
 
-### ✏️ <ins>Kubectl</ins>
+### <ins>2. Kubectl</ins>
 - Update your system:
 ```
 $ sudo apt-get update -y
@@ -261,7 +261,7 @@ $ apt-get install -y kubectl
 </div>
 
 
-### ✏️ <ins>Helm</ins>
+### <ins>3. Helm</ins>
 - From the Binary Releases:
   - Download your [desired version](https://github.com/helm/helm/releases)
   - Unpack it `tar -zxvf helm-v3.0.0-linux-amd64.tar.gz`
@@ -300,7 +300,7 @@ $ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/
   - `amd` for Intel chip
   - `arm` for Apple Silicon chip
 
-### ✏️ <ins>curl</ins>
+### <ins>1. curl</ins>
 - Run the command below in the terminal:
 ```
 $ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" < /dev/null 2> /dev/null
@@ -319,7 +319,7 @@ $ brew install curl
 
 
 
-### ✏️ <ins>Kubectl</ins>
+### <ins>2. Kubectl</ins>
 
 - Run the installation command:
 ```
@@ -357,7 +357,7 @@ $ sudo chown root: /usr/local/bin/kubectl
     <br>
 </div>
 
-### ✏️ <ins>Helm</ins>
+### <ins>3. Helm</ins>
 - Install Helm with Homebrew:
 ```
 $ brew install helm
@@ -368,9 +368,6 @@ $ brew install kubernetes-helm
     <br>
     <br>
 </div>
-
-
-
 
 - From script: 
 ```
@@ -390,7 +387,58 @@ $ make
 
 # ❗️ part 3: argocd
 ## ⚒ Install:
-### 1. Install:
+
+### 1. On Windows:
+- Open a **Powershell**
+- Grab a version and download: (replace `$version` with the specific version)
+```
+$version = (Invoke-RestMethod https://api.github.com/repos/argoproj/argo-cd/releases/latest).tag_name
+```
+
+- Then run:
+```
+$url = "https://github.com/argoproj/argo-cd/releases/download/" + $version + "/argocd-windows-amd64.exe"
+$output = "argocd.exe"
+
+Invoke-WebRequest -Uri $url -OutFile $output
+```
+- Add it into `Windows PATH`
+
+## 2. On Linux:
+
+- Download: 
+```
+$ curl -sSL -o argocd-linux-amd64 https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64
+```
+
+- Install and remove the temp file:
+```
+$ sudo install -m 555 argocd-linux-amd64 /usr/local/bin/argocd
+$ rm argocd-linux-amd64
+```
+
+## 3. On MacOS:
+- Download the latest version with Homebrew:
+```
+$ brew install argocd
+```
+
+- Download the specific version With curl:
+```
+$ VERSION=$(curl --silent "https://api.github.com/repos/argoproj/argo-cd/releases/latest" | grep '"tag_name"' | sed -E 's/.*"([^"]+)".*/\1/')
+$ curl -sSL -o argocd-darwin-amd64 https://github.com/argoproj/argo-cd/releases/download/$VERSION/argocd-darwin-amd64
+```
+> Replace `VERSION` in the command below with the version of Argo CD you would like to download
+
+- Install the ArgoCD:
+```
+$ sudo install -m 555 argocd-darwin-amd64 /usr/local/bin/argocd
+$ rm argocd-darwin-amd64
+```
+
+
+
+
 
 
 ## ⚒ Setup:
@@ -404,7 +452,6 @@ $ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/
 
 ```
 $ kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
-$ kubectl patch svc argocd-server -n argocd -p "{\"spec\": {\"type\": \"LoadBalancer\"}}"
 ```
 
 - get argocd password
