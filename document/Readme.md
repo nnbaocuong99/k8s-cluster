@@ -11,3 +11,7 @@ curl -fL https://192.168.56.200/system-agent-install.sh | sudo  sh -s - --server
 3. How to solve it:
 - Replce the `token` and `checksum` 
 - Tick on the `select to skip the TLS verification if your server has a self-signed certificate`
+
+---
+
+### Error 2: 
