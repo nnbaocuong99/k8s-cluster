@@ -15,3 +15,23 @@ curl -fL https://192.168.56.200/system-agent-install.sh | sudo  sh -s - --server
 ---
 
 ### Error 2: 
+1. How it came: `error: unable to parse "'{spec:": yaml: found unexpected end of stream`
+
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/100349044/223314345-128751ab-cc33-4abf-b8d8-ba6db40a2b35.png" alt="uvu" width="800">
+    <br>
+    <br>
+</div>
+
+
+2. Explain: 
+- I am using below command to patch new storage to volumeclaimtemplate:
+```
+ $ minikube kubectl -- --namespace default patch pvc elasticsearch-data-elasticsearch-data-0 --patch '{\"spec\": {\"volumeClaimTemplate\": {\"requests\": {\"storage\": \"2Gi\"}}}}'
+```
+
+3. How to solve it:
+- Use this command: 
+```
+$ kubectl patch svc argocd-server -n argocd -p "{\"spec\": {\"type\": \"LoadBalancer\"}}"
+```
