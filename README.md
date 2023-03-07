@@ -42,7 +42,7 @@ $ vagrant up
 
 ## ⚒ Install Rancher & K8s:
 
-### ✏️ 1. <ins>Step 1:</ins>
+### ✏️ <ins>Step 1:</ins>
 - Get yourself a terminal and ssh into the master-node `ssh username@your_ip_address`
 - Optional: if you're using *VScode* or any remote control method, you'll need to add an user. replace `your-username-go-here` with the name you're expecting:
 ```
@@ -417,61 +417,8 @@ $ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.p
 
 
 
+
 <!--
-
-# ❗️ part 3: install argocd and helm.
-## ⚒ [argocd](https://argo-cd.readthedocs.io/en/stable/)
-
-### 1. requirements
-- installed kubectl
-- have a kubeconfig file (default location `~/.kube/config`)
-
-### 2. install
-```
-# install
-$ kubectl create namespace argocd
-$ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
-
-
-# download cli. installation instructions can be found via the CLI installation documentation.
-$ https://github.com/argoproj/argo-cd/releases/latest. 
-
-
-# mac, linux and WSL Homebrew:
-$ brew install argocd
-```
-
-## ⚒ [helm](https://helm.sh/docs)
-
-### 1. from script
-```
-$ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
-$ chmod 700 get_helm.sh
-$ ./get_helm.sh
-```
-
-### 2. thru package-mng (macos)
-
-```
-# from homebrew (macos)
-$ brew install helm
-
-
-# from apt (debian/ubuntu) 
-$ curl https://baltocdn.com/helm/signing.asc | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg > /dev/null
-$ sudo apt-get install apt-transport-https --yes
-$ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/helm.gpg] https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
-$ sudo apt-get update
-$ sudo apt-get install helm
-
-
-# from source (linux, macos)
-$ git clone https://github.com/helm/helm.git
-$ cd helm
-$ make
-```
-
----
 
 # ❗️ part 4: [practicing] - deploy a service using helm in
 
@@ -487,67 +434,4 @@ $ helm repo update
 # The following command installs the chart with the release name nginx-ingress
 $ helm install nginx-ingress nginx-stable/nginx-ingress --set rbac.create=true
 ```
-
----
-
-# ❗️ extra: error research
-- error: `curl: (60) SSL certificate problem: self signed certificate in certificate chain`
-- explain: the new version of rancher now using curl and the command gonna be: 
-```
-
-$ curl -fL https://192.168.56.200/system-agent-install.sh | sudo  sh -s - --server https://192.168.56.200 --label 'cattle.io/os=linux' --token kbsl8cbpkz48pxdcr24bz4862fpjqslz98b8sg9b4k774p2jwxbjdz --ca-checksum e45e675a2c76868ec0d39c847fc1a79aeea78e7b56c710396b5b2536113ca85f --etcd --controlplane --worker` 
-```
-
-- still trying solving this problem with some ways:
-
-1. replace both the `token` and `checksum` of the old to new script 
-
-=> tick on the `select to skip the TLS verification if your server has a self-signed certificate`
-
-
-### 1. on the master node (IP: 192.168.56.200): ffffffff
-- get urself a terminal and ssh into the node with this command `ssh username@IP`
-- if u r using vscode or any remote control method, u will need to add an user. replace `ur-username-go-here` with the name u r expecting:
-```
-$ useradd --comment 'ur-username-go-here' --create-home ur-username-go-here --shell /bin/bash
-```
-   
-- switch to the root user: `$ sudo su`
-- check if ur docker has been installed yet: `$ docker version` (optional)
-- run the command below to install rancher. (choose ur compatible version)
-```
-$ docker run -d --name=rancher-server --restart=unless-stopped -p 80:80 -p 443:443 --privileged rancher/rancher:v2.7-091ed163cc5c53efc50bd1a580cb4e54fa097e82-linux-amd64
-```
-- access to https://192.168.56.200 or https://192.168.56.200/g 
-
-- login and get the password by run the command below and login to setup the cluster (during this step, move to the worker VM)
-```
-$ docker logs  container-id  2>&1 | grep "Bootstrap Password:"
-```
-- then `copy config` of the cluster
-- cd and paste it into your `~/.kube/config`
-
-
-### 2. vmbox worker (IP: 192.168.56.201):
-- ssh into it.
-- _*during the creating cluster step*_: because of rancher will help u to setup the whole entire clusters but in this situation the master and worker are on the same IP so they could be conflict. so in the token u copied from upthere u need to to add the `--address worker_IP` before the `-etcd` 
-- thats gonna be:
-```
-$ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/kubernetes:/etc/kubernetes -v /var/run:/var/run  rancher/rancher-agent:v2.7-091ed163cc5c53efc50bd1a580cb4e54fa097e82-head --server https://192.168.56.200/ --token p5zcnnpcb5cx8pg89vkk5nkx8gbzltk9wbkmfjp6rsn9n6kf729vjp --ca-checksum 37bde28c0dc9fbd360146f727ff4b1cd254d9f17490789f93775fb2ce15b58da --address worker_IP --etcd --controlplane --worker
-```
-- *!!! new error !!!*
-
-
-```
-curl: (60) SSL certificate problem: self signed certificate in certificate chain
-
-#explain: 
-the new version of rancher now using curl and the command gonna be: `curl -fL https://192.168.56.200/system-agent-install.sh | sudo  sh -s - --server https://192.168.56.200 --label 'cattle.io/os=linux' --token kbsl8cbpkz48pxdcr24bz4862fpjqslz98b8sg9b4k774p2jwxbjdz --ca-checksum e45e675a2c76868ec0d39c847fc1a79aeea78e7b56c710396b5b2536113ca85f --etcd --controlplane --worker` 
-
-
-#solve: 
-=> replce the `token` and `checksum` 
-=> tick on the `select to skip the TLS verification if your server has a self-signed certificate`
-```
-
 -->
