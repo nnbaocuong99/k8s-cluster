@@ -495,8 +495,8 @@ $ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.p
 </div>
 
 - In this case, this is the result
-  - username: `admin`
-  - password: `6vH7QkjCQFiPPHPZ`
+> username: `admin`
+> password: `6vH7QkjCQFiPPHPZ`
 
 <div align="center">
     <img src="https://user-images.githubusercontent.com/100349044/223376752-e0cc22de-5383-4307-9afc-370050b4e4c1.png" alt="uvu" width="1000">
