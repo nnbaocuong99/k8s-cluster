@@ -25,13 +25,13 @@ curl -fL https://192.168.56.200/system-agent-install.sh | sudo  sh -s - --server
 
 
 2. Explain: 
-- I am using below command to patch new storage to volumeclaimtemplate:
+- Add `\` on a path following like this this command
 ```
  $ minikube kubectl -- --namespace default patch pvc elasticsearch-data-elasticsearch-data-0 --patch '{\"spec\": {\"volumeClaimTemplate\": {\"requests\": {\"storage\": \"2Gi\"}}}}'
 ```
 
 3. How to solve it:
-- Use this command: 
+- Result, final command: 
 ```
 $ kubectl patch svc argocd-server -n argocd -p "{\"spec\": {\"type\": \"LoadBalancer\"}}"
 ```
