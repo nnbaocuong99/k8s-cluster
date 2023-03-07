@@ -496,7 +496,7 @@ $ kubectl port-forward svc/argocd-server -n argocd 8080:443
 
 
 
-- Get argocd password to login | <ins>**based64**</ins> installed recommend
+- So how to login into it? back to local terminal and get argocd password (**based64** installed recommend)
 ```
 $ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
 ```
