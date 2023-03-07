@@ -352,7 +352,7 @@ $ sudo chown root: /usr/local/bin/kubectl
 ```
 
 <div align="center">
-    <img src="https://user-images.githubusercontent.com/100349044/223046588-e725db8c-3561-4244-9147-6e4b76e39dbf.png" alt="uvu" width="1000">
+    <img src="https://user-images.githubusercontent.com/100349044/223046588-e725db8c-3561-4244-9147-6e4b76e39dbf.png" alt="uvu" width="800">
     <br>
     <br>
 </div>
@@ -364,7 +364,7 @@ $ brew install helm
 $ brew install kubernetes-helm
 ```
 <div align="center">
-    <img src="https://user-images.githubusercontent.com/100349044/223296514-6cd8f144-0090-4ded-92f6-3add3addbe4e.png" alt="uvu" width="1000">
+    <img src="https://user-images.githubusercontent.com/100349044/223296514-6cd8f144-0090-4ded-92f6-3add3addbe4e.png" alt="uvu" width="800">
     <br>
     <br>
 </div>
