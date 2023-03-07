@@ -438,7 +438,7 @@ $ rm argocd-darwin-amd64
 
 
 ## ⚒ Setup:
-- Install ArgocCd:
+### 1. Install ArgocCD:
 ```
 $ kubectl create namespace argocd
 $ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
@@ -451,13 +451,11 @@ $ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/
 </div>
 
 
-
-- Change the argocd-server service type to LoadBalancer:
-
+### 2. Expose and port foward
+- Change the ArgoCD-server service type to LoadBalancer:
 ```
 $ kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
 ```
-
 <div align="center">
     <img src="https://user-images.githubusercontent.com/100349044/223318334-d9d6ba33-d86a-4f4f-9bb8-0fd26dfe0477.png" alt="uvu" width="800">
     <br>
@@ -476,7 +474,7 @@ $ kubectl port-forward svc/argocd-server -n argocd 8080:443
 </div>
 
 
-
+### 3. Access
 - Once the command exposed, you can access to https://localhost:8080 and it will require to login with `admin` and `password`
 <div align="center">
     <img src="https://user-images.githubusercontent.com/100349044/223347770-c13a1d22-3f17-4bec-9f88-cbdced92a4db.png" alt="uvu" width="1000">
@@ -485,7 +483,7 @@ $ kubectl port-forward svc/argocd-server -n argocd 8080:443
 </div>
 
 
-- So how to login into it? back to local terminal and get argocd password (**based64** installed recommend)
+- Back to local terminal and get argocd password (**based64** installed recommend) by run the command
 ```
 $ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
 ```
@@ -496,15 +494,18 @@ $ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.p
     <br>
 </div>
 
-
-- In this case
+- In this case, this is the result
   - username: `admin`
   - password: `6vH7QkjCQFiPPHPZ`
 
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/100349044/223376752-e0cc22de-5383-4307-9afc-370050b4e4c1.png" alt="uvu" width="1000">
+    <br>
+    <br>
+</div>
 
 
-
-
+### 4. Connect repo & Create application 
 
 
 
