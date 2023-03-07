@@ -390,7 +390,7 @@ $ make
 
 # ❗️ part 3: argocd
 ## ⚒ Install:
-- 
+### 1. Install:
 
 
 ## ⚒ Setup:
