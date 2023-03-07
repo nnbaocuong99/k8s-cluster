@@ -311,6 +311,13 @@ $ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/maste
 ```
 $ brew install curl
 ```
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/100349044/223296377-fa65775b-001d-47ad-84e3-713f05e8e899.png" alt="uvu" width="700">
+    <br>
+    <br>
+</div>
+
+
 
 ### ✏️ <ins>Kubectl</ins>
 
@@ -356,6 +363,14 @@ $ sudo chown root: /usr/local/bin/kubectl
 $ brew install helm
 $ brew install kubernetes-helm
 ```
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/100349044/223296514-6cd8f144-0090-4ded-92f6-3add3addbe4e.png" alt="uvu" width="1000">
+    <br>
+    <br>
+</div>
+
+
+
 
 - From script: 
 ```
