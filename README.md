@@ -292,7 +292,7 @@ $ ./get_helm.sh
 $ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 <div align="center">
-    <img src="https://user-images.githubusercontent.com/100349044/223048033-004366f1-e936-4579-854e-48810e7c8664.png" alt="uvu" width="700">
+    <img src="https://user-images.githubusercontent.com/100349044/223048033-004366f1-e936-4579-854e-48810e7c8664.png" alt="uvu" width="600">
     <br>
     <br>
 </div>
@@ -352,7 +352,7 @@ $ sudo chown root: /usr/local/bin/kubectl
 ```
 
 <div align="center">
-    <img src="https://user-images.githubusercontent.com/100349044/223046588-e725db8c-3561-4244-9147-6e4b76e39dbf.png" alt="uvu" width="800">
+    <img src="https://user-images.githubusercontent.com/100349044/223046588-e725db8c-3561-4244-9147-6e4b76e39dbf.png" alt="uvu" width="900">
     <br>
     <br>
 </div>
@@ -364,7 +364,7 @@ $ brew install helm
 $ brew install kubernetes-helm
 ```
 <div align="center">
-    <img src="https://user-images.githubusercontent.com/100349044/223296514-6cd8f144-0090-4ded-92f6-3add3addbe4e.png" alt="uvu" width="800">
+    <img src="https://user-images.githubusercontent.com/100349044/223296514-6cd8f144-0090-4ded-92f6-3add3addbe4e.png" alt="uvu" width="600">
     <br>
     <br>
 </div>
@@ -437,10 +437,6 @@ $ rm argocd-darwin-amd64
 ```
 
 
-
-
-
-
 ## ⚒ Setup:
 - Install ArgocCd:
 ```
@@ -448,16 +444,96 @@ $ kubectl create namespace argocd
 $ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 ```
 
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/100349044/223318199-ee2a4732-5e44-400b-896a-dd7fcb69bf71.png" alt="uvu" width="800">
+    <br>
+    <br>
+</div>
+
+
+
 - Change the argocd-server service type to LoadBalancer:
 
 ```
 $ kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
 ```
 
-- get argocd password
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/100349044/223318334-d9d6ba33-d86a-4f4f-9bb8-0fd26dfe0477.png" alt="uvu" width="800">
+    <br>
+    <br>
+</div>
+
+
+- Run the port forward command to expose the services:
+```
+$ kubectl port-forward svc/argocd-server -n argocd 8080:443
+```
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/100349044/223347531-b88c2478-a3e7-422c-bb2c-fcffa8de5ad2.png" alt="uvu" width="500">
+    <br>
+    <br>
+</div>
+
+
+
+- Once the command exposed, you can access to https://localhost:8080 and it will require to login with `admin` and `password`
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/100349044/223347770-c13a1d22-3f17-4bec-9f88-cbdced92a4db.png" alt="uvu" width="1000">
+    <br>
+    <br>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+- Get argocd password to login | <ins>**based64**</ins> installed recommend
 ```
 $ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
 ```
+
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/100349044/223346388-26210ddf-a562-4a62-95d5-fd89dda63c8e.png" alt="uvu" width="800">
+    <br>
+    <br>
+</div>
+
+
+
+
+- Access to https://localhost:8080 and it will require to login with `admin` and `password`
+- In this case
+  - username: `admin`
+  - password: `6vH7QkjCQFiPPHPZ`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
