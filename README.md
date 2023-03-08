@@ -5,9 +5,9 @@
 ---
 
 # ❗️ Part 1: Setup VMBox & Cluster
-## ⚒ Setup:
+## ⚒ Setup
 
-### 1. Install: 
+### 1. Install✨
 - [Git](https://git-scm.com/)
 - [curl](https://curl.se/)
 - [Oracle VM VirtualBox](https://www.virtualbox.org/wiki/Downloads) <sup>recommend v6.0. (its easier to setup and provider)</sup>
@@ -16,13 +16,13 @@
   - Window: [Scoop](https://scoop.sh/) <sup>recommend</sup>, [Chocolatey](https://chocolatey.org/) or [winget](https://learn.microsoft.com/en-us/windows/package-manager/winget/)
   - MacOS: [Homebew](https://brew.sh/)
 
-### 2. Create virtual machines: 
+### 2. Create virtual machines✨ 
 - Download 2 files below, re-name to `Vagrantfile`
 - Put each into 2 different folders:
    - [Vagrant-master](https://github.com/nnbaocuong99/details-k8s-project/blob/main/document/vagrantfile-master) for the <ins>*master node*</ins>
    - [Vagrant-worker](https://github.com/nnbaocuong99/details-k8s-project/blob/main/document/Vagrantfile-worker) for the <ins>*worker node*</ins>
 
-### 3. Scripts
+### 3. Scripts✨
 - Open 2 terminals each separate folders:
 > This is my directory
 ```
@@ -157,7 +157,7 @@ $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/ku
 # ❗️ Part 2: install tools to work with k8s
 ## ⚒ On Windows:
 
-### <ins>1. Scoop</ins>
+### 1. Scoop✨
 - Open a PowerShell terminal then run:
 ```
 $ Set-ExecutionPolicy RemoteSigned -Scope CurrentUser # Optional: Needed to run a remote script the first time
@@ -171,14 +171,14 @@ $ irm get.scoop.sh | iex
 
 
 
-### <ins>2. curl</ins>
+### 2. curl✨
 - Download it from official page: [curl - Download](https://curl.se/download.html)
 > or
 ```
 $ scoop install curl
 ```
 
-### <ins>3. Kubectl</ins>
+### 3. Kubectl✨
 - Basically run command below | [Scoop](https://scoop.sh/) or [Chocolatey](https://community.chocolatey.org/) installed require
 ```
 $ scoop install kubectl
@@ -200,7 +200,7 @@ $ curl -LO https://dl.k8s.io/release/v1.21.0/bin/windows/amd64/kubectl.exe
     <br>
 </div>
 
-### <ins>3. Helm</ins>
+### 3. Helm✨
 - Commands line to install | [Scoop](https://scoop.sh/) or [Chocolatey](https://community.chocolatey.org/) installed require
 ```  
 $ scoop install helm
@@ -217,7 +217,7 @@ $ choco install kubernetes-helm
 
 ## ⚒ On Linux, Ubuntu:
 
-### <ins>1. curl</ins>
+### 1. curl✨
 
 - Update the system, get latest stable version:
 ```
@@ -230,7 +230,7 @@ $ sudo apt upgrade
 $ sudo apt install curl
 ```
 
-### <ins>2. Kubectl</ins>
+### 2. Kubectl✨
 - Update your system:
 ```
 $ sudo apt-get update -y
@@ -261,7 +261,7 @@ $ apt-get install -y kubectl
 </div>
 
 
-### <ins>3. Helm</ins>
+### 3. Helm✨
 - From the Binary Releases:
   - Download your [desired version](https://github.com/helm/helm/releases)
   - Unpack it `tar -zxvf helm-v3.0.0-linux-amd64.tar.gz`
@@ -319,7 +319,7 @@ $ brew install curl
 
 
 
-### <ins>2. Kubectl</ins>
+### 2. Kubectl✨
 
 - Run the installation command:
 ```
@@ -357,7 +357,7 @@ $ sudo chown root: /usr/local/bin/kubectl
     <br>
 </div>
 
-### <ins>3. Helm</ins>
+### 3. Helm✨
 - Install Helm with Homebrew:
 ```
 $ brew install helm
@@ -388,7 +388,7 @@ $ make
 # ❗️ part 3: argocd
 ## ⚒ Install:
 
-### 1. On Windows:
+### 1. On Windows✨
 - Open a **Powershell**
 - Grab a version and download: (replace `$version` with the specific version)
 ```
@@ -404,7 +404,7 @@ Invoke-WebRequest -Uri $url -OutFile $output
 ```
 - Add it into `Windows PATH`
 
-## 2. On Linux:
+## 2. On Linux✨
 
 - Download: 
 ```
@@ -417,7 +417,7 @@ $ sudo install -m 555 argocd-linux-amd64 /usr/local/bin/argocd
 $ rm argocd-linux-amd64
 ```
 
-## 3. On MacOS:
+## 3. On MacOS✨
 - Download the latest version with Homebrew:
 ```
 $ brew install argocd
@@ -430,7 +430,7 @@ $ curl -sSL -o argocd-darwin-amd64 https://github.com/argoproj/argo-cd/releases/
 ```
 > Replace `VERSION` in the command below with the version of Argo CD you would like to download
 
-- Install the ArgoCD:
+- Install:
 ```
 $ sudo install -m 555 argocd-darwin-amd64 /usr/local/bin/argocd
 $ rm argocd-darwin-amd64
@@ -438,7 +438,7 @@ $ rm argocd-darwin-amd64
 
 
 ## ⚒ Setup:
-### 1. Install ArgocCD:
+### 1. Install ArgocCD✨
 ```
 $ kubectl create namespace argocd
 $ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
@@ -451,7 +451,7 @@ $ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/
 </div>
 
 
-### 2. Expose and port foward
+### 2. Expose and port foward✨
 - Change the ArgoCD-server service type to LoadBalancer:
 ```
 $ kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
@@ -474,7 +474,7 @@ $ kubectl port-forward svc/argocd-server -n argocd 8080:443
 </div>
 
 
-### 3. Access
+### 3. Access✨
 - Once the command exposed, you can access to https://localhost:8080 and it will require to login with `admin` and `password`
 <div align="center">
     <img src="https://user-images.githubusercontent.com/100349044/223347770-c13a1d22-3f17-4bec-9f88-cbdced92a4db.png" alt="uvu" width="1000">
@@ -504,7 +504,7 @@ $ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.p
 </div>
 
 
-### 4. Connect repo & Create application 
+### 4. Connect repo & Create application✨ 
 
 
 
