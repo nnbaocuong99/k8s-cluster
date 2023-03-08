@@ -364,7 +364,7 @@ $ brew install helm
 $ brew install kubernetes-helm
 ```
 <div align="center">
-    <img src="https://user-images.githubusercontent.com/100349044/223296514-6cd8f144-0090-4ded-92f6-3add3addbe4e.png" alt="uvu" width="600">
+    <img src="https://user-images.githubusercontent.com/100349044/223296514-6cd8f144-0090-4ded-92f6-3add3addbe4e.png" alt="uvu" width="700">
     <br>
     <br>
 </div>
