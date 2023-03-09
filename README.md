@@ -514,12 +514,14 @@ $ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.p
 > <ins>First of all, check [this](https://www.geeksforgeeks.org/what-is-ci-cd/)</ins>
 
 ## ⚒ CI
+### 1. Create an account on [Gitlab](https://gitlab.com/)✨
+- You totally can use others platform like Github or what ever, but in this case i highly recommend to use Gitlab because the CI/CD tool from Gitlab is extremely easy to use, all you need to do is create a file in the root location of your repository called `.gitlab-ci.yml`. This file is basically a recipe for how Gitlab should execute pipelines.
 
-
+### 2. Install Gitlab-runner and Register a runner
+- Install Gitlab-runner
 
 ## ⚒ CD
-### 1. Create an account on [Gitlab](https://gitlab.com/)✨
-### 2. Install Gitlab-runner and Register a runner
+
 
 
 
