@@ -505,6 +505,13 @@ $ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.p
 
 
 ### 4. Connect repo & Create application✨ 
+### 1. ✨
+### 2. ✨
+### 3. ✨
+### 4. ✨
+### 5. ✨
+### 6. ✨
+### 7. ✨
 
 
 
