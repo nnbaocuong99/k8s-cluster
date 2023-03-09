@@ -505,13 +505,6 @@ $ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.p
 
 
 ### 4. Connect repo & Create application✨ 
-### 1. ✨
-### 2. ✨
-### 3. ✨
-### 4. ✨
-### 5. ✨
-### 6. ✨
-### 7. ✨
 
 
 
@@ -533,20 +526,3 @@ $ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.p
 
 
 
-<!--
-
-# ❗️ part 4: [practicing] - deploy a service using helm in
-
-## ⚒ deploy a service with helm
-
-### 1. for example: nginx
-```
-# To install an NGINX Ingress controller using Helm, first add the nginx-stable repository to helm, then run helm repo update . After we have added the repository we can deploy using the chart nginx-stable/nginx-ingress.
-$ helm repo add nginx-stable https://helm.nginx.com/stable
-$ helm repo update
-
-
-# The following command installs the chart with the release name nginx-ingress
-$ helm install nginx-ingress nginx-stable/nginx-ingress --set rbac.create=true
-```
--->
