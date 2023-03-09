@@ -507,22 +507,19 @@ $ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.p
 ### 4. Connect repo & Create application✨ 
 
 
+---
+
+
+# ❗️ part 4: CI/CD
+> <ins>First of all, check [this](https://www.geeksforgeeks.org/what-is-ci-cd/)</ins>
+
+## ⚒ CI
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+## ⚒ CD
+### 1. Create an account on [Gitlab](https://gitlab.com/)✨
+### 2. Install Gitlab-runner and Register a runner
 
 
 
