@@ -1,5 +1,21 @@
 # ❗️ extra: error research
-### Error 1: 
+### Error 1:  
+1. How it came: Cant SSH into VMbox using VScode
+
+2. Explain: You should create an user for it (`Home`)
+
+3. How to solve it:
+- Replace `your-username-go-here` with the name you're expecting in the command below:
+```
+$ useradd --comment 'ur-username-go-here' --create-home your-username-go-here --shell /bin/bash
+```
+
+
+
+
+
+
+### Error 2: 
 1. How it came: `curl: (60) SSL certificate problem: self signed certificate in certificate chain`
 
 2. Explain: 
@@ -14,7 +30,7 @@ curl -fL https://192.168.56.200/system-agent-install.sh | sudo  sh -s - --server
 
 ---
 
-### Error 2: 
+### Error 3: 
 1. How it came: `error: unable to parse "'{spec:": yaml: found unexpected end of stream`
 
 <div align="center">
