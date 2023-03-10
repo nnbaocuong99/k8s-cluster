@@ -1,6 +1,7 @@
 <h1 align="center"> ✨ how to install k8s step by step (my research) ✨ </h1> 
 
-[figma file for details](https://github.com/nnbaocuong99/details-k8s-project/tree/main/figma)
+[Figma](https://github.com/nnbaocuong99/details-k8s-project/tree/main/figma)
+[Error/Re-search](https://github.com/nnbaocuong99/details-k8s-project/tree/main/error-report)
 
 ---
 
@@ -503,15 +504,16 @@ $ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.p
     <br>
 </div>
 
-
+<!--
 ### 4. Connect repo & Create application✨ 
-
+-->
 
 ---
 
 
 # ❗️ part 4: CI/CD
 > <ins>First of all, check [this](https://www.geeksforgeeks.org/what-is-ci-cd/)</ins>
+In this part i'll show my result how to setup and also finish the CI/CD project.
 
 ## ⚒ CI
 ### 1. Create an account on [Gitlab](https://gitlab.com/)✨
