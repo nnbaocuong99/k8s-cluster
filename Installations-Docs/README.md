@@ -2,6 +2,6 @@
 
 Click if you're using:
 
-- Linux / Ubuntu 
-- Windows
-- MacOS
+- [Linux, Ubuntu]()
+- [Windows]()
+- [MacOS]()
