@@ -1,7 +1,8 @@
 <h1 align="center"> ✨ how to install k8s step by step (my research) ✨ </h1> 
 
-[Figma](https://github.com/nnbaocuong99/details-k8s-project/tree/main/figma)
-[Error/Re-search](https://github.com/nnbaocuong99/details-k8s-project/tree/main/error-report)
+[Figma](https://github.com/nnbaocuong99/details-k8s-project/tree/main/figma)(WIP): Explaination
+
+[Error/Re-search](https://github.com/nnbaocuong99/details-k8s-project/tree/main/error-report): Error while doing the project
 
 ---
 
@@ -44,15 +45,13 @@ $ vagrant up
 ## ⚒ Install Rancher & K8s:
 
 ### ✏️ <ins>Step 1:</ins>
-- Get yourself a terminal and ssh into the master-node `ssh username@your_ip_address`
-- Optional: if you're using *VScode* or any remote control method, you'll need to add an user. replace `your-username-go-here` with the name you're expecting:
-```
-$ useradd --comment 'ur-username-go-here' --create-home your-username-go-here --shell /bin/bash
-```
+- Get yourself a terminal and ssh into the master-node `ssh username@your_ip_address` when its successfully started
+- Linux and MacOS has their own terminals, On Windows you can use [PowerShell](https://learn.microsoft.com/en-us/powershell/) or basically just [Terminal](https://apps.microsoft.com/store/detail/windows-terminal/)
+
 
 ### ✏️ <ins>Step 2:</ins>
-- Switch to the root user: `$ sudo su` 
-- Check if ur docker has been installed yet: `$ docker version` 
+- Switch to the root user: `sudo su` 
+- Check if ur docker has been installed yet: `docker version` 
 
 ### ✏️ <ins>Step 3:</ins>
 - Choose a tag on [rancher/rancher Tags](https://hub.docker.com/r/rancher/rancher/tags)
@@ -102,7 +101,7 @@ $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/ku
 
 ### ✏️ <ins>Step 6:</ins>
 - SSH into the worker-node: `ssh username@your_ip_address`
-- Run`$ sudo su` & `$ docker version`
+- Run`sudo su` & `docker version`
 - Run the copied script 
 - Get into the masternode and copy the config file. Its look like this:
 
@@ -512,12 +511,52 @@ $ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.p
 
 
 # ❗️ part 4: CI/CD
-> <ins>First of all, check [this](https://www.geeksforgeeks.org/what-is-ci-cd/)</ins>
-In this part i'll show my result how to setup and also finish the CI/CD project.
+> <ins>First of all, check [this](https://www.geeksforgeeks.org/what-is-ci-cd/)</ins> 
+- *In this part I'll show my result and how to setup also finish the CI/CD project. Lets go!*
+
 
 ## ⚒ CI
-### 1. Create an account on [Gitlab](https://gitlab.com/)✨
-- You totally can use others platform like Github or what ever, but in this case i highly recommend to use Gitlab because the CI/CD tool from Gitlab is extremely easy to use, all you need to do is create a file in the root location of your repository called `.gitlab-ci.yml`. This file is basically a recipe for how Gitlab should execute pipelines.
+### ✏️ <ins>Step 1:</ins> 
+
+- Create and account on [Gitlab](https://gitlab.com/)
+> *Quicknote*: You totally can use others platform like Github or what ever, but in this case i highly recommend to use Gitlab because the CI/CD tool from Gitlab is extremely easy to use, all you need to do is create a file in the root location of your repository called `.gitlab-ci.yml`. This file is basically a recipe for how Gitlab should execute pipelines.
+- Create a repository, push your content or you can use my content by clone this project.
+  - Github: `git clone https://github.com/nnbaocuong99/details-k8s-project.git`
+  - Gitlab: `git cloen https://gitlab.com/nnbaocuong99/k8s.git`
+- If you're already cloned this project but there is no file called `.gitlab-ci.yml` Create one and copy this content below into it. It will automatically start a `Pipelines` in your next commit.
+
+```
+stages:
+  - build
+
+build-image:
+  stage: build
+  image: docker:latest
+  services:
+    - docker:dind
+  rules:
+  before_script:
+    - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWD
+  script:
+    - >
+      docker build
+      --build-arg DOCKER_USERNAME=$DOCKER_USERNAME
+      --build-arg DOCKER_PASSWD=$DOCKER_PASSWD
+      -t $DOCKER_USERNAME/demo-gitlabci:1.0 .
+    - docker push $DOCKER_USERNAME/demo-gitlabci:1.0
+```
+### ✏️ <ins>Step 2:</ins> 
+- In the Repo: `Settings` -> `CI/CD` -> `Variables` -> `Add Variables`
+- Variables:
+  - `$DOCKER_USERNAME` = your Docker username
+  - `$DOCKER_PASSWD`= your Docker password
+
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/100349044/224215639-21e60eda-d930-456c-bdbd-969c0e46d1cf.png" alt="uvu" width="734">
+    <br>
+    <br>
+</div>
+
 
 ### 2. Install Gitlab-runner and Register a runner
 - Install Gitlab-runner
