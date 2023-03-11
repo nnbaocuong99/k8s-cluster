@@ -1,8 +1,29 @@
 <h1 align="center"> ✨ how to install k8s step by step (my research) ✨ </h1> 
 
-[Figma](https://github.com/nnbaocuong99/details-k8s-project/tree/main/figma)(WIP): Explaination
 
-[Error/Re-search](https://github.com/nnbaocuong99/details-k8s-project/tree/main/error-report): Error while doing the project
+<p align='right'> © nnbaocuong99 - Spagbo / https://bio.link/spagbo </p>
+
+
+# ✨ About this repo / template / project:
+- <ins>***Firstly***</ins>, imo this will be sufficient requirements for what u will need to learn and do. / also really wanna hear others opinions abt what im missing, or not listed in this project. 
+- Secondly, heading to the point this is basic CI/CD template project for users who new to docker and starting to learn about backend and CI/CD pipline. This project included: k8s, Docker, helm, Vmbox and vagrant script.
+- Last, Huge thanks to some of my bro for the help 😍
+
+
+
+# ✨ About things you should know:
+- Tools:
+> - k8s, k3s, rke (checking the logstack by ELK)
+> - [Rancher](https://rancher.com/docs/)
+> - [Apache](https://maven.apache.org)
+> - [Docker](https://www.docker.com)
+> - [Helm](https://helm.sh) (chart and template yaml files included)
+> - [ArgoCD](https://argo-cd.readthedocs.io/en/stable/)
+> - [Vmbox](https://www.virtualbox.org) and my vagrant scripts to setup
+
+- Updating
+- [Figma](https://github.com/nnbaocuong99/details-k8s-project/tree/main/figma) (WIP): Roadmap
+- [Error/Re-search](https://github.com/nnbaocuong99/details-k8s-project/tree/main/error-report): Error while doing the project
 
 ---
 
