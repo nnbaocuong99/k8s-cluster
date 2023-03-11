@@ -6,8 +6,8 @@
 
 # ✨ About this repo / template / project:
 - <ins>***Firstly***</ins>, imo this will be sufficient requirements for what u will need to learn and do. / also really wanna hear others opinions abt what im missing, or not listed in this project. 
-- Secondly, heading to the point this is basic CI/CD template project for users who new to docker and starting to learn about backend and CI/CD pipline. This project included: k8s, Docker, helm, Vmbox and vagrant script.
-- Last, Huge thanks to some of my bro for the help 😍
+- <ins>***Secondly***</ins>, heading to the point this is basic CI/CD template project for users who new to docker and starting to learn about backend and CI/CD pipline. This project included: k8s, Docker, helm, Vmbox and vagrant script.
+- <ins>***Last***</ins>, Huge thanks to some of my bro for the help 😍
 
 
 
@@ -21,9 +21,9 @@
 > - [ArgoCD](https://argo-cd.readthedocs.io/en/stable/)
 > - [Vmbox](https://www.virtualbox.org) and my vagrant scripts to setup
 
-- Updating
-- [Figma](https://github.com/nnbaocuong99/details-k8s-project/tree/main/figma) (WIP): Roadmap
-- [Error/Re-search](https://github.com/nnbaocuong99/details-k8s-project/tree/main/error-report): Error while doing the project
+- Updating:
+> - [Figma](https://github.com/nnbaocuong99/details-k8s-project/tree/main/figma) (WIP): Roadmap
+> - [Error/Re-search](https://github.com/nnbaocuong99/details-k8s-project/tree/main/error-report): Error while doing the project
 
 ---
 
