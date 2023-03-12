@@ -4,14 +4,19 @@
 <p align='right'> © nnbaocuong99 - Spagbo - https://bio.link/spagbo </p>
 
 
-# ✨ About this Repository / Template / Project:
+---
+
+
+# ❗️ Introducing
+
+## ✨ About this Repository / Template / Project:
 - <ins>***Firstly***</ins>, imo this will be sufficient requirements for what u will need to learn and do. / also really wanna hear others opinions abt what im missing, or not listed in this project. 
 - <ins>***Secondly***</ins>, heading to the point this is basic CI/CD template project for users who new to docker and starting to learn about backend and CI/CD pipline. This project included: k8s, Docker, helm, Vmbox and vagrant script.
 - <ins>***Last***</ins>, Huge thanks to some of my bro for the help 😍
 
 
 
-# ✨ About things you should know:
+## ✨ About things you should know:
 - Tools:
 > - [Kubernetes](https://kubernetes.io) (K8s), [K3s](https://k3s.io), RKE (checking the logstack by ELK)
 > - [Rancher](https://rancher.com/docs/)
@@ -200,59 +205,20 @@ $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/ku
 ---
 
 # ❗️ part 3: Install ArgoCD and Setup Pipelines
-## ⚒ Install ArgoCD:
+## ⚒ Install ArgoCD-CLI:
 
 ### 1. On Windows✨
-- Open a **Powershell**
-- Grab a version and download: (replace `$version` with the specific version)
-```
-$version = (Invoke-RestMethod https://api.github.com/repos/argoproj/argo-cd/releases/latest).tag_name
-```
-
-- Then run:
-```
-$url = "https://github.com/argoproj/argo-cd/releases/download/" + $version + "/argocd-windows-amd64.exe"
-$output = "argocd.exe"
-
-Invoke-WebRequest -Uri $url -OutFile $output
-```
-- Add it into `Windows PATH`
+- Use **Powershell** or Terminal and follow [this](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/ArgoCD-CLI)
 
 ## 2. On Linux✨
-
-- Download: 
-```
-$ curl -sSL -o argocd-linux-amd64 https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64
-```
-
-- Install and remove the temp file:
-```
-$ sudo install -m 555 argocd-linux-amd64 /usr/local/bin/argocd
-$ rm argocd-linux-amd64
-```
+- Check and follow [this](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/ArgoCD-CLI)
 
 ## 3. On MacOS✨
-- Download the latest version with Homebrew:
-```
-$ brew install argocd
-```
-
-- Download the specific version With curl:
-```
-$ VERSION=$(curl --silent "https://api.github.com/repos/argoproj/argo-cd/releases/latest" | grep '"tag_name"' | sed -E 's/.*"([^"]+)".*/\1/')
-$ curl -sSL -o argocd-darwin-amd64 https://github.com/argoproj/argo-cd/releases/download/$VERSION/argocd-darwin-amd64
-```
-> Replace `VERSION` in the command below with the version of Argo CD you would like to download
-
-- Install:
-```
-$ sudo install -m 555 argocd-darwin-amd64 /usr/local/bin/argocd
-$ rm argocd-darwin-amd64
-```
+- Use Homebrew and follow [this](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/ArgoCD-CLI)
 
 
 ## ⚒ Setup:
-### 1. Install ArgocCD✨
+### 1. Install ArgocCD on Cluster - Create a namespace✨
 ```
 $ kubectl create namespace argocd
 $ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
@@ -361,7 +327,7 @@ build-image:
 
 ### ✏️ <ins>Step 2:</ins> 
 - In the Repo: `Settings` -> `CI/CD` -> `Variables` -> `Add Variables`
-- Variables:
+- Add this:
   - `$DOCKER_USERNAME` = your Docker username
   - `$DOCKER_PASSWD`= your Docker password
 
@@ -372,8 +338,9 @@ build-image:
 </div>
 
 
-### 2. Install Gitlab-runner and Register a runner
-- Install Gitlab-runner
+### ✏️ <ins>Step 3:</ins> 
+- To make sure that your pipelines run correctly you must use `Runners` to run the "`jobs`". First time hear about it? `GitLab Runner` is an application that works with GitLab CI/CD to run jobs in a pipeline (more [here](https://docs.gitlab.com/runner/))
+- 
 
 ## ⚒ CD
 
