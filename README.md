@@ -1,10 +1,10 @@
 <h1 align="center"> ✨ how to install k8s step by step (my research) ✨ </h1> 
 
 
-<p align='right'> © nnbaocuong99 - Spagbo / https://bio.link/spagbo </p>
+<p align='right'> © nnbaocuong99 - Spagbo - https://bio.link/spagbo </p>
 
 
-# ✨ About this repo / template / project:
+# ✨ About this Repository / Template / Project:
 - <ins>***Firstly***</ins>, imo this will be sufficient requirements for what u will need to learn and do. / also really wanna hear others opinions abt what im missing, or not listed in this project. 
 - <ins>***Secondly***</ins>, heading to the point this is basic CI/CD template project for users who new to docker and starting to learn about backend and CI/CD pipline. This project included: k8s, Docker, helm, Vmbox and vagrant script.
 - <ins>***Last***</ins>, Huge thanks to some of my bro for the help 😍
@@ -13,7 +13,7 @@
 
 # ✨ About things you should know:
 - Tools:
-> - k8s, k3s, rke (checking the logstack by ELK)
+> - [Kubernetes](https://kubernetes.io) (K8s), [K3s](https://k3s.io), RKE (checking the logstack by ELK)
 > - [Rancher](https://rancher.com/docs/)
 > - [Apache](https://maven.apache.org)
 > - [Docker](https://www.docker.com)
@@ -175,17 +175,24 @@ $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/ku
 ---
 
 
-# ❗️ Part 2: install tools to work with k8s
+# ❗️ Part 2: Install tools to work with K8s
 ## ⚒ Guides:
 ### 1. Tools
 - There are a bunch of things I'm using and ofc, you should install it too. They're:
 
-| Name | Functions / Explaination |
-| :---: | :--- |
-| Kubectl, Helm, ArgoCD-cli | Local tools to connect and work with your cluster |
-| Scoop, Homebrew, Apt | Package manager for your OS (based on what are you using |
+| Name | Type | Functions / Explaination |
+| :---: | :---: | :---: |
+| Kubectl, Helm, ArgoCD-cli | Tools | Local tools to connect and work with your cluster |
+| Scoop, Homebrew, Apt | Package manager | this is for your OS, help you to install tool eaiser|
+| Rancher Desktop, Docker Desktop,... | Local Applications | Client in your local (*this is optional*)
 
-## ⚒ Installation docs for:
+- Docs: If you need docs or guides, scroll back to "***About things you should know***"
+
+## ⚒ Installation:
+### 1. Sumary:
+- Every tool has its own way to install. Based on what tool you're choosing and what OS you're using, you must choose between using a binary file or using commands to install it.
+- Below is the command list and way to install through a binary file; choose your OS and follow it. Gud luck
+### 2. Installation:
 - [Linux, Ubuntu](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/Linux%2C%20Ubuntu)
 - [Windows](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/Windows)
 - [MacOS](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/MacOS)
@@ -326,10 +333,9 @@ $ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.p
 ### ✏️ <ins>Step 1:</ins> 
 
 - Create and account on [Gitlab](https://gitlab.com/)
-> *Quicknote*: You totally can use others platform like Github or what ever, but in this case i highly recommend to use Gitlab because the CI/CD tool from Gitlab is extremely easy to use, all you need to do is create a file in the root location of your repository called `.gitlab-ci.yml`. This file is basically a recipe for how Gitlab should execute pipelines.
+> You totally can use others platform like Github or what ever, but in this case i highly recommend to use Gitlab because the CI/CD tool from Gitlab is extremely easy to use, all you need to do is create a file in the root location of your repository called `.gitlab-ci.yml`. This file is basically a recipe for how Gitlab should execute pipelines.
 - Create a repository, push your content or use the content in this project.
-- If you're already cloned this project but there is no file called `.gitlab-ci.yml` Create one and copy this content below into it. It will automatically start a `Pipelines` in your next commit.
-
+- If you're already cloned this project but there is no file called `.gitlab-ci.yml` Create one and copy this content below into it. 
 ```
 stages:
   - build
@@ -350,6 +356,9 @@ build-image:
       -t $DOCKER_USERNAME/demo-gitlabci:1.0 .
     - docker push $DOCKER_USERNAME/demo-gitlabci:1.0
 ```
+- Commit, push your code again and `Pipelines` will automatically start.
+
+
 ### ✏️ <ins>Step 2:</ins> 
 - In the Repo: `Settings` -> `CI/CD` -> `Variables` -> `Add Variables`
 - Variables:
