@@ -177,15 +177,27 @@ $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/ku
 
 # ❗️ Part 2: install tools to work with k8s
 ## ⚒ Guides:
-## Installation docs for:
+### 1. Tools
+- There are a bunch of things I'm using and ofc, you should install it too. They're:
+
+| Name | Functions / Explaination |
+| :---: | :--- |
+| Kubectl, Helm | Local tools to connect and work with your cluster |
+| git diff | Show file differences that haven't been staged |
+
+
+  - Helm, Kubectl :: are main things to connect to your cluster.
+  - Scoop, Chocolatey for Windows / Homebrew for MacOS :: Package manager for your OS 
+
+## ⚒ Installation docs for:
 - [Linux, Ubuntu](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/Linux%2C%20Ubuntu)
 - [Windows](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/Windows)
 - [MacOS](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/MacOS)
 
 ---
 
-# ❗️ part 3: argocd
-## ⚒ Install:
+# ❗️ part 3: Install ArgoCD and Setup Pipelines
+## ⚒ Install ArgoCD:
 
 ### 1. On Windows✨
 - Open a **Powershell**
@@ -319,9 +331,7 @@ $ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.p
 
 - Create and account on [Gitlab](https://gitlab.com/)
 > *Quicknote*: You totally can use others platform like Github or what ever, but in this case i highly recommend to use Gitlab because the CI/CD tool from Gitlab is extremely easy to use, all you need to do is create a file in the root location of your repository called `.gitlab-ci.yml`. This file is basically a recipe for how Gitlab should execute pipelines.
-- Create a repository, push your content or you can use my content by clone this project.
-  - Github: `git clone https://github.com/nnbaocuong99/details-k8s-project.git`
-  - Gitlab: `git cloen https://gitlab.com/nnbaocuong99/k8s.git`
+- Create a repository, push your content or use the content in this project.
 - If you're already cloned this project but there is no file called `.gitlab-ci.yml` Create one and copy this content below into it. It will automatically start a `Pipelines` in your next commit.
 
 ```
