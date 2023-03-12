@@ -206,15 +206,11 @@ $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/ku
 
 # ❗️ part 3: Install ArgoCD and Setup Pipelines
 ## ⚒ Install ArgoCD-CLI:
-
-### 1. On Windows✨
-- Use **Powershell** or Terminal and follow [this](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/ArgoCD-CLI)
-
-## 2. On Linux✨
-- Check and follow [this](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/ArgoCD-CLI)
-
-## 3. On MacOS✨
-- Use Homebrew and follow [this](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/ArgoCD-CLI)
+- Choose your OS and follow this guides
+  -
+  -
+  -
+- Then follow [this](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/ArgoCD-CLI
 
 
 ## ⚒ Setup:
