@@ -182,12 +182,8 @@ $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/ku
 
 | Name | Functions / Explaination |
 | :---: | :--- |
-| Kubectl, Helm | Local tools to connect and work with your cluster |
-| git diff | Show file differences that haven't been staged |
-
-
-  - Helm, Kubectl :: are main things to connect to your cluster.
-  - Scoop, Chocolatey for Windows / Homebrew for MacOS :: Package manager for your OS 
+| Kubectl, Helm, ArgoCD-cli | Local tools to connect and work with your cluster |
+| Scoop, Homebrew, Apt | Package manager for your OS (based on what are you using |
 
 ## ⚒ Installation docs for:
 - [Linux, Ubuntu](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/Linux%2C%20Ubuntu)
