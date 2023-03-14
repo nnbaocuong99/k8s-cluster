@@ -1,6 +1,7 @@
 # How to install Gitlab Runner?
 
-### On Windows✨
+
+## On Windows✨
 1. Create a folder in your system `C:\GitLab-Runner`
 
 2. Download the binary file for [64-bit](https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-windows-amd64.exe) or [32-bit](https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-windows-386.exe), put it into the folder in `1`
@@ -13,10 +14,7 @@
 > You can either run the service using the Built-in System Account (recommended) or using a user account.
 
 
----
-
-
-### On Linux, Ubuntu✨
+## On Linux, Ubuntu✨
 > With me im using this way, in addition to have another way is [manual install](https://docs.gitlab.com/runner/install/linux-manually.html)
 1. Add the official GitLab repository:
 ```
@@ -31,10 +29,7 @@ $ sudo apt-get install gitlab-runner
 3. [Register a runner](https://docs.gitlab.com/runner/register/index.html)
 
 
----
-
-
-### On MacOS✨
+## On MacOS✨
 1. Download the binary:
 
 2. For Intel - amd / Apple Silicon - arm
@@ -61,3 +56,13 @@ gitlab-runner start
 ```
 
 6. Reboot your system.
+
+---
+
+
+# How to register a runner? 
+
+
+## On Windows✨
+## On Linux, Ubuntu✨
+## On MacOS✨
