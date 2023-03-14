@@ -336,9 +336,10 @@ build-image:
 ### ✏️ <ins>Step 3:</ins>
 - To make sure that your pipelines run correctly you must use `Runners` to run the `jobs`. First time hear about it? `GitLab Runner` is an application that works with GitLab CI/CD to run jobs in a pipeline ([See more](https://docs.gitlab.com/runner/)). Go to`Repository Settings` -> `CI/CD` -> `Runners` thenn you'll will see that you have 2 ways:
   - Validate your account and use shared runners.
-  - Register an individual runner to run your jobs
+  - Register an individual runner to run your jobs.
 
-
+- To install Gitlab Runners on your OS follow [this](https://github.com/nnbaocuong99/details-k8s-project/blob/main/Installations-Docs/Gitlab%20Runners/README.md) guide.
+- To register Gitlab Runners on your OS follow [this](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/Gitlab%20Runners%20Register) guide.
 
 
 
