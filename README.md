@@ -197,7 +197,7 @@ $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/ku
 ### 1. Sumary:
 - Every tool has its own way to install. Based on what tool you're choosing and what OS you're using, you must choose between using a binary file or using commands to install it.
 - Below is the command list and way to install through a binary file; choose your OS and follow it. Gud luck
-### 2. Installation:
+### 2. Things list you need to install and installation docs for it:
 - [Linux, Ubuntu](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/Linux%2C%20Ubuntu)
 - [Windows](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/Windows)
 - [MacOS](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/MacOS)
@@ -206,11 +206,10 @@ $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/ku
 
 # ❗️ part 3: Install ArgoCD and Setup Pipelines
 ## ⚒ Install ArgoCD-CLI:
-- Choose your OS and follow this guides
-  -
-  -
-  -
-- Then follow [this](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/ArgoCD-CLI
+- Choose your OS and follow the commands guide
+  - ***Windows***: Use `PowerShell` or `Terminal` and follow [this](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/ArgoCD-CLI)
+  - ***MacOS***: On Desktop -> `Go` -> `Applicatins` -> `Utilities` -> `Terminal` and follow [this](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/ArgoCD-CLI)
+  - ***Linux, Ubuntu***: Use `Terminal` in basic Utilities and follow [this](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/ArgoCD-CLI)
 
 
 ## ⚒ Setup:
@@ -227,7 +226,7 @@ $ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/
 </div>
 
 
-### 2. Expose and port foward✨
+### 2. Expose and port forward✨
 - Change the ArgoCD-server service type to LoadBalancer:
 ```
 $ kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
