@@ -1,4 +1,4 @@
-### 1. On Windows✨
+## 1. On Windows✨
 - Open a **Powershell**
 - Grab a version and download: (replace `$version` with the specific version)
 ```
