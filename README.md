@@ -287,7 +287,7 @@ $ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.p
 
 # ❗️ part 4: CI/CD
 > <ins>First of all, check [this](https://www.geeksforgeeks.org/what-is-ci-cd/)</ins> 
-- *In this part I'll show my result and how to setup also finish the CI/CD project. Lets go!*
+#### *In this part I'll show my result and how to setup also finish the CI/CD project. Lets go!*
 
 
 ## ⚒ CI
@@ -333,9 +333,22 @@ build-image:
 </div>
 
 
-### ✏️ <ins>Step 3:</ins> 
-- To make sure that your pipelines run correctly you must use `Runners` to run the "`jobs`". First time hear about it? `GitLab Runner` is an application that works with GitLab CI/CD to run jobs in a pipeline (more [here](https://docs.gitlab.com/runner/))
-- 
+### ✏️ <ins>Step 3:</ins>
+- To make sure that your pipelines run correctly you must use `Runners` to run the `jobs`. First time hear about it? `GitLab Runner` is an application that works with GitLab CI/CD to run jobs in a pipeline (more [here](https://docs.gitlab.com/runner/))
+- Go to`Repository Settings` -> `CI/CD` -> `Runners` thenn you'll will see that you have 2 ways:
+  - Validate your account and use shared runners
+  - Create a local runner and connect to run your jobs
+
+
+
+
+
+
+
+
+
+
+
 
 ## ⚒ CD
 
