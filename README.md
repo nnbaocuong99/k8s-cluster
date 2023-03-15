@@ -520,13 +520,20 @@ affinity: {}
   - **Destination** should be default `https://kubernetes.default.svc` and `argocd`
   - <ins>***If everything is done correctly, the</ins> `values.yaml` <ins>file will be automatically detected***</ins>
 
-<p float="left">
-  <img src="https://user-images.githubusercontent.com/100349044/225269790-5d818597-62fa-4f41-b405-99250245c5f3.jpg" width="500" />
-  <img src="https://user-images.githubusercontent.com/100349044/225269903-9aab72cf-748f-468d-93eb-d0eca293449a.jpg" width="500" /> 
-</p>
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/100349044/225269790-5d818597-62fa-4f41-b405-99250245c5f3.jpg" width="450" />
+    <img src="https://user-images.githubusercontent.com/100349044/225269903-9aab72cf-748f-468d-93eb-d0eca293449a.jpg" width="450" /> 
+    <br>
+    <br>
+</div>
 
+- Click on `Create` and if you see the result like this. Congrats!
 
-
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/100349044/225292869-a7a4f0ed-dff6-49b5-92bd-cf6ab9481075.png" alt="uvu" width="800">
+    <br>
+    <br>
+</div>
 
 
 
@@ -543,5 +550,6 @@ affinity: {}
     <br>
     <br>
 </div>
--->
 
+https://user-images.githubusercontent.com/100349044/225245044-9004d673-eb69-4ea7-ae61-7d3e5cc1f39b.mp4
+--> 
