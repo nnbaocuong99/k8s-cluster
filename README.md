@@ -1,9 +1,10 @@
 <h1 align="center"> ✨ how to install k8s step by step (my research) ✨ </h1> 
 
-
 <p align='right'> © nnbaocuong99 - Spagbo - https://bio.link/spagbo </p>
 
-
+<!--
+https://user-images.githubusercontent.com/100349044/225245044-9004d673-eb69-4ea7-ae61-7d3e5cc1f39b.mp4
+-->
 ---
 
 
@@ -278,20 +279,18 @@ $ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.p
     <br>
 </div>
 
-<!--
-### 4. Connect repo & Create application✨ 
--->
 
 ---
 
 
 # ❗️ part 4: CI/CD
-> <ins>First of all, check [this](https://www.geeksforgeeks.org/what-is-ci-cd/)</ins> 
+> <ins>**First of all**</ins> , check [this](https://www.geeksforgeeks.org/what-is-ci-cd/) to get to know more about CI/CD before you start it
 #### *In this part I'll show my result and how to setup also finish the CI/CD project. Lets go!*
 
 
 ## ⚒ CI
-### ✏️ <ins>Step 1:</ins> 
+### ✏️ <ins>Step 1:</ins>
+***Setup and account***
 
 - Create and account on [Gitlab](https://gitlab.com/)
 > You totally can use others platform like Github or what ever, but in this case i highly recommend to use Gitlab because the CI/CD tool from Gitlab is extremely easy to use, all you need to do is create a file in the root location of your repository called `.gitlab-ci.yml`. This file is basically a recipe for how Gitlab should execute pipelines.
@@ -320,7 +319,8 @@ build-image:
 - Commit, push your code again and `Pipelines` will automatically start.
 
 
-### ✏️ <ins>Step 2:</ins> 
+### ✏️ <ins>Step 2:</ins>
+***Add Variables***
 - In the Repo: `Settings` -> `CI/CD` -> `Variables` -> `Add Variables`
 - Add this:
   - `$DOCKER_USERNAME` = your Docker username
@@ -334,6 +334,7 @@ build-image:
 
 
 ### ✏️ <ins>Step 3:</ins>
+***Register a Runner***
 - To make sure that your pipelines run correctly you must use `Runners` to run the `jobs`. First time hear about it? `GitLab Runner` is an application that works with GitLab CI/CD to run jobs in a pipeline ([See more](https://docs.gitlab.com/runner/)). Go to`Repository Settings` -> `CI/CD` -> `Runners` thenn you'll will see that you have 2 ways:
   - Validate your account and use shared runners.
   - Register an individual runner to run your jobs.
@@ -351,6 +352,7 @@ build-image:
 
 
 ### ✏️ <ins>Step 4:</ins>
+***Run the Pipeline***
 - Commit your code or make changes anh the Pipeline will auto start itself
 - This is a few pic i took during it: 
 > 1. Logs:
@@ -378,6 +380,168 @@ build-image:
 
 ## ⚒ CD
 
+### ✏️ <ins>Step 5:</ins>
+***Connect Reposiory***
+- Now, scroll back and continue from the step where we got the password and login into ArgoCD.
+- On the left column menu bar: `Settings` -> `Connect Repo` then just fill it with your information and connect. (Id still recommend using Gitlab)
+- Alright, when you are all set. It will look like this
+
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/100349044/225237699-b14b9456-18ec-41d9-aa5d-f78f2c24c269.png" alt="uvu" width="1000">
+    <br>
+    <br>
+</div>
+
+### ✏️ <ins>Step 6:</ins>
+***Create Chart and values files***
+- Back to your repo and create 2 files name `Chart.yaml` and `values.yaml`. Take a look on my [Chart](https://github.com/nnbaocuong99/details-k8s-project/blob/main/demo-app/Chart.yaml) and [values](https://github.com/nnbaocuong99/details-k8s-project/blob/main/demo-app/values.yaml) files.
+- Or copy the content and make your own: 
+> Chart.yaml | replace the `name` to what you desired
+```
+apiVersion: v2
+name: demo-app
+description: A Helm chart for Kubernetes
+
+# A chart can be either an 'application' or a 'library' chart.
+#
+# Application charts are a collection of templates that can be packaged into versioned archives
+# to be deployed.
+#
+# Library charts provide useful utilities or functions for the chart developer. They're included as
+# a dependency of application charts to inject those utilities and functions into the rendering
+# pipeline. Library charts do not define any templates and therefore cannot be deployed.
+type: application
+
+# This is the chart version. This version number should be incremented each time you make changes
+# to the chart and its templates, including the app version.
+# Versions are expected to follow Semantic Versioning (https://semver.org/)
+version: 0.1.0
+
+# This is the version number of the application being deployed. This version number should be
+# incremented each time you make changes to the application. Versions are not expected to
+# follow Semantic Versioning. They should reflect the version the application is using.
+# It is recommended to use it with quotes.
+appVersion: "1.16.0"
+```
+
+> values.yaml | replace the `repository`, `tag` to what you desired
+```
+# Default values for demo-app.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: nnbaocuong99/details-k8s-project
+  pullPolicy: Always
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "1.0"
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+service:
+  type: NodePort
+  port: 80
+
+ingress:
+  enabled: false
+  className: ""
+  annotations: {}
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  hosts:
+    - host: chart-example.local
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
+
+resources:
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  limits:
+    cpu: 100m
+    memory: 128Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+```
+
+### ✏️ <ins>Step 7:</ins>
+***Create an application***
+- Now lets get to the final step, back to the main screen of the ArgoCD and click on `+ NEW APP` or `CREATE APPLICATION`
+- Fill your information into it like this and make sure that's correct.
+- A few things to pay attentions on it:
+  - The application name should have `-` or `_` between every single word` 
+  - Replace the `https://gitlab.com/nnbaocuong99/k8s` with your repo link.
+  - **Destination** should be default `https://kubernetes.default.svc` and `argocd`
+  - <ins>***If everything is done correctly, the</ins> `values.yaml` <ins>file will be automatically detected***</ins>
+
+<p float="left">
+  <img src="https://user-images.githubusercontent.com/100349044/225269790-5d818597-62fa-4f41-b405-99250245c5f3.jpg" width="500" />
+  <img src="https://user-images.githubusercontent.com/100349044/225269903-9aab72cf-748f-468d-93eb-d0eca293449a.jpg" width="500" /> 
+</p>
 
 
+
+
+
+
+
+
+
+<!--
+![1](https://user-images.githubusercontent.com/100349044/225269790-5d818597-62fa-4f41-b405-99250245c5f3.jpg)
+
+![2](https://user-images.githubusercontent.com/100349044/225269903-9aab72cf-748f-468d-93eb-d0eca293449a.jpg)
+
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/100349044/225248069-39650b53-5079-4268-8f1d-e6e83d8c5b5c.jpg" alt="uvu" width="800">
+    <br>
+    <br>
+</div>
+-->
 
