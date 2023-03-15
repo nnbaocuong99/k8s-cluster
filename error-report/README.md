@@ -51,3 +51,8 @@ curl -fL https://192.168.56.200/system-agent-install.sh | sudo  sh -s - --server
 ```
 $ kubectl patch svc argocd-server -n argocd -p "{\"spec\": {\"type\": \"LoadBalancer\"}}"
 ```
+
+
+
+### Error 4: 
+![image](https://user-images.githubusercontent.com/100349044/225235601-65ca51cd-98de-422c-b071-21e3b8bcda98.png)
