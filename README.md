@@ -338,15 +338,41 @@ build-image:
   - Validate your account and use shared runners.
   - Register an individual runner to run your jobs.
 
-- To install Gitlab Runners on your OS follow [this](https://github.com/nnbaocuong99/details-k8s-project/blob/main/Installations-Docs/Gitlab%20Runners/README.md) guide.
-- To register Gitlab Runners on your OS follow [this](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/Gitlab%20Runners%20Register) guide.
+- To <ins>*install*</ins> Gitlab Runners on your OS follow [this](https://github.com/nnbaocuong99/details-k8s-project/blob/main/Installations-Docs/Gitlab%20Runners/README.md) guide.
+- To <ins>*register*</ins> Gitlab Runners on your OS follow [this](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/Gitlab%20Runners%20Register) guide.
+
+> *When your runner has been successfully registered. It will look like this*
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/100349044/225208767-177fac85-a0d9-49f4-8fd9-d99d75557f00.png" alt="uvu" width="1000">
+    <br>
+    <br>
+</div>
+ <img src="https://user-images.githubusercontent.com/100349044/225203073-2c221aef-6760-47bf-9586-ca0c85699d78.png" alt="uvu" width="430">
 
 
+### ✏️ <ins>Step 4:</ins>
+- Commit your code or make changes anh the Pipeline will auto start itself
+- This is a few pic i took during it: 
+> 1. Logs:
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/100349044/225229115-79c6f3f0-bfde-4ab4-9411-93cf1222e60c.png" alt="uvu" width="1100">
+    <br>
+    <br>
+</div>
 
+> 2. When the Pipeline finished it will look like this:
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/100349044/225229048-78b48381-08c5-4bf9-ac1a-58fc0791f02e.png" alt="uvu" width="800">
+    <br>
+    <br>
+</div>
 
-
-
-
+> 3. You can check around or your [Docker Hub](https://hub.docker.com/) to make sure that this job is running correctly
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/100349044/225229079-9bb9b104-3d78-4d2f-aa42-8ae581b482f8.png" alt="uvu" width="700">
+    <br>
+    <br>
+</div>
 
 
 
