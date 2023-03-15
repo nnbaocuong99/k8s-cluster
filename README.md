@@ -527,7 +527,7 @@ affinity: {}
     <br>
 </div>
 
-- Click on `Create` and if you see the result like this. Congrats!
+- Click on `Create` and if you see the result like this. Congrats! this your app and what it gonna do details in the second pic. 
 
 <div align="center">
     <img src="https://user-images.githubusercontent.com/100349044/225292869-a7a4f0ed-dff6-49b5-92bd-cf6ab9481075.png" alt="uvu" width="800">
@@ -536,6 +536,7 @@ affinity: {}
 </div>
 
 
+![photo_2023-03-09_15-39-25](https://user-images.githubusercontent.com/100349044/225295383-0907a37e-2200-4f1b-98e8-835346de2355.jpg)
 
 
 
