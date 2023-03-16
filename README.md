@@ -550,11 +550,17 @@ affinity: {}
 </div>
 
 <div align="center">
-    <img src="https://user-images.githubusercontent.com/100349044/225504816-f23fa704-cb48-46a7-a26c-0e8b556cd0e8.jpg" alt="uvu" width="1000">
+    <img src="https://user-images.githubusercontent.com/100349044/225504816-f23fa704-cb48-46a7-a26c-0e8b556cd0e8.jpg" alt="uvu" width="500">
     <br>
     <br>
 </div>
 
+---
+# ❗️ last words:
+***If you've arrived this far, thank you for taking time out of your day to, read these guides, my project. And the most important thing is good luck on your CI/CD pipelines!***
+
+✨ *Best wishes*,
+𝓃𝓃𝒷𝒸,
 
 <!--
 ![image](https://user-images.githubusercontent.com/100349044/225504635-192335ff-7f10-4349-9cb5-00482fb79611.png)
