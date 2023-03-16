@@ -527,7 +527,7 @@ affinity: {}
     <br>
 </div>
 
-- Click on `Create` and if you see the result like this. Congrats! this your app and what it gonna do details in the second pic. 
+- Click on `Create` and if you see the result like this, congrats! you just created your app. And what it gonna do?.. details in the second pic. 
 
 <div align="center">
     <img src="https://user-images.githubusercontent.com/100349044/225292869-a7a4f0ed-dff6-49b5-92bd-cf6ab9481075.png" alt="uvu" width="800">
@@ -535,15 +535,33 @@ affinity: {}
     <br>
 </div>
 
+> details in the app
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/100349044/225295383-0907a37e-2200-4f1b-98e8-835346de2355.jpg" alt="uvu" width="1000">
+    <br>
+    <br>
+</div>
 
-![photo_2023-03-09_15-39-25](https://user-images.githubusercontent.com/100349044/225295383-0907a37e-2200-4f1b-98e8-835346de2355.jpg)
+- Last step, now just simply click on `Sync` button and your app will become like this: 
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/100349044/225504635-192335ff-7f10-4349-9cb5-00482fb79611.png" alt="uvu" width="1000">
+    <br>
+    <br>
+</div>
 
-
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/100349044/225504816-f23fa704-cb48-46a7-a26c-0e8b556cd0e8.jpg" alt="uvu" width="1000">
+    <br>
+    <br>
+</div>
 
 
 <!--
-![1](https://user-images.githubusercontent.com/100349044/225269790-5d818597-62fa-4f41-b405-99250245c5f3.jpg)
+![image](https://user-images.githubusercontent.com/100349044/225504635-192335ff-7f10-4349-9cb5-00482fb79611.png)
 
+![photo_2023-03-09_15-47-10](https://user-images.githubusercontent.com/100349044/225504816-f23fa704-cb48-46a7-a26c-0e8b556cd0e8.jpg)
+![1](https://user-images.githubusercontent.com/100349044/225269790-5d818597-62fa-4f41-b405-99250245c5f3.jpg)
+![photo_2023-03-09_15-39-25](https://user-images.githubusercontent.com/100349044/225295383-0907a37e-2200-4f1b-98e8-835346de2355.jpg)
 ![2](https://user-images.githubusercontent.com/100349044/225269903-9aab72cf-748f-468d-93eb-d0eca293449a.jpg)
 
 <div align="center">
