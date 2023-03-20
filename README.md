@@ -521,8 +521,8 @@ affinity: {}
   - <ins>***If everything is done correctly, the</ins> `values.yaml` <ins>file will be automatically detected***</ins>
 
 <div align="center">
-    <img src="https://user-images.githubusercontent.com/100349044/225269790-5d818597-62fa-4f41-b405-99250245c5f3.jpg" width="450" />
-    <img src="https://user-images.githubusercontent.com/100349044/225269903-9aab72cf-748f-468d-93eb-d0eca293449a.jpg" width="450" /> 
+    <img src="https://user-images.githubusercontent.com/100349044/225269790-5d818597-62fa-4f41-b405-99250245c5f3.jpg" width="500" />
+    <img src="https://user-images.githubusercontent.com/100349044/225269903-9aab72cf-748f-468d-93eb-d0eca293449a.jpg" width="500" /> 
     <br>
     <br>
 </div>
