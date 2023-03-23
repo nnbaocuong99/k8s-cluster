@@ -556,7 +556,7 @@ affinity: {}
 </div>
 
 ---
-# ❗️ last words:
+
 ***If you've arrived this far, thank you for taking time out of your day to, read these guides, my project. And the most important thing is good luck on your CI/CD pipelines!***
 
 ✨ *Best wishes*,
