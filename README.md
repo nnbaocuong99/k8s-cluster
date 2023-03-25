@@ -356,21 +356,31 @@ build-image:
 ***Run the Pipeline***
 - Commit your code or make changes anh the Pipeline will auto start itself
 - This is a few pic i took during it: 
-> 1. Logs:
+
+> 1. Runners in action
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/100349044/227698536-de871019-3875-48c7-b9d5-4b0c44e4ef17.png" alt="uvu" width="300">
+    <img src="https://user-images.githubusercontent.com/100349044/227698573-3d136065-f088-4119-92d5-68b6612879d2.png" alt="uvu" width="700">
+    <br>
+    <br>
+</div>
+
+
+> 2. Logs and whats happening
 <div align="center">
     <img src="https://user-images.githubusercontent.com/100349044/225229115-79c6f3f0-bfde-4ab4-9411-93cf1222e60c.png" alt="uvu" width="1100">
     <br>
     <br>
 </div>
 
-> 2. When the Pipeline finished it will look like this:
+> 3. When the Pipeline finished it will look like this:
 <div align="center">
     <img src="https://user-images.githubusercontent.com/100349044/225229048-78b48381-08c5-4bf9-ac1a-58fc0791f02e.png" alt="uvu" width="800">
     <br>
     <br>
 </div>
 
-> 3. You can check around or your [Docker Hub](https://hub.docker.com/) to make sure that this job is running correctly
+> 4. You can check around or your [Docker Hub](https://hub.docker.com/) to make sure that this job is running correctly
 <div align="center">
     <img src="https://user-images.githubusercontent.com/100349044/225229079-9bb9b104-3d78-4d2f-aa42-8ae581b482f8.png" alt="uvu" width="700">
     <br>
