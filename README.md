@@ -10,14 +10,14 @@ https://user-images.githubusercontent.com/100349044/225245044-9004d673-eb69-4ea7
 
 # ❗️ Introducing
 
-## ✨ About this Repository / Template / Project:
+### ✨ About this Repository / Template / Project:
 - <ins>***Firstly***</ins>, imo this will be sufficient requirements for what u will need to learn and do. / also really wanna hear others opinions abt what im missing, or not listed in this project. 
 - <ins>***Secondly***</ins>, heading to the point this is basic CI/CD template project for users who new to docker and starting to learn about backend and CI/CD pipline. This project included: k8s, Docker, helm, Vmbox and vagrant script.
 - <ins>***Last***</ins>, Huge thanks to some of my bro for the help 😍
 
 
 
-## ✨ About things you should know:
+### ✨ About things you should know:
 - Tools:
 > - [Kubernetes](https://kubernetes.io) (K8s), [K3s](https://k3s.io), RKE (checking the logstack by ELK)
 > - [Rancher](https://rancher.com/docs/)
@@ -34,9 +34,9 @@ https://user-images.githubusercontent.com/100349044/225245044-9004d673-eb69-4ea7
 ---
 
 # ❗️ Part 1: Setup VMBox & Cluster
-## ⚒ Setup
+### ⚒ Setup
 
-### 1. Install✨
+#### 1. Install✨
 - [Git](https://git-scm.com/)
 - [curl](https://curl.se/)
 - [Oracle VM VirtualBox](https://www.virtualbox.org/wiki/Downloads) <sup>recommend v6.0. (its easier to setup and provider)</sup>
@@ -45,13 +45,13 @@ https://user-images.githubusercontent.com/100349044/225245044-9004d673-eb69-4ea7
   - Window: [Scoop](https://scoop.sh/) <sup>recommend</sup>, [Chocolatey](https://chocolatey.org/) or [winget](https://learn.microsoft.com/en-us/windows/package-manager/winget/)
   - MacOS: [Homebew](https://brew.sh/)
 
-### 2. Create virtual machines✨ 
+#### 2. Create virtual machines✨ 
 - Download 2 files below, re-name to `Vagrantfile`
 - Put each into 2 different folders:
    - [Vagrant-master](https://github.com/nnbaocuong99/details-k8s-project/blob/main/document/vagrantfile-master) for the <ins>*master node*</ins>
    - [Vagrant-worker](https://github.com/nnbaocuong99/details-k8s-project/blob/main/document/Vagrantfile-worker) for the <ins>*worker node*</ins>
 
-### 3. Scripts✨
+#### 3. Scripts✨
 - Open 2 terminals each separate folders:
 > This is my directory
 ```
@@ -69,18 +69,18 @@ $ vagrant up
 </div>
 
 
-## ⚒ Install Rancher & K8s:
+### ⚒ Install Rancher & K8s:
 
-### ✏️ <ins>Step 1:</ins>
+#### ✏️ <ins>Step 1:</ins>
 - Get yourself a terminal and ssh into the master-node `ssh username@your_ip_address` when its successfully started
 - Linux and MacOS has their own terminals, On Windows you can use [PowerShell](https://learn.microsoft.com/en-us/powershell/) or basically just [Terminal](https://apps.microsoft.com/store/detail/windows-terminal/)
 
 
-### ✏️ <ins>Step 2:</ins>
+#### ✏️ <ins>Step 2:</ins>
 - Switch to the root user: `sudo su` 
 - Check if ur docker has been installed yet: `docker version` 
 
-### ✏️ <ins>Step 3:</ins>
+#### ✏️ <ins>Step 3:</ins>
 - Choose a tag on [rancher/rancher Tags](https://hub.docker.com/r/rancher/rancher/tags)
 - Replace `tag` with the one you've been choosing
 ```
@@ -98,7 +98,7 @@ $ sudo docker ps -aqf "name=containername"`
 -f: filter.    | Filter output based on conditions provided.
 ```
 
-### ✏️ <ins>Step 4:</ins>
+#### ✏️ <ins>Step 4:</ins>
 - Access: https://192.168.56.200 or https://192.168.56.200/g 
 - Use the container id, replace `container id` in the command below to get the password
 ```
@@ -120,13 +120,13 @@ $ docker logs  container-id  2>&1 | grep "Bootstrap Password:"
     <br>
 </div>
 
-### ✏️ <ins>Step 5:</ins> 
+#### ✏️ <ins>Step 5:</ins> 
 - Copy it and add `--address your_worker_IP` before the `--etcd` and you'll get the final script like this:
 ```
 $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/kubernetes:/etc/kubernetes -v /var/run:/var/run  rancher/rancher-agent:v2.7-091ed163cc5c53efc50bd1a580cb4e54fa097e82-head --server https://192.168.56.200/ --token p5zcnnpcb5cx8pg89vkk5nkx8gbzltk9wbkmfjp6rsn9n6kf729vjp --ca-checksum 37bde28c0dc9fbd360146f727ff4b1cd254d9f17490789f93775fb2ce15b58da --address your_worker_IP --etcd --controlplane --worker
 ```
 
-### ✏️ <ins>Step 6:</ins>
+#### ✏️ <ins>Step 6:</ins>
 - SSH into the worker-node: `ssh username@your_ip_address`
 - Run`sudo su` & `docker version`
 - Run the copied script 
@@ -139,7 +139,7 @@ $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/ku
 </div>
 
 
-### ✏️ <ins>Step 6:</ins>
+#### ✏️ <ins>Step 6:</ins>
 - Copy to clipboard or save that config to `.txt` if you need it.
 - Paste the config to <ins>**default Kubeconfig**</ins> file connect to the cluster
 - Default Kubeconfig location in:
@@ -182,8 +182,8 @@ $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/ku
 
 
 # ❗️ Part 2: Install tools to work with K8s
-## ⚒ Guides:
-### 1. Tools
+### ⚒ Guides:
+#### 1. Tools
 - There are a bunch of things I'm using and ofc, you should install it too. They're:
 
 | Name | Type | Functions / Explaination |
@@ -194,11 +194,11 @@ $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/ku
 
 - Docs: If you need docs or guides, scroll back to "***About things you should know***"
 
-## ⚒ Installation:
-### 1. Sumary:
+### ⚒ Installation:
+#### 1. Sumary:
 - Every tool has its own way to install. Based on what tool you're choosing and what OS you're using, you must choose between using a binary file or using commands to install it.
 - Below is the command list and way to install through a binary file; choose your OS and follow it. Gud luck
-### 2. Things list you need to install and installation docs for it:
+#### 2. Things list you need to install and installation docs for it:
 - [Linux, Ubuntu](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/Linux%2C%20Ubuntu)
 - [Windows](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/Windows)
 - [MacOS](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/MacOS)
@@ -206,15 +206,15 @@ $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/ku
 ---
 
 # ❗️ part 3: Install ArgoCD and Setup Pipelines
-## ⚒ Install ArgoCD-CLI:
+### ⚒ Install ArgoCD-CLI:
 - Choose your OS and follow the commands guide
   - ***Windows***: Use `PowerShell` or `Terminal` and follow [this](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/ArgoCD-CLI)
   - ***MacOS***: On Desktop -> `Go` -> `Applicatins` -> `Utilities` -> `Terminal` and follow [this](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/ArgoCD-CLI)
   - ***Linux, Ubuntu***: Use `Terminal` in basic Utilities and follow [this](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/ArgoCD-CLI)
 
 
-## ⚒ Setup:
-### 1. Install ArgocCD on Cluster - Create a namespace✨
+### ⚒ Setup:
+#### 1. Install ArgocCD on Cluster - Create a namespace✨
 ```
 $ kubectl create namespace argocd
 $ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
@@ -227,7 +227,7 @@ $ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/
 </div>
 
 
-### 2. Expose and port forward✨
+#### 2. Expose and port forward✨
 - Change the ArgoCD-server service type to LoadBalancer:
 ```
 $ kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
@@ -250,7 +250,7 @@ $ kubectl port-forward svc/argocd-server -n argocd 8080:443
 </div>
 
 
-### 3. Access✨
+#### 3. Access✨
 - Once the command exposed, you can access to https://localhost:8080 and it will require to login with `admin` and `password`
 <div align="center">
     <img src="https://user-images.githubusercontent.com/100349044/223347770-c13a1d22-3f17-4bec-9f88-cbdced92a4db.png" alt="uvu" width="1000">
@@ -288,8 +288,8 @@ $ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.p
 #### *In this part I'll show my result and how to setup also finish the CI/CD project. Lets go!*
 
 
-## ⚒ CI
-### ✏️ <ins>Step 1:</ins>
+### ⚒ CI
+#### ✏️ <ins>Step 1:</ins>
 ***Setup and account***
 
 - Create and account on [Gitlab](https://gitlab.com/)
@@ -319,7 +319,7 @@ build-image:
 - Commit, push your code again and `Pipelines` will automatically start.
 
 
-### ✏️ <ins>Step 2:</ins>
+#### ✏️ <ins>Step 2:</ins>
 ***Add Variables***
 - In the Repo: `Settings` -> `CI/CD` -> `Variables` -> `Add Variables`
 - Add this:
@@ -333,7 +333,7 @@ build-image:
 </div>
 
 
-### ✏️ <ins>Step 3:</ins>
+#### ✏️ <ins>Step 3:</ins>
 ***Register a Runner***
 - To make sure that your pipelines run correctly you must use `Runners` to run the `jobs`. First time hear about it? `GitLab Runner` is an application that works with GitLab CI/CD to run jobs in a pipeline ([See more](https://docs.gitlab.com/runner/)). Go to`Repository Settings` -> `CI/CD` -> `Runners` thenn you'll will see that you have 2 ways:
   - Validate your account and use shared runners.
@@ -351,7 +351,7 @@ build-image:
  <img src="https://user-images.githubusercontent.com/100349044/225203073-2c221aef-6760-47bf-9586-ca0c85699d78.png" alt="uvu" width="430">
 
 
-### ✏️ <ins>Step 4:</ins>
+#### ✏️ <ins>Step 4:</ins>
 ***Run the Pipeline***
 - Commit your code or make changes anh the Pipeline will auto start itself
 - This is a few pic i took during it: 
@@ -378,9 +378,9 @@ build-image:
 
 
 
-## ⚒ CD
+### ⚒ CD
 
-### ✏️ <ins>Step 5:</ins>
+#### ✏️ <ins>Step 5:</ins>
 ***Connect Reposiory***
 - Now, scroll back and continue from the step where we got the password and login into ArgoCD.
 - On the left column menu bar: `Settings` -> `Connect Repo` then just fill it with your information and connect. (Id still recommend using Gitlab)
@@ -392,7 +392,7 @@ build-image:
     <br>
 </div>
 
-### ✏️ <ins>Step 6:</ins>
+#### ✏️ <ins>Step 6:</ins>
 ***Create Chart and values files***
 - Back to your repo and create 2 files name `Chart.yaml` and `values.yaml`. Take a look on my [Chart](https://github.com/nnbaocuong99/details-k8s-project/blob/main/demo-app/Chart.yaml) and [values](https://github.com/nnbaocuong99/details-k8s-project/blob/main/demo-app/values.yaml) files.
 - Or copy the content and make your own: 
@@ -510,7 +510,7 @@ tolerations: []
 affinity: {}
 ```
 
-### ✏️ <ins>Step 7:</ins>
+#### ✏️ <ins>Step 7:</ins>
 ***Create an application***
 - Now lets get to the final step, back to the main screen of the ArgoCD and click on `+ NEW APP` or `CREATE APPLICATION`
 - Fill your information into it like this and make sure that's correct.
