@@ -11,6 +11,7 @@ https://user-images.githubusercontent.com/100349044/225245044-9004d673-eb69-4ea7
 # ❗️ Introducing
 
 ### ✨ About this Repository / Template / Project:
+- <ins>***Sumary***</ins>: This is my **Report,Research Repo/Project** about CI/CD with Java
 - <ins>***Firstly***</ins>, imo this will be sufficient requirements for what u will need to learn and do. / also really wanna hear others opinions abt what im missing, or not listed in this project. 
 - <ins>***Secondly***</ins>, heading to the point this is basic CI/CD template project for users who new to docker and starting to learn about backend and CI/CD pipline. This project included: k8s, Docker, helm, Vmbox and vagrant script.
 - <ins>***Last***</ins>, Huge thanks to some of my bro for the help 😍
