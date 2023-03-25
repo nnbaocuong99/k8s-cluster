@@ -11,14 +11,14 @@ https://user-images.githubusercontent.com/100349044/225245044-9004d673-eb69-4ea7
 # ❗️ Introducing
 
 ### ✨ About this Repository / Template / Project:
-- <ins>***Sumary***</ins>: This is my *Report,Research Repo/Project* about how to install k8s cluster and CI/CD Pipeline for a Java project. This also a good template for a beginners. (i think so xD)
+- <ins>***Sumary***</ins>: This is my *Report,Research Repo/Project* about how to install k8s cluster and CI/CD Pipeline for a Java project. This also a good template for a beginners (i think so xD). BTW, huge thanks to my squad: [@TruongLM](https://github.com/lmt2407), [@QuocNVC](https://github.com/quoc9x) for the help 😍
 - <ins>***Firstly***</ins>, imo this will be sufficient requirements for what u will need to learn and do. / also really wanna hear others opinions abt what im missing, or not listed in this project. 
 - <ins>***Secondly***</ins>, heading to the point this is basic CI/CD template project for users who new to docker and starting to learn about backend and CI/CD pipline. This project included: k8s, Docker, helm, Vmbox and vagrant script.
-- <ins>***Last***</ins>, Huge thanks to my squad: [@TruongLM](https://github.com/lmt2407), [@QuocNVC](https://github.com/quoc9x) for the help 😍
+- <ins>***Last***</ins>, many thanks for reading but one more thing this is template. Remember create your own stuff, DO NOT try to stalk, copy or join into other projects and say thats yours. Thats suck and only losers do it
 
 
 
-### ✨ About things you should know:
+### ✨ About things you should know before we start:
 - Tools:
 > - [Kubernetes](https://kubernetes.io) (K8s), [K3s](https://k3s.io), RKE (checking the logstack by ELK)
 > - [Rancher](https://rancher.com/docs/)
