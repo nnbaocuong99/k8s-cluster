@@ -37,6 +37,11 @@ https://user-images.githubusercontent.com/100349044/225245044-9004d673-eb69-4ea7
 
 # ❗️ Part 1: Setup VMBox & Cluster
 ### ⚒ Setup
+<details>
+<summary><samp>&#9776;</samp> Click to expand </summary>
+
+<br>
+
 #### 1. Install✨
 - [Git](https://git-scm.com/)
 - [curl](https://curl.se/)
@@ -69,6 +74,9 @@ $ vagrant up
     <br>
 </div>
 
+<br>
+
+</details>
 
 ### ⚒ Install Rancher & Setup K8s cluster:
 <details>
