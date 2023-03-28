@@ -28,6 +28,7 @@ https://user-images.githubusercontent.com/100349044/225245044-9004d673-eb69-4ea7
 > - [ArgoCD](https://argo-cd.readthedocs.io/en/stable/)
 > - [Vmbox](https://www.virtualbox.org) and my vagrant scripts to setup
 
+
 - Updating:
 > - [Figma](https://github.com/nnbaocuong99/details-k8s-project/tree/main/figma) (WIP): Roadmap
 > - [Error/Re-search](https://github.com/nnbaocuong99/details-k8s-project/tree/main/error-report): Error while doing the project
@@ -36,7 +37,6 @@ https://user-images.githubusercontent.com/100349044/225245044-9004d673-eb69-4ea7
 
 # ❗️ Part 1: Setup VMBox & Cluster
 ### ⚒ Setup
-
 #### 1. Install✨
 - [Git](https://git-scm.com/)
 - [curl](https://curl.se/)
@@ -70,7 +70,11 @@ $ vagrant up
 </div>
 
 
-### ⚒ Install Rancher & K8s:
+### ⚒ Install Rancher & Setup K8s cluster:
+<details>
+<summary><samp>&#9776;</samp> Click to expand </summary>
+
+<br>
 
 #### ✏️ <ins>Step 1:</ins>
 - Get yourself a terminal and ssh into the master-node `ssh username@your_ip_address` when its successfully started
@@ -178,14 +182,18 @@ $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/ku
     <br>
 </div>
 
+<br>
+
+</details>
 
 ---
-
 
 # ❗️ Part 2: Install tools to work with K8s
 ### ⚒ Guides:
 #### 1. Tools
 - There are a bunch of things I'm using and ofc, you should install it too. They're:
+
+<div align="center">
 
 | Name | Type | Functions / Explaination |
 | :---: | :---: | :---: |
@@ -193,7 +201,10 @@ $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/ku
 | Scoop, Homebrew, Apt | Package manager | this is for your OS, help you to install tool eaiser|
 | Rancher Desktop, Docker Desktop,... | Local Applications | Client in your local (*this is optional*)
 
-- Docs: If you need docs or guides, scroll back to "***About things you should know***"
+</div>
+
+#### 2. Docs: 
+- If you need docs or guides, scroll back to "***About things you should know***"
 
 ### ⚒ Installation:
 #### 1. Sumary:
@@ -208,13 +219,26 @@ $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/ku
 
 # ❗️ part 3: Install ArgoCD and Setup Pipelines
 ### ⚒ Install ArgoCD-CLI:
-- Choose your OS and follow the commands guide
+<details>
+<summary><samp>&#9776;</samp> Click to expand </summary>
+
+<br>
+
+- Base on your OS and follow the commands guide
   - ***Windows***: Use `PowerShell` or `Terminal` and follow [this](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/ArgoCD-CLI)
-  - ***MacOS***: On Desktop -> `Go` -> `Applicatins` -> `Utilities` -> `Terminal` and follow [this](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/ArgoCD-CLI)
+  - ***MacOS***: On Desktop -> `Go` -> `Applications` -> `Utilities` -> `Terminal` and follow [this](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/ArgoCD-CLI)
   - ***Linux, Ubuntu***: Use `Terminal` in basic Utilities and follow [this](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/ArgoCD-CLI)
 
+<br>
+
+</details>
 
 ### ⚒ Setup:
+<details>
+<summary><samp>&#9776;</samp> Click to expand </summary>
+
+<br>
+
 #### 1. Install ArgocCD on Cluster - Create a namespace✨
 ```
 $ kubectl create namespace argocd
@@ -280,6 +304,9 @@ $ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.p
     <br>
 </div>
 
+<br>
+
+</details>
 
 ---
 
@@ -290,6 +317,11 @@ $ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.p
 
 
 ### ⚒ CI
+<details>
+<summary><samp>&#9776;</samp> Click to expand </summary>
+
+<br>
+
 #### ✏️ <ins>Step 1:</ins>
 ***Setup and account***
 
@@ -387,9 +419,15 @@ build-image:
     <br>
 </div>
 
+<br>
 
+</details>
 
 ### ⚒ CD
+<details>
+<summary><samp>&#9776;</samp> Click to expand </summary>
+
+<br>
 
 #### ✏️ <ins>Step 5:</ins>
 ***Connect Reposiory***
@@ -565,6 +603,10 @@ affinity: {}
     <br>
     <br>
 </div>
+
+<br>
+
+</details>
 
 ---
 
