@@ -190,6 +190,11 @@ $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/ku
 
 # ❗️ Part 2: Install tools to work with K8s
 ### ⚒ Guides:
+<details>
+<summary><samp>&#9776;</samp> Click to expand </summary>
+
+<br>
+
 #### 1. Tools
 - There are a bunch of things I'm using and ofc, you should install it too. They're:
 
@@ -206,7 +211,16 @@ $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/ku
 #### 2. Docs: 
 - If you need docs or guides, scroll back to "***About things you should know***"
 
+<br>
+
+</details>
+
 ### ⚒ Installation:
+<details>
+<summary><samp>&#9776;</samp> Click to expand </summary>
+
+<br>
+
 #### 1. Sumary:
 - Every tool has its own way to install. Based on what tool you're choosing and what OS you're using, you must choose between using a binary file or using commands to install it.
 - Below is the command list and way to install through a binary file; choose your OS and follow it. Gud luck
@@ -214,6 +228,10 @@ $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/ku
 - [Linux, Ubuntu](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/Linux%2C%20Ubuntu)
 - [Windows](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/Windows)
 - [MacOS](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/MacOS)
+
+<br>
+
+</details>
 
 ---
 
