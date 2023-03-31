@@ -33,6 +33,9 @@ https://user-images.githubusercontent.com/100349044/225245044-9004d673-eb69-4ea7
 > - [Figma](https://github.com/nnbaocuong99/details-k8s-project/tree/main/figma) (WIP): Roadmap
 > - [Error/Re-search](https://github.com/nnbaocuong99/details-k8s-project/tree/main/error-report): Error while doing the project
 
+- Notes:
+> - Important 🟠 : this is the main content
+
 ---
 
 # ❗️ Part 1: Setup VMBox & Cluster
@@ -78,7 +81,7 @@ $ vagrant up
 
 </details>
 
-### ⚒ Install Rancher & Setup K8s cluster:
+### ⚒ Install Rancher & Setup K8s cluster 🟠
 <details>
 <summary><samp>&#9776;</samp> Click to expand </summary>
 
@@ -259,7 +262,7 @@ $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/ku
 
 </details>
 
-### ⚒ Setup:
+### ⚒ Setup ArgoCD 🟠
 <details>
 <summary><samp>&#9776;</samp> Click to expand </summary>
 
@@ -337,7 +340,7 @@ $ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.p
 ---
 
 
-# ❗️ part 4: CI/CD
+# ❗️ part 4: CI/CD 🟠
 > <ins>**First of all**</ins> , check [this](https://www.geeksforgeeks.org/what-is-ci-cd/) to get to know more about CI/CD before you start it
 #### *In this part I'll show my result and how to setup also finish the CI/CD project. Lets go!*
 
