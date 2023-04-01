@@ -28,15 +28,18 @@ https://user-images.githubusercontent.com/100349044/225245044-9004d673-eb69-4ea7
 > - [ArgoCD](https://argo-cd.readthedocs.io/en/stable/)
 > - [Vmbox](https://www.virtualbox.org) and my vagrant scripts to setup
 
-
 - Updating:
 > - [Figma](https://github.com/nnbaocuong99/details-k8s-project/tree/main/figma) (WIP): Roadmap
 > - [Error/Re-search](https://github.com/nnbaocuong99/details-k8s-project/tree/main/error-report): Error while doing the project
 
 - Notes:
-> - Important 🟠 : this is the main content
+> 🟠 - Important, this is the main content
+
+
 
 ---
+
+
 
 # ❗️ Part 1: Setup VMBox & Cluster
 ### ⚒ Setup
@@ -44,6 +47,11 @@ https://user-images.githubusercontent.com/100349044/225245044-9004d673-eb69-4ea7
 <summary><samp>&#9776;</samp> Click to expand </summary>
 
 <br>
+
+
+
+
+
 
 #### 1. Install✨
 - [Git](https://git-scm.com/)
@@ -81,7 +89,12 @@ $ vagrant up
 
 </details>
 
-### ⚒ Install Rancher & Setup K8s cluster 🟠
+
+
+
+
+
+### ⚒ 🟠 Install Rancher & Setup K8s cluster
 <details>
 <summary><samp>&#9776;</samp> Click to expand </summary>
 
@@ -91,14 +104,13 @@ $ vagrant up
 - Get yourself a terminal and ssh into the master-node `ssh username@your_ip_address` when its successfully started
 - Linux and MacOS has their own terminals, On Windows you can use [PowerShell](https://learn.microsoft.com/en-us/powershell/) or basically just [Terminal](https://apps.microsoft.com/store/detail/windows-terminal/)
 
-
 #### ✏️ <ins>Step 2:</ins>
 - Switch to the root user: `sudo su` 
-- Check if ur docker has been installed yet: `docker version` 
+- Check if your Docker has been installed yet: `docker version` 
 
 #### ✏️ <ins>Step 3:</ins>
-- Choose a tag on [rancher/rancher Tags](https://hub.docker.com/r/rancher/rancher/tags)
-- Replace `tag` with the one you've been choosing
+- Choose a tag on [rancher/rancher -> `Tags`](https://hub.docker.com/r/rancher/rancher/tags) on Docker Hub
+- Replace `tag` in the command below with the tag, version you've been choosing
 ```
 $ docker run -d --name=rancher-server --restart=unless-stopped -p 80:80 -p 443:443 --privileged rancher/rancher:tag
 ```
@@ -116,20 +128,21 @@ $ sudo docker ps -aqf "name=containername"`
 
 #### ✏️ <ins>Step 4:</ins>
 - Access: https://192.168.56.200 or https://192.168.56.200/g 
-- Use the container id, replace `container id` in the command below to get the password
+- Use terminal, replace `container id` in the command below to get the password
 ```
 $ docker logs  container-id  2>&1 | grep "Bootstrap Password:"
 ```
 - Copy the <ins>**red-line**</ins> key/code, thats the password. 
 - Login to the Rancher `admin / password`
-- Choose the <ins>**custom**</ins> mode:
+- Choose the <ins>**Custom**</ins> mode
+
 <div align="center">
     <img src="https://user-images.githubusercontent.com/100349044/222045349-2a57a602-aa60-4621-ba25-01b6fb166668.png" alt="uvu" width="800">
     <br>
     <br>
 </div>
 
-- Set a name then click next, tick on the `etcd` and `control panel` it will show you a script:
+- Set a name then click next, tick on the `etcd` and `Control Panel` it will show you a script:
 <div align="center">
     <img src="https://user-images.githubusercontent.com/100349044/222045781-fed45b98-6a0a-4dc0-ae70-7daa7db23490.png" alt="uvu" width="800">
     <br>
@@ -137,14 +150,14 @@ $ docker logs  container-id  2>&1 | grep "Bootstrap Password:"
 </div>
 
 #### ✏️ <ins>Step 5:</ins> 
-- Copy it and add `--address your_worker_IP` before the `--etcd` and you'll get the final script like this:
+- Copy it and add `--address worker_IP` before the `--etcd` and you'll get the final script like this:
 ```
 $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/kubernetes:/etc/kubernetes -v /var/run:/var/run  rancher/rancher-agent:v2.7-091ed163cc5c53efc50bd1a580cb4e54fa097e82-head --server https://192.168.56.200/ --token p5zcnnpcb5cx8pg89vkk5nkx8gbzltk9wbkmfjp6rsn9n6kf729vjp --ca-checksum 37bde28c0dc9fbd360146f727ff4b1cd254d9f17490789f93775fb2ce15b58da --address your_worker_IP --etcd --controlplane --worker
 ```
 
 #### ✏️ <ins>Step 6:</ins>
 - SSH into the worker-node: `ssh username@your_ip_address`
-- Run`sudo su` & `docker version`
+- Run `sudo su` & `docker version`
 - Run the copied script 
 - Get into the masternode and copy the config file. Its look like this:
 
@@ -156,7 +169,7 @@ $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/ku
 
 
 #### ✏️ <ins>Step 6:</ins>
-- Copy to clipboard or save that config to `.txt` if you need it.
+- Copy to clipboard or save that config if you need it.
 - Paste the config to <ins>**default Kubeconfig**</ins> file connect to the cluster
 - Default Kubeconfig location in:
 
@@ -174,7 +187,7 @@ $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/ku
   2. Windows:
 </div>
 
-> you need to open `C:\Users\%USERNAME%` and make a folder `.kube` and create a file name `config` 
+> you need to open `C:\Users\%USERNAME%` and create a folder `.kube` & a file name `config` 
 
 <div align="center">
     <img src="https://user-images.githubusercontent.com/100349044/222041299-5ed55daf-ec51-4cbe-a973-96cc6b7123a7.png" alt="uvu" width="300">
@@ -197,7 +210,11 @@ $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/ku
 
 </details>
 
+
+
 ---
+
+
 
 # ❗️ Part 2: Install tools to work with K8s
 ### ⚒ Guides:
