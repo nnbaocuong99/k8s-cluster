@@ -112,10 +112,11 @@ $ vagrant up
 - Choose a tag on [rancher/rancher -> `Tags`](https://hub.docker.com/r/rancher/rancher/tags) on Docker Hub
 - Replace `tag` in the command below with the tag, version you've been choosing
 ```
-$ docker run -d --name=rancher-server --restart=unless-stopped -p 80:80 -p 443:443 --privileged rancher/rancher:tag
+docker run -d --name=rancher-server --restart=unless-stopped -p 80:80 -p 443:443 --privileged rancher/rancher:tag
 ```
+
 - Wait until the image successfully pulled then get the container id
-```
+```shell
 $ docker ps
 $ sudo docker ps -aqf "name=containername"`
 
@@ -129,8 +130,8 @@ $ sudo docker ps -aqf "name=containername"`
 #### ✏️ <ins>Step 4:</ins>
 - Access: https://192.168.56.200 or https://192.168.56.200/g 
 - Use terminal, replace `container id` in the command below to get the password
-```
-$ docker logs  container-id  2>&1 | grep "Bootstrap Password:"
+```shell
+docker logs  container-id  2>&1 | grep "Bootstrap Password:"
 ```
 - Copy the <ins>**red-line**</ins> key/code, thats the password. 
 - Login to the Rancher `admin / password`
@@ -151,7 +152,7 @@ $ docker logs  container-id  2>&1 | grep "Bootstrap Password:"
 
 #### ✏️ <ins>Step 5:</ins> 
 - Copy it and add `--address worker_IP` before the `--etcd` and you'll get the final script like this:
-```
+```shell
 $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/kubernetes:/etc/kubernetes -v /var/run:/var/run  rancher/rancher-agent:v2.7-091ed163cc5c53efc50bd1a580cb4e54fa097e82-head --server https://192.168.56.200/ --token p5zcnnpcb5cx8pg89vkk5nkx8gbzltk9wbkmfjp6rsn9n6kf729vjp --ca-checksum 37bde28c0dc9fbd360146f727ff4b1cd254d9f17490789f93775fb2ce15b58da --address your_worker_IP --etcd --controlplane --worker
 ```
 
