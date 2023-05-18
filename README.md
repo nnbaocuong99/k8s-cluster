@@ -71,7 +71,7 @@ https://user-images.githubusercontent.com/100349044/225245044-9004d673-eb69-4ea7
 #### 3. Scripts✨
 - Open 2 terminals each separate folders:
 > This is my directory
-```
+```bash
 C:\Users\spagbo\Desktop\vmb\master>
 C:\Users\spagbo\Desktop\vmb\node>
 ```
@@ -152,7 +152,7 @@ docker logs  container-id  2>&1 | grep "Bootstrap Password:"
 
 #### ✏️ <ins>Step 5:</ins> 
 - Copy it and add `--address worker_IP` before the `--etcd` and you'll get the final script like this:
-```shell
+```bash
 sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/kubernetes:/etc/kubernetes -v /var/run:/var/run  rancher/rancher-agent:v2.7-091ed163cc5c53efc50bd1a580cb4e54fa097e82-head --server https://192.168.56.200/ --token p5zcnnpcb5cx8pg89vkk5nkx8gbzltk9wbkmfjp6rsn9n6kf729vjp --ca-checksum 37bde28c0dc9fbd360146f727ff4b1cd254d9f17490789f93775fb2ce15b58da --address your_worker_IP --etcd --controlplane --worker
 ```
 
@@ -287,7 +287,7 @@ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/kube
 <br>
 
 #### 1. Install ArgocCD on Cluster - Create a namespace✨
-```shell
+```bash
 kubectl create namespace argocd
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 ```
@@ -301,7 +301,7 @@ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/st
 
 #### 2. Expose and port forward✨
 - Change the ArgoCD-server service type to LoadBalancer:
-```shell
+```bash
 kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
 ```
 <div align="center">
@@ -312,7 +312,7 @@ kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}
 
 
 - Run the port forward command to expose the services:
-```shell
+```bash
 kubectl port-forward svc/argocd-server -n argocd 8080:443
 ```
 <div align="center">
@@ -376,7 +376,7 @@ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.pas
 > You totally can use others platform like Github or what ever, but in this case i highly recommend to use Gitlab because the CI/CD tool from Gitlab is extremely easy to use, all you need to do is create a file in the root location of your repository called `.gitlab-ci.yml`. This file is basically a recipe for how Gitlab should execute pipelines.
 - Create a repository, push your content or use the content in this project.
 - If you're already cloned this project but there is no file called `.gitlab-ci.yml` Create one and copy this content below into it. 
-```
+```yaml
 stages:
   - build
 
@@ -493,7 +493,7 @@ build-image:
 - Back to your repo and create 2 files name `Chart.yaml` and `values.yaml`. Take a look on my [Chart](https://github.com/nnbaocuong99/details-k8s-project/blob/main/demo-app/Chart.yaml) and [values](https://github.com/nnbaocuong99/details-k8s-project/blob/main/demo-app/values.yaml) files.
 - Or copy the content and make your own: 
 > Chart.yaml | replace the `name` to what you desired
-```
+```yaml
 apiVersion: v2
 name: demo-app
 description: A Helm chart for Kubernetes
@@ -521,7 +521,7 @@ appVersion: "1.16.0"
 ```
 
 > values.yaml | replace the `repository`, `tag` to what you desired
-```
+```yaml
 # Default values for demo-app.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
