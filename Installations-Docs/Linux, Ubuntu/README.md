@@ -2,36 +2,36 @@
 ### 1. curl✨
 
 - Update the system, get latest stable version:
-```
+```bash
 $ sudo apt update
 $ sudo apt upgrade
 ```
 
 - Type the following `apt command` or `apt-get command`
-```
+```bash
 $ sudo apt install curl
 ```
 
 ### 2. Kubectl✨
 - Update your system:
-```
+```bash
 $ sudo apt-get update -y
 $ sudo apt-get upgrade -y
 ```
 
 - Download the lastest release:
-```
+```bash
 $ curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 ```
 
 - download the checksum file and validate:
-```
+```bash
 $ curl -LO "https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"
 $ echo "$(cat kubectl.sha256)  kubectl" | sha256sum --check
 ```
 
 - Install kubectl
-```
+```bash
 $ sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 $ apt-get install -y kubectl 
 ```
@@ -51,7 +51,7 @@ $ apt-get install -y kubectl
 
 
 - From Apt (Debian/Ubuntu)
-```
+```bash
 $ curl https://baltocdn.com/helm/signing.asc | sudo apt-key add -
 $ sudo apt-get install apt-transport-https --yes
 $ echo "deb https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
@@ -60,7 +60,7 @@ $ sudo apt-get install helm
 ```
 
 - From Script
-```
+```bash
 $ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
 $ chmod 700 get_helm.sh
 $ ./get_helm.sh
