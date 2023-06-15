@@ -72,12 +72,12 @@ https://user-images.githubusercontent.com/100349044/225245044-9004d673-eb69-4ea7
 - Open 2 terminals each separate folders:
 > This is my directory
 ```bash
-C:\Users\spagbo\Desktop\vmb\master>
-C:\Users\spagbo\Desktop\vmb\node>
+$ C:\Users\spagbo\Desktop\vmb\master>
+$ C:\Users\spagbo\Desktop\vmb\node>
 ```
 - Run this command in the terminals you've been opened ealier:
 ```shell
-vagrant up
+$ vagrant up
 ```
 <div align="center">
     <img src="https://user-images.githubusercontent.com/100349044/222043942-022f202d-065d-49fb-a8b4-8d390b9720f4.png" alt="uvu" width="800">
@@ -111,14 +111,14 @@ vagrant up
 #### ✏️ <ins>Step 3:</ins>
 - Choose a tag on [rancher/rancher -> `Tags`](https://hub.docker.com/r/rancher/rancher/tags) on Docker Hub
 - Replace `tag` in the command below with the tag, version you've been choosing
-```
-docker run -d --name=rancher-server --restart=unless-stopped -p 80:80 -p 443:443 --privileged rancher/rancher:tag
+```bash
+$ docker run -d --name=rancher-server --restart=unless-stopped -p 80:80 -p 443:443 --privileged rancher/rancher:tag
 ```
 
 - Wait until the image successfully pulled then get the container id
-```shell
-docker ps
-sudo docker ps -aqf "name=containername"`
+```bash
+$ docker ps
+$ sudo docker ps -aqf "name=containername"`
 
 ----------------
 # explaination
@@ -130,8 +130,8 @@ sudo docker ps -aqf "name=containername"`
 #### ✏️ <ins>Step 4:</ins>
 - Access: https://192.168.56.200 or https://192.168.56.200/g 
 - Use terminal, replace `container id` in the command below to get the password
-```shell
-docker logs  container-id  2>&1 | grep "Bootstrap Password:"
+```bash
+$ docker logs  container-id  2>&1 | grep "Bootstrap Password:"
 ```
 - Copy the <ins>**red-line**</ins> key/code, thats the password. 
 - Login to the Rancher `admin / password`
@@ -153,7 +153,7 @@ docker logs  container-id  2>&1 | grep "Bootstrap Password:"
 #### ✏️ <ins>Step 5:</ins> 
 - Copy it and add `--address worker_IP` before the `--etcd` and you'll get the final script like this:
 ```bash
-sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/kubernetes:/etc/kubernetes -v /var/run:/var/run  rancher/rancher-agent:v2.7-091ed163cc5c53efc50bd1a580cb4e54fa097e82-head --server https://192.168.56.200/ --token p5zcnnpcb5cx8pg89vkk5nkx8gbzltk9wbkmfjp6rsn9n6kf729vjp --ca-checksum 37bde28c0dc9fbd360146f727ff4b1cd254d9f17490789f93775fb2ce15b58da --address your_worker_IP --etcd --controlplane --worker
+$ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/kubernetes:/etc/kubernetes -v /var/run:/var/run  rancher/rancher-agent:v2.7-091ed163cc5c53efc50bd1a580cb4e54fa097e82-head --server https://192.168.56.200/ --token p5zcnnpcb5cx8pg89vkk5nkx8gbzltk9wbkmfjp6rsn9n6kf729vjp --ca-checksum 37bde28c0dc9fbd360146f727ff4b1cd254d9f17490789f93775fb2ce15b58da --address your_worker_IP --etcd --controlplane --worker
 ```
 
 #### ✏️ <ins>Step 6:</ins>
@@ -288,8 +288,8 @@ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/kube
 
 #### 1. Install ArgocCD on Cluster - Create a namespace✨
 ```bash
-kubectl create namespace argocd
-kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+$ kubectl create namespace argocd
+$ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 ```
 
 <div align="center">
@@ -302,7 +302,7 @@ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/st
 #### 2. Expose and port forward✨
 - Change the ArgoCD-server service type to LoadBalancer:
 ```bash
-kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
+$ kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
 ```
 <div align="center">
     <img src="https://user-images.githubusercontent.com/100349044/223318334-d9d6ba33-d86a-4f4f-9bb8-0fd26dfe0477.png" alt="uvu" width="800">
@@ -313,7 +313,7 @@ kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}
 
 - Run the port forward command to expose the services:
 ```bash
-kubectl port-forward svc/argocd-server -n argocd 8080:443
+$ kubectl port-forward svc/argocd-server -n argocd 8080:443
 ```
 <div align="center">
     <img src="https://user-images.githubusercontent.com/100349044/223347531-b88c2478-a3e7-422c-bb2c-fcffa8de5ad2.png" alt="uvu" width="500">
@@ -333,7 +333,7 @@ kubectl port-forward svc/argocd-server -n argocd 8080:443
 
 - Back to local terminal and get argocd password (**based64** installed recommend) by run the command
 ```shell
-kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
+$ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
 ```
 
 <div align="center">
