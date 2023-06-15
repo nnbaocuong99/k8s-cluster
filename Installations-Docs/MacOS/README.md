@@ -1,7 +1,7 @@
 ## ⚒ What we should install to work with k8s on MacOS:
 - <ins>*On MacOS there is a package manager similar to Scoop or Chocolatey,... on Windows called Homebrew and highly recommended by so many users*</ins>
 - You can simply install it on your MacOS by run this command:
-```
+```bash
 $ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 <div align="center">
@@ -15,13 +15,13 @@ $ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/
 
 ### <ins>1. curl</ins>
 - Run the command below in the terminal:
-```
+```bash
 $ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" < /dev/null 2> /dev/null
 ```
 - If a password is required after running the command enter your Mac's user password to continue. Wait until the installation finish. 
 
 - Run the command below in the terminal:
-```
+```bash
 $ brew install curl
 ```
 <div align="center">
@@ -35,7 +35,7 @@ $ brew install curl
 ### 2. Kubectl✨
 
 - Run the installation command:
-```
+```bash
 $ brew install kubectl
 $ brew install kubernetes-cli
 ```
@@ -43,23 +43,23 @@ $ brew install kubernetes-cli
 > or
 
 - Download the latest release:
-```
+```bash
 $ curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/darwin/amd64/kubectl"
 ```
 
 - Downlad the checksum & validate:
-```
+```bash
 $ curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/darwin/amd64/kubectl.sha256"
 $ echo "$(cat kubectl.sha256)  kubectl" | shasum -a 256 --check
 ``` 
 
 - Make the kubectl binary executable.
-```
+```bash
 $ chmod +x ./kubectl
 ```
 
 - Move the kubectl binary to a file location on your system PATH.
-```
+```bash
 $ sudo mv ./kubectl /usr/local/bin/kubectl
 $ sudo chown root: /usr/local/bin/kubectl
 ```
@@ -72,7 +72,7 @@ $ sudo chown root: /usr/local/bin/kubectl
 
 ### 3. Helm✨
 - Install Helm with Homebrew:
-```
+```bash
 $ brew install helm
 $ brew install kubernetes-helm
 ```
@@ -83,14 +83,14 @@ $ brew install kubernetes-helm
 </div>
 
 - From script: 
-```
+```bash
 $ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
 $ chmod 700 get_helm.sh
 $ ./get_helm.sh
 ```
 
 - From Source (also for Linux)
-```
+```bash
 $ git clone https://github.com/helm/helm.git
 $ cd helm
 $ make
