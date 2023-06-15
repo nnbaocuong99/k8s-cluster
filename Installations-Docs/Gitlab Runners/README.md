@@ -17,12 +17,12 @@
 ## On Linux, Ubuntu✨
 > With me im using this way, in addition to have another way is [manual install](https://docs.gitlab.com/runner/install/linux-manually.html)
 1. Add the official GitLab repository:
-```
+```bash
 $ curl -L "https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.deb.sh" | sudo bash
 ```
 
 2. Install the latest version of GitLab Runner, or skip to the next step to install a specific version:
-```
+```bash
 $ sudo apt-get install gitlab-runner
 ```
 
@@ -33,7 +33,7 @@ $ sudo apt-get install gitlab-runner
 1. Download the binary:
 
 2. For Intel - amd / Apple Silicon - arm
-```
+```bash
 $ sudo curl --output /usr/local/bin/gitlab-runner "https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-darwin-amd64"
 $ sudo curl --output /usr/local/bin/gitlab-runner "https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-darwin-arm64"
 ```
@@ -41,7 +41,7 @@ $ sudo curl --output /usr/local/bin/gitlab-runner "https://gitlab-runner-downloa
 You can download a binary for every available version as described in Bleeding Edge - download any other tagged release.
 
 3. Permissions to execute:
-```
+```bash
 $ sudo chmod +x /usr/local/bin/gitlab-runner
 ```
 
@@ -49,10 +49,10 @@ $ sudo chmod +x /usr/local/bin/gitlab-runner
 
 
 5. Install GitLab Runner service and start it:
-```
-cd ~
-gitlab-runner install
-gitlab-runner start
+```bash
+$ cd ~
+$ gitlab-runner install
+$ gitlab-runner start
 ```
 
 6. Reboot your system.
