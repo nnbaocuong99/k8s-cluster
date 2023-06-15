@@ -15,7 +15,7 @@
 ## On Windows✨
 1. Open a PowerShell or Terminal in `C:\GitLab-Runner`
 2. Run command:
-```
+```bash
 $ .\gitlab-runner.exe register
 ```
 3. Enter GitLab instance URL | `https://gitlab.com/`
@@ -25,7 +25,7 @@ $ .\gitlab-runner.exe register
 
 ## On Linux, Ubuntu✨
 1. Run command:
-```
+```bash
 $ sudo gitlab-runner register
 ```
 2. Enter GitLab instance URL | `https://gitlab.com/`
@@ -38,7 +38,7 @@ $ sudo gitlab-runner register
 > Install [Docker](https://docs.docker.com/desktop/install/mac-install/) before registering on macOS.
 
 1. Run the following command:
-```
+```bash
 $ gitlab-runner register
 ```
 2. Enter GitLab instance URL | `https://gitlab.com/`
