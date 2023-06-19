@@ -8,32 +8,29 @@ https://user-images.githubusercontent.com/100349044/225245044-9004d673-eb69-4ea7
 ---
 
 
-# ❗️ Introducing
+## ❗️ Introducing
 
 ### ✨ About this Repository / Template / Project:
-- <ins>***Sumary***</ins>: This is my *Report,Research Repo/Project* about how to install k8s cluster and CI/CD Pipeline for a Java project. This also a good template for a beginners (i think so xD). BTW, huge thanks to my squad: [@TruongLM](https://github.com/lmt2407), [@QuocNVC](https://github.com/quoc9x) for the help 😍
-- <ins>***Firstly***</ins>, imo this will be sufficient requirements for what u will need to learn and do. / also really wanna hear others opinions abt what im missing, or not listed in this project. 
-- <ins>***Secondly***</ins>, heading to the point this is basic CI/CD template project for users who new to docker and starting to learn about backend and CI/CD pipline. This project included: k8s, Docker, helm, Vmbox and vagrant script.
-- <ins>***Last***</ins>, many thanks for reading but one more thing this is template. Remember create your own stuff, DO NOT try to stalk, copy or join into other projects and say thats yours. Thats suck and only losers do it
+- <ins>***Sumary***</ins>:
+  - This is my *Report,Research Repo/Project* about how to install k8s cluster and CI/CD Pipeline for a Java project. This also a good template for a beginners (i think so xD). BTW, huge thanks to [@TruongLM](https://github.com/lmt2407) for the help 😍
+  - <ins>***Firstly***</ins>, imo this will be sufficient requirements for what u will need to learn and do. / also really wanna hear others opinions abt what im missing, or not listed in this project. 
+  - <ins>***Secondly***</ins>, heading to the point this is basic CI/CD template project for users who new to docker and starting to learn about backend and CI/CD pipline. This project included: k8s, Docker, helm, Vmbox and vagrant script.
+  - <ins>***Last***</ins>, many thanks for reading but one more thing this is template. Remember create your own stuff, DO NOT try to stalk, copy or join into other projects and say thats yours. Thats suck and only losers do it
 
-
-
-### ✨ About things you should know before we start:
 - Tools:
-> - [Kubernetes](https://kubernetes.io) (K8s), [K3s](https://k3s.io), RKE (checking the logstack by ELK)
-> - [Rancher](https://rancher.com/docs/)
-> - [Apache](https://maven.apache.org)
-> - [Docker](https://www.docker.com)
-> - [Helm](https://helm.sh) (chart and template yaml files included)
-> - [ArgoCD](https://argo-cd.readthedocs.io/en/stable/)
-> - [Vmbox](https://www.virtualbox.org) and my vagrant scripts to setup
+  - [Kubernetes](https://kubernetes.io) (K8s), [K3s](https://k3s.io), RKE (checking the logstack by ELK)
+  - [Rancher](https://rancher.com/docs/)
+  - [Apache](https://maven.apache.org)
+  - [Docker](https://www.docker.com)
+  - [Helm](https://helm.sh) (chart and template yaml files included)
+  - [ArgoCD](https://argo-cd.readthedocs.io/en/stable/)
+  - [Vmbox](https://www.virtualbox.org) and my vagrant scripts to setup
 
 - Updating:
-> - [Figma](https://github.com/nnbaocuong99/details-k8s-project/tree/main/figma) (WIP): Roadmap
-> - [Error/Re-search](https://github.com/nnbaocuong99/details-k8s-project/tree/main/error-report): Error while doing the project
+  - [Figma](https://github.com/nnbaocuong99/details-k8s-project/tree/main/figma) (WIP): Roadmap
+  - [Error/Re-search](https://github.com/nnbaocuong99/details-k8s-project/tree/main/error-report): Error while doing the project
 
-- Notes:
-> 🟠 - Important, this is the main content
+- Notes: **Category got the 🟠 mark are important, this is the main content.**
 
 
 
@@ -41,17 +38,12 @@ https://user-images.githubusercontent.com/100349044/225245044-9004d673-eb69-4ea7
 
 
 
-# ❗️ Part 1: Setup VMBox & Cluster
+## ❗️ Part 1: Setup VMBox & Cluster
 ### ⚒ Setup
 <details>
 <summary><samp>&#9776;</samp> Click to expand </summary>
 
 <br>
-
-
-
-
-
 
 #### 1. Install✨
 - [Git](https://git-scm.com/)
@@ -88,11 +80,6 @@ $ vagrant up
 <br>
 
 </details>
-
-
-
-
-
 
 ### ⚒ 🟠 Install Rancher & Setup K8s cluster
 <details>
@@ -207,17 +194,15 @@ $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/ku
     <br>
 </div>
 
+---
+
 <br>
 
 </details>
 
+<br>
 
-
----
-
-
-
-# ❗️ Part 2: Install tools to work with K8s
+## ❗️ Part 2: Install tools to work with K8s
 ### ⚒ Guides:
 <details>
 <summary><samp>&#9776;</samp> Click to expand </summary>
@@ -258,13 +243,15 @@ $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/ku
 - [Windows](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/Windows)
 - [MacOS](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/MacOS)
 
+---
+
 <br>
 
 </details>
 
----
+<br>
 
-# ❗️ part 3: Install ArgoCD and Setup Pipelines
+## ❗️ Part 3: Install ArgoCD and Setup Pipelines
 ### ⚒ Install ArgoCD-CLI:
 <details>
 <summary><samp>&#9776;</samp> Click to expand </summary>
@@ -351,14 +338,15 @@ $ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.p
     <br>
 </div>
 
+---
+
 <br>
 
 </details>
 
----
+<br>
 
-
-# ❗️ part 4: CI/CD 🟠
+## ❗️ Part 4: CI/CD 🟠
 > <ins>**First of all**</ins> , check [this](https://www.geeksforgeeks.org/what-is-ci-cd/) to get to know more about CI/CD before you start it
 #### *In this part I'll show my result and how to setup also finish the CI/CD project. Lets go!*
 
@@ -655,12 +643,32 @@ affinity: {}
 
 </details>
 
+<br>
+
+## ❗️ Part 5: [Create Database and how to work with it on k8s](https://github.com/nnbaocuong99/Database) (WIP - Coming soon)
+
+
+<br>
+
 ---
+
+<br>
 
 ***If you've arrived this far, thank you for taking time out of your day to, read these guides, my project. And the most important thing is good luck on your CI/CD pipelines!***
 
 ✨ *Best wishes*,
 𝓃𝓃𝒷𝒸,
+
+
+
+
+
+
+
+
+
+
+
 
 <!--
 ![image](https://user-images.githubusercontent.com/100349044/225504635-192335ff-7f10-4349-9cb5-00482fb79611.png)
