@@ -289,6 +289,33 @@ $ kubectl port-forward svc/argocd-server -n argocd 8080:443
 </div>
 
 
+> **Warning** 
+
+You can choose between 2 easier way for you is
+1. Change from `port-forward` to `node-port` (you can do a research because im not gonna using it in this project)
+
+2. Use the port to get direct into it with `node-IP` *in this case this is gonna be*
+- Run the following command to get your port:
+```ruby
+kubectl get service -n argocd
+```
+
+<div align="center">
+    <img src="https://github.com/nnbaocuong99/k8s/assets/100349044/02c2de93-1373-417a-b0c4-6b038e261af1" alt="uvu" width="700">
+    <br>
+    <br>
+</div>
+
+- In this case, my result - the port is: `32294` copy it and merge with your node IP: 
+  
+![image](https://github.com/nnbaocuong99/k8s/assets/100349044/540ce773-be5a-4798-8b57-37a5d2208210)
+
+```html
+https://192.168.56.201:32294/login?return_url=https%3A%2F%2F192.168.56.201%3A32294%2Fapplications
+```
+
+
+
 #### 3. Access✨
 - Once the command exposed, you can access to https://localhost:8080 and it will require to login with `admin` and `password`
 <div align="center">
