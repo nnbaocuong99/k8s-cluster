@@ -39,9 +39,10 @@ https://user-images.githubusercontent.com/100349044/225245044-9004d673-eb69-4ea7
 
 
 ## ❗️ Part 1: Setup VMBox & Cluster
-### ⚒ Setup
 <details>
 <summary><samp>&#9776;</samp> Click to expand </summary>
+
+### ⚒ Setup
 
 #### 1. Install✨
 - [Git](https://git-scm.com/)
@@ -195,11 +196,10 @@ $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/ku
 <br>
 
 ## ❗️ Part 2: Install tools to work with K8s
-### ⚒ Guides:
 <details>
 <summary><samp>&#9776;</samp> Click to expand </summary>
 
-<br>
+### ⚒ Guides:
 
 #### 1. Tools
 - There are a bunch of things I'm using and ofc, you should install it too. They're:
@@ -219,13 +219,8 @@ $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/ku
 
 <br>
 
-</details>
 
 ### ⚒ Installation:
-<details>
-<summary><samp>&#9776;</samp> Click to expand </summary>
-
-<br>
 
 #### 1. Sumary:
 - Every tool has its own way to install. Based on what tool you're choosing and what OS you're using, you must choose between using a binary file or using commands to install it.
@@ -244,11 +239,10 @@ $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/ku
 <br>
 
 ## ❗️ Part 3: Install ArgoCD and Setup Pipelines
-### ⚒ Install ArgoCD-CLI:
 <details>
 <summary><samp>&#9776;</samp> Click to expand </summary>
 
-<br>
+### ⚒ Install ArgoCD-CLI:
 
 - Base on your OS and follow the commands guide
   - ***Windows***: Use `PowerShell` or `Terminal` and follow [this](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/ArgoCD-CLI)
@@ -257,13 +251,7 @@ $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/ku
 
 <br>
 
-</details>
-
 ### ⚒ Setup ArgoCD 🟠
-<details>
-<summary><samp>&#9776;</samp> Click to expand </summary>
-
-<br>
 
 #### 1. Install ArgocCD on Cluster - Create a namespace✨
 ```bash
@@ -342,12 +330,10 @@ $ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.p
 > <ins>**First of all**</ins> , check [this](https://www.geeksforgeeks.org/what-is-ci-cd/) to get to know more about CI/CD before you start it
 #### *In this part I'll show my result and how to setup also finish the CI/CD project. Lets go!*
 
-
-### ⚒ CI
 <details>
 <summary><samp>&#9776;</samp> Click to expand </summary>
 
-<br>
+### ⚒ CI
 
 #### ✏️ <ins>Step 1:</ins>
 ***Setup and account***
@@ -448,11 +434,7 @@ build-image:
 
 <br>
 
-</details>
-
 ### ⚒ CD
-<details>
-<summary><samp>&#9776;</samp> Click to expand </summary>
 
 <br>
 
