@@ -43,8 +43,6 @@ https://user-images.githubusercontent.com/100349044/225245044-9004d673-eb69-4ea7
 <details>
 <summary><samp>&#9776;</samp> Click to expand </summary>
 
-<br>
-
 #### 1. Install✨
 - [Git](https://git-scm.com/)
 - [curl](https://curl.se/)
@@ -79,13 +77,7 @@ $ vagrant up
 
 <br>
 
-</details>
-
 ### ⚒ 🟠 Install Rancher & Setup K8s cluster
-<details>
-<summary><samp>&#9776;</samp> Click to expand </summary>
-
-<br>
 
 #### ✏️ <ins>Step 1:</ins>
 - Get yourself a terminal and ssh into the master-node `ssh username@your_ip_address` when its successfully started
@@ -121,7 +113,7 @@ $ sudo docker ps -aqf "name=containername"`
 $ docker logs  container-id  2>&1 | grep "Bootstrap Password:"
 ```
 - Copy the <ins>**red-line**</ins> key/code, thats the password. 
-- Login to the Rancher `admin / password`
+- Login to the Rancher, in this case: `admin / J-L1fXH0OwibH60HlcVv`
 - Choose the <ins>**Custom**</ins> mode
 
 <div align="center">
