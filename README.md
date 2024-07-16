@@ -1,13 +1,13 @@
 # ❗️ Introducing
-### ✨ About this repo:
-#### <ins>***Sumary***</ins>:
+
+### ✨<ins>***1. Sumary***</ins>:
 - This is my research report and project template on how to install a Kubernetes (k8s) cluster and set up a CI/CD pipeline for a Java project. It’s designed with beginners in mind, especially those who are new to Docker and want to learn about backend development and CI/CD pipelines. 
 - I’d also love to hear others’ opinions on what might be missing or not listed in this project. Remember, though, that this is just a template. Feel free to create your own unique content pls don’t stalk, copy, or claim someone else’s work as your own. Let’s avoid that kind of behavior! 😊
 - I’d like to express my sincere thanks to [@QuocNVC](https://github.com/quoc9x) and [@TruongLM](https://github.com/lmt2407) for their invaluable assistance. It’s a pleasure to collaborate with such talented individuals on this project
 
 <br>
 
-#### <ins>***Tools, things I'm using for this project***</ins>:
+### ✨<ins>***2. Tools, things I'm using for this project***</ins>:
 | Name           | Official Website                           | Note                                                                |
 |:--------------:|:-------------------------------------------|:--------------------------------------------------------------------|
 | **Kubernetes** | https://kubernetes.io                      | also need [K3s](https://k3s.io), RKE (checking the logstack by ELK) |
@@ -20,15 +20,15 @@
 
 <br>
 
-| OS               | Package Manager     |  Official Website                                                 |
-|:----------------:|:-------------------:|:------------------------------------------------------------------|
-| Windows          | Winget, Chocolately | https://github.com/microsoft/winget-cli | https://chocolatey.org/ |
-| MacOS            | Homebrew            | https://brew.sh/                                                  |
-| Ubuntu (v16.04)  | APT                 |                                                                   |
+| OS               | Package Manager         |  Official Website                                                    |
+|:----------------:|:------------------------|:---------------------------------------------------------------------|
+| Windows          | Winget <br> Chocolately | https://github.com/microsoft/winget-cli <br> https://chocolatey.org/ |
+| MacOS            | Homebrew                | https://brew.sh/                                                     |
+| Ubuntu (v16.04)  |                         |                                                                      |
 
 <br>
 
-#### <ins>***Updating: (This project has been discontinued.)***</ins>:
+### ✨<ins>***3. Updating features: (This project has been discontinued.)***</ins>:
 - [Mindmap](https://github.com/nnbaocuong99/details-k8s-project/tree/main/figma) for this project (WIP)
 - [Knowns error](https://github.com/nnbaocuong99/details-k8s-project/tree/main/error-report): Error while doing the project will be listed here. Feel free to submit your problem at [Issues](https://github.com/nnbaocuong99/k8s/issues) tab.
 
@@ -37,25 +37,32 @@
 <br>
 
 # ❗️ Guides step by step
-
-### Part 1: Setup VMBox & Cluster
-
-### ⚒ Setup
-
-#### 1. Install✨
+### ✨ Setup VMBox & Cluster
+#### 1. Install:
 - [Git](https://git-scm.com/)
 - [curl](https://curl.se/)
-- [Oracle VM VirtualBox](https://www.virtualbox.org/wiki/Downloads) <sup>recommend v6.0. (its easier to setup and provider)</sup>
-- [Vagrant by HashiCorp](https://developer.hashicorp.com/vagrant/downloads) 
-- On:
-  - Window: [Scoop](https://scoop.sh/) <sup>recommend</sup>, [Chocolatey](https://chocolatey.org/) or [winget](https://learn.microsoft.com/en-us/windows/package-manager/winget/)
-  - MacOS: [Homebew](https://brew.sh/)
+- [VirtualBox](https://www.virtualbox.org/wiki/Downloads) <sup>recommend v6.0. (its easier to setup and provider)</sup>
+- [Vagrant](https://developer.hashicorp.com/vagrant/downloads) 
+- Package Manager: Based on your OS check [this](https://github.com/nnbaocuong99/k8s/edit/main/README.md#2-tools-things-im-using-for-this-project) for more
 
-#### 2. Create virtual machines✨ 
-- Download 2 files below, re-name to `Vagrantfile`
-- Put each into 2 different folders:
-   - [Vagrant-master](https://github.com/nnbaocuong99/details-k8s-project/blob/main/document/vagrantfile-master) for the <ins>*master node*</ins>
-   - [Vagrant-worker](https://github.com/nnbaocuong99/details-k8s-project/blob/main/document/Vagrantfile-worker) for the <ins>*worker node*</ins>
+#### 2. Create virtual machines:
+- In in [document](https://github.com/nnbaocuong99/k8s/tree/main/document) folder download 2 script files named <mark>`Vagrantfile-masternode`</mark> and <mark>`Vagrantfile-workernode`</mark>.
+- You totally can create yourself one, copy my scripts into yours if you wanna more features for your VM.
+
+<br>
+
+> [!NOTE]
+> - You can modify the script before being used, like `IP address`, `VMame`, `Password`,...etc
+> - Remember to put your files **2 separate folders**
+> - Remember to re-name them and change the file type to <mark>`Vagrantfile`</mark>. If your file look like below, thats correct.
+
+<div align="center">
+    <img src="https://github.com/user-attachments/assets/3660636e-4882-421c-b44d-5debcd681028" alt="uvu" width="200">
+    <br>
+    <br>
+</div>
+
+
 
 #### 3. Scripts✨
 - Open 2 terminals each separate folders:
