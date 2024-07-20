@@ -37,7 +37,7 @@
 <br>
 
 # ❗️ Guides step by step
-### ✨ Setup VMBox & Cluster
+### ✨ <ins>Setup VMBox & Cluster</ins>
 #### 1. Install:
 - [Git](https://git-scm.com/)
 - [curl](https://curl.se/)
@@ -46,7 +46,7 @@
 - Package Manager: Based on your OS check [this](https://github.com/nnbaocuong99/k8s/edit/main/README.md#2-tools-things-im-using-for-this-project) for more
 
 #### 2. Create virtual machines:
-- In in [document](https://github.com/nnbaocuong99/k8s/tree/main/document) folder download 2 script files named <mark>`Vagrantfile-masternode`</mark> and <mark>`Vagrantfile-workernode`</mark>.
+- In [document](https://github.com/nnbaocuong99/k8s/tree/main/document) folder download 2 script files named <mark>`Vagrantfile-masternode`</mark> and <mark>`Vagrantfile-workernode`</mark>.
 - You totally can create yourself one, copy my scripts into yours if you wanna more features for your VM.
 
 <br>
@@ -62,17 +62,8 @@
     <br>
 </div>
 
-
-
-#### 3. Scripts✨
-- Open 2 terminals each separate folders:
-> This is my directory
-```bash
-$ C:\Users\spagbo\Desktop\vmb\master>
-$ C:\Users\spagbo\Desktop\vmb\node>
-```
-- Run this command in the terminals you've been opened ealier:
-```shell
+- Open 2 terminals each separate folders then run the command below. Until your VM finished these setup steps, you'll that they're running like in the image below.
+```json
 $ vagrant up
 ```
 <div align="center">
@@ -83,10 +74,21 @@ $ vagrant up
 
 <br>
 
-### ⚒ 🟠 Install Rancher & Setup K8s cluster
+### ✨ <ins>Setup VMBox & Cluster</ins>
 
-#### ✏️ <ins>Step 1:</ins>
-- Get yourself a terminal and ssh into the master-node `ssh username@your_ip_address` when its successfully started
+> [!caution]
+> - Please, always use the root user at first.
+>   ```json
+>   $ sudo su
+>   ```
+> - Your `username` and `ip_address` based on what and how you modify your `Vagrantfile`. (check [this](https://github.com/nnbaocuong99/k8s/edit/main/README.md#2-create-virtual-machines) for more.)
+> - You can use any Rancher version (tags) to setup your cluster, search thru error code if you get any.
+
+#### <ins>1:</ins>
+- SSH into the master-node with this command 
+```json
+ssh username@your_ip_address
+```
 - Linux and MacOS has their own terminals, On Windows you can use [PowerShell](https://learn.microsoft.com/en-us/powershell/) or basically just [Terminal](https://apps.microsoft.com/store/detail/windows-terminal/)
 
 #### ✏️ <ins>Step 2:</ins>
