@@ -3,7 +3,7 @@
 ### ✨<ins>***1. Sumary***</ins>:
 - This is my research report and project template on how to install a Kubernetes (k8s) cluster and set up a CI/CD pipeline for a Java project. It’s designed with beginners in mind, especially those who are new to Docker and want to learn about backend development and CI/CD pipelines. 
 - I’d also love to hear others’ opinions on what might be missing or not listed in this project. Remember, though, that this is just a template. Feel free to create your own unique content pls don’t stalk, copy, or claim someone else’s work as your own. Let’s avoid that kind of behavior! 😊
-- I’d like to express my sincere thanks to [@QuocNVC](https://github.com/quoc9x) and [@TruongLM](https://github.com/lmt2407) for their invaluable assistance. It’s a pleasure to collaborate with such talented individuals on this project
+- I’d like to express my sincere thanks to [@QuocNVC](https://github.com/quoc9x) and [@TruongLM](https://github.com/lmt2407) for their invaluable assistance. It’s a pleasure to collaborate with such talented individuals on this project.
 
 <br>
 
@@ -53,11 +53,11 @@
 
 > [!NOTE]
 > - You can modify the script before being used, like `IP address`, `VMame`, `Password`,...etc
-> - Remember to put your files **2 separate folders**
-> - Remember to re-name them and change the file type to <mark>`Vagrantfile`</mark>. If your file look like below, thats correct.
+> - Remember to put your files **2 separate folders**.
+> - Remember to re-name them and change the file type to <mark>`Vagrantfile`</mark>.
 
-<div align="center">
-    <img src="https://github.com/user-attachments/assets/3660636e-4882-421c-b44d-5debcd681028" alt="uvu" width="200">
+<div align="center"> 
+    <img src="https://github.com/user-attachments/assets/3660636e-4882-421c-b44d-5debcd681028" alt="uvu" width="250"> </br> <sup>Vagrantfile on Windows will look like this</sup>
     <br>
     <br>
 </div>
@@ -67,7 +67,7 @@
 $ vagrant up
 ```
 <div align="center">
-    <img src="https://user-images.githubusercontent.com/100349044/222043942-022f202d-065d-49fb-a8b4-8d390b9720f4.png" alt="uvu" width="800">
+    <img src="https://user-images.githubusercontent.com/100349044/222043942-022f202d-065d-49fb-a8b4-8d390b9720f4.png" alt="uvu" width="800"> <!--</br> <sup>Pic.2 Result of 2 VMs</sup>-->
     <br>
     <br>
 </div>
@@ -81,41 +81,34 @@ $ vagrant up
 >   ```json
 >   $ sudo su
 >   ```
-> - Your `username` and `ip_address` based on what and how you modify your `Vagrantfile`. (check [this](https://github.com/nnbaocuong99/k8s/edit/main/README.md#2-create-virtual-machines) for more.)
-> - You can use any Rancher version (tags) to setup your cluster, search thru error code if you get any.
+> - Your `username` and `ip_address` based on how you modify your `Vagrantfile`. (check [this](https://github.com/nnbaocuong99/k8s/edit/main/README.md#2-create-virtual-machines) for more).
+> - Remember to double-check if Docker has been installed yet.
 
 #### <ins>1:</ins>
-- SSH into the master-node with this command 
+SSH into the `master-node`
 ```json
-ssh username@your_ip_address
+$ ssh username@your_ip_address
 ```
-- Linux and MacOS has their own terminals, On Windows you can use [PowerShell](https://learn.microsoft.com/en-us/powershell/) or basically just [Terminal](https://apps.microsoft.com/store/detail/windows-terminal/)
 
-#### ✏️ <ins>Step 2:</ins>
-- Switch to the root user: `sudo su` 
-- Check if your Docker has been installed yet: `docker version` 
-
-#### ✏️ <ins>Step 3:</ins>
-- Choose a tag on [rancher/rancher -> `Tags`](https://hub.docker.com/r/rancher/rancher/tags) on Docker Hub
-- Replace `tag` in the command below with the tag, version you've been choosing
-```bash
+#### <ins>2:</ins>
+- Based on your OS, choose your Rancher version on [rancher/rancher `Tags`](https://hub.docker.com/r/rancher/rancher/tags) <sup>(take a look on [version guides](https://github.com/nnbaocuong99/k8s/tree/main/version%20guides) here if you don't know how to)</sup>
+- Copy and replace `tag` with the version you choose below:
+```json
 $ docker run -d --name=rancher-server --restart=unless-stopped -p 80:80 -p 443:443 --privileged rancher/rancher:tag
 ```
 
-- Wait until the image successfully pulled then get the container id
-```bash
+- Wait and get the container id after the image successfully pulled.
+```json
 $ docker ps
 $ sudo docker ps -aqf "name=containername"`
-
-----------------
-# explaination
--a: all.       | Works even if your container is not running.
--q: quietmode. | Output only display numeric container IDs.
--f: filter.    | Filter output based on conditions provided.
 ```
 
-#### ✏️ <ins>Step 4:</ins>
-- Access: https://192.168.56.200 or https://192.168.56.200/g 
+#### <ins>3:</ins>
+- Navigate to the `IP Address` of the `masternode` and `workernode` via browser
+  ```
+  #in this case
+  https://192.168.56.200 or https://192.168.56.200/g
+  ```
 - Use terminal, replace `container id` in the command below to get the password
 ```bash
 $ docker logs  container-id  2>&1 | grep "Bootstrap Password:"
@@ -670,6 +663,13 @@ affinity: {}
 
 
 <!--
+> Explaination
+> - `-a:` all.     | Works even if your container is not running.
+> - -q: quietmode. | Output only display numeric container IDs.
+> - -f: filter.    | Filter output based on conditions provided.
+
+[PowerShell](https://learn.microsoft.com/en-us/powershell/) or basically just [Terminal](https://apps.microsoft.com/store/detail/windows-terminal/)
+
 <h1 align="center"> ✨ how to install k8s step by step </h1> 
 https://user-images.githubusercontent.com/100349044/225245044-9004d673-eb69-4ea7-ae61-7d3e5cc1f39b.mp4
 <p align='right'> © nnbaocuong99 - Spagbo - https://bio.link/spagbo </p>
