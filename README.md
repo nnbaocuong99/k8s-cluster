@@ -97,19 +97,21 @@ $ ssh username@your_ip_address
 $ docker run -d --name=rancher-server --restart=unless-stopped -p 80:80 -p 443:443 --privileged rancher/rancher:tag
 ```
 
-- Wait and get the container id after the image successfully pulled.
+- Wait and get the container id after the image successfully pulled by running this command
 ```json
 $ docker ps
 $ sudo docker ps -aqf "name=containername"`
 ```
 
 #### <ins>3:</ins>
-- Navigate to the `IP Address` of the `masternode` and `workernode` via browser
+- Navigate to the `IP Address` of the `masternode`
+  ```yaml
+  # to access masternode in this case
+  https://192.168.56.200
+  https://192.168.56.200/g (recommend)
   ```
-  #in this case
-  https://192.168.56.200 or https://192.168.56.200/g
-  ```
-- Use terminal, replace `container id` in the command below to get the password
+  
+- Replace `container id` in the command below with the one you just got.
 ```bash
 $ docker logs  container-id  2>&1 | grep "Bootstrap Password:"
 ```
