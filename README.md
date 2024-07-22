@@ -52,9 +52,9 @@
 <br>
 
 > [!NOTE]
-> - You can modify the script before being used, like `IP address`, `VMame`, `Password`,...etc
-> - Remember to put your files **2 separate folders**.
-> - Remember to re-name them and change the file type to <mark>`Vagrantfile`</mark>.
+> - Take your own risk before using if you modify my script. the only thing in the script i modify is just sth kinda: `IP address`, `VMame`, `Password`,...etc
+> - Remember to put your files in **2 separate folders**.
+> - Remember to re-name them and change the file type to <mark>`Vagrantfile`</mark> not the <mark>`.txt`</mark> or any.
 
 <div align="center"> 
     <img src="https://github.com/user-attachments/assets/3660636e-4882-421c-b44d-5debcd681028" alt="uvu" width="250"> </br> <sup>Vagrantfile on Windows will look like this</sup>
@@ -63,9 +63,9 @@
 </div>
 
 - Open 2 terminals each separate folders then run the command below. Until your VM finished these setup steps, you'll that they're running like in the image below.
-```json
-$ vagrant up
-```
+  ```json
+  $ vagrant up
+  ```
 <div align="center">
     <img src="https://user-images.githubusercontent.com/100349044/222043942-022f202d-065d-49fb-a8b4-8d390b9720f4.png" alt="uvu" width="800"> <!--</br> <sup>Pic.2 Result of 2 VMs</sup>-->
     <br>
@@ -83,25 +83,32 @@ $ vagrant up
 >   ```
 > - Your `username` and `ip_address` based on how you modify your `Vagrantfile`. (check [this](https://github.com/nnbaocuong99/k8s/edit/main/README.md#2-create-virtual-machines) for more).
 > - Remember to double-check if Docker has been installed yet.
+>   ```json
+>   $ docker version
+>   ```
 
 #### <ins>1:</ins>
-SSH into the `master-node`
-```json
-$ ssh username@your_ip_address
-```
+- SSH into the `master-node`
+  ```json
+  $ ssh username@your_ip_address
+  ```
 
 #### <ins>2:</ins>
-- Based on your OS, choose your Rancher version on [rancher/rancher `Tags`](https://hub.docker.com/r/rancher/rancher/tags) <sup>(take a look on [version guides](https://github.com/nnbaocuong99/k8s/tree/main/version%20guides) here if you don't know how to)</sup>
+- Based on your OS, choose your Rancher version on [rancher/rancher-`Tags`](https://hub.docker.com/r/rancher/rancher/tags) <sup>(take a look on [version guides](https://github.com/nnbaocuong99/k8s/tree/main/version%20guides) here if you don't know how to)</sup>
 - Copy and replace `tag` with the version you choose below:
-```json
-$ docker run -d --name=rancher-server --restart=unless-stopped -p 80:80 -p 443:443 --privileged rancher/rancher:tag
-```
+  ```json
+  $ docker run -d --name=rancher-server --restart=unless-stopped -p 80:80 -p 443:443 --privileged rancher/rancher:tag
+  ```
 
-- Wait and get the container id after the image successfully pulled by running this command
-```json
-$ docker ps
-$ sudo docker ps -aqf "name=containername"`
-```
+- Wait until the image successfully pulled then run these commands to get your container id.
+  ```json
+  $ docker ps
+  $ sudo docker ps -aqf "name=containername"`
+  ```
+- Replace `container id` you just got into this, then save <ins>***THE RED LINE***</ins> code thats your password!
+  ```bash
+  $ docker logs  container-id  2>&1 | grep "Bootstrap Password:"
+  ```
 
 #### <ins>3:</ins>
 - Navigate to the `IP Address` of the `masternode`
@@ -111,11 +118,11 @@ $ sudo docker ps -aqf "name=containername"`
   https://192.168.56.200/g (recommend)
   ```
   
-- Replace `container id` in the command below with the one you just got.
-```bash
-$ docker logs  container-id  2>&1 | grep "Bootstrap Password:"
-```
-- Copy the <ins>**red-line**</ins> key/code, thats the password. 
+
+
+
+
+ 
 - Login to the Rancher, in this case: `admin / J-L1fXH0OwibH60HlcVv`
 - Choose the <ins>**Custom**</ins> mode
 
