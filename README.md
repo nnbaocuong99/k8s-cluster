@@ -203,41 +203,39 @@ $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/ku
   ```
 
 <div align="center">
-    <img src="https://user-images.githubusercontent.com/100349044/223318199-ee2a4732-5e44-400b-896a-dd7fcb69bf71.png" alt="uvu" width="800">
+    <img src="https://user-images.githubusercontent.com/100349044/223318199-ee2a4732-5e44-400b-896a-dd7fcb69bf71.png" alt="uvu" width="900">
     <br>
     <br>
 </div>
 
-
-#### 2. Expose and port forward✨
 - Change the ArgoCD-server service type to LoadBalancer:
-```bash
-$ kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
-```
+  ```json
+  $ kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
+  ```
+
 <div align="center">
-    <img src="https://user-images.githubusercontent.com/100349044/223318334-d9d6ba33-d86a-4f4f-9bb8-0fd26dfe0477.png" alt="uvu" width="800">
+    <img src="https://user-images.githubusercontent.com/100349044/223318334-d9d6ba33-d86a-4f4f-9bb8-0fd26dfe0477.png" alt="uvu" width="900">
     <br>
     <br>
 </div>
-
 
 - Run the port forward command to expose the services:
-```bash
-$ kubectl port-forward svc/argocd-server -n argocd 8080:443
-```
+  ```json
+  $ kubectl port-forward svc/argocd-server -n argocd 8080:443
+  ```
+
 <div align="center">
-    <img src="https://user-images.githubusercontent.com/100349044/223347531-b88c2478-a3e7-422c-bb2c-fcffa8de5ad2.png" alt="uvu" width="500">
+    <img src="https://user-images.githubusercontent.com/100349044/223347531-b88c2478-a3e7-422c-bb2c-fcffa8de5ad2.png" alt="uvu" width="650">
     <br>
     <br>
 </div>
 
 
-> **Warning** 
+> [!Warning] 
+> #### You can choose between 2 easier way for you is
+> - Change from `port-forward` to `node-port` (you can do a research because im not gonna using it in this project)
+> - Use the port to get direct into it with `node-IP` *in this case this is gonna be*
 
-You can choose between 2 easier way for you is
-1. Change from `port-forward` to `node-port` (you can do a research because im not gonna using it in this project)
-
-2. Use the port to get direct into it with `node-IP` *in this case this is gonna be*
 - Run the following command to get your port:
 ```ruby
 kubectl get service -n argocd
