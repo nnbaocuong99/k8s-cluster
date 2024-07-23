@@ -1,7 +1,8 @@
 # ❗️ Introducing
 
 ### ✨<ins>***1. Sumary***</ins>:
-- This is my research report and project template on how to install a Kubernetes (k8s) cluster and set up a CI/CD pipeline for a Java project. It’s designed with beginners in mind, especially those who are new to Docker and want to learn about backend development and CI/CD pipelines. 
+- This is my research report and project template on how to install a Kubernetes (k8s) cluster and set up a CI/CD pipeline for a Java project. It’s designed with beginners in mind, especially those who are new to Docker and want to learn about backend development and CI/CD pipelines.
+- In this project, I’m using both Windows and MacOS (similar to Linux). Keep in mind that the images in your project might look slightly different with mine, but dw abt it. Take your time to research, as they serve the same function.
 - I’d also love to hear others’ opinions on what might be missing or not listed in this project. Remember, though, that this is just a template. Feel free to create your own unique content pls don’t stalk, copy, or claim someone else’s work as your own. Let’s avoid that kind of behavior! 😊
 - I’d like to express my sincere thanks to [@QuocNVC](https://github.com/quoc9x) and [@TruongLM](https://github.com/lmt2407) for their invaluable assistance. It’s a pleasure to collaborate with such talented individuals on this project.
 
@@ -24,14 +25,13 @@
 |:----------------:|:------------------------|:---------------------------------------------------------------------|
 | Windows          | Winget <br> Chocolately | https://github.com/microsoft/winget-cli <br> https://chocolatey.org/ |
 | MacOS            | Homebrew                | https://brew.sh/                                                     |
-| Ubuntu (v16.04)  |                         |                                                                      |
+| Ubuntu (v16.04)  | APT                     |                                                                      |
 
 <br>
 
 ### ✨<ins>***3. Updating features: (This project has been discontinued.)***</ins>:
-- [Mindmap](https://github.com/nnbaocuong99/details-k8s-project/tree/main/figma) for this project (WIP)
+- [Mindmap](https://github.com/nnbaocuong99/details-k8s-project/tree/main/figma) and more example images for this project (WIP)
 - [Knowns error](https://github.com/nnbaocuong99/details-k8s-project/tree/main/error-report): Error while doing the project will be listed here. Feel free to submit your problem at [Issues](https://github.com/nnbaocuong99/k8s/issues) tab.
-
 ---
 
 <br>
@@ -52,7 +52,7 @@
 <br>
 
 > [!caution]
-> - Take your own risk before using if you modify my script. the only thing in the script i modify is just sth kinda: `IP address`, `VMame`, `Password`,...etc
+> - Take your own risk before using if you modify my script. recommend things in the script I suggest you to modify: OS version, `vm.network` (IP), `hostname`, `password`
 > - Remember to put your files in **2 separate folders**.
 > - Remember to re-name them and change the file type to <mark>`Vagrantfile`</mark> not the <mark>`.txt`</mark> or any.
 
@@ -94,7 +94,7 @@
   ```
 
 #### <ins>2:</ins>
-- Based on your OS, choose your Rancher version on [rancher/rancher-`Tags`](https://hub.docker.com/r/rancher/rancher/tags) <sup>(take a look on [version guides](https://github.com/nnbaocuong99/k8s/tree/main/version%20guides) here if you don't know how to)</sup>
+- Based on your OS, choose your Rancher version on [rancher/rancher-Tags](https://hub.docker.com/r/rancher/rancher/tags) <sup>(take a look on [version guides](https://github.com/nnbaocuong99/k8s/tree/main/version%20guides) here if you don't know how to)</sup>
 - Copy and replace `tag` with the version you choose below:
   ```json
   $ docker run -d --name=rancher-server --restart=unless-stopped -p 80:80 -p 443:443 --privileged rancher/rancher:tag
@@ -116,10 +116,8 @@
   https://192.168.56.200
   https://192.168.56.200/g (recommend this one because its friendly for begginers)
   ```
-
 - Login to the Rancher with username:`admin` and the `password` your just got it earlier. <!--(In this case `admin / J-L1fXH0OwibH60HlcVv` was mine)-->  
-
-- Choose the <ins>**Custom**</ins> mode
+- Choose <ins>**Custom**</ins> mode
 <div align="center">
     <img src="https://user-images.githubusercontent.com/100349044/222045349-2a57a602-aa60-4621-ba25-01b6fb166668.png" alt="uvu" width="800"> </br> <sup>Setting 1</sup>
     <br>
@@ -138,13 +136,11 @@
 ```json
 $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/kubernetes:/etc/kubernetes -v /var/run:/var/run  rancher/rancher-agent:v2.7-091ed163cc5c53efc50bd1a580cb4e54fa097e82-head --server https://192.168.56.200/ --token p5zcnnpcb5cx8pg89vkk5nkx8gbzltk9wbkmfjp6rsn9n6kf729vjp --ca-checksum 37bde28c0dc9fbd360146f727ff4b1cd254d9f17490789f93775fb2ce15b58da --address your_worker_IP --etcd --controlplane --worker
 ```
-
 - Do the same these [steps](https://github.com/nnbaocuong99/k8s/edit/main/README.md#1) and SSH into the worker-node.`
-
 - Run the copied script up there.
 
 #### <ins>5:</ins>
-- Get back to your masternode and open the config file. It will look like this:
+- Get back to your masternode click the button `Kubeconfig File` on the right top corner to open your cluster config. It will look like this:
 
 <div align="center">
     <img src="https://user-images.githubusercontent.com/100349044/222042743-1cf31c2b-ed01-4eb1-8ef9-45a4de0dd9b4.png" alt="uvu" width="1000">
@@ -152,16 +148,15 @@ $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/ku
     <br>
 </div>
 
-- Whatever you did, copy and save it because its important if your have more the 5 clusters.
+- Always save your configuration files and name them, as they are important. If you have more than 5 clusters, keep in mind that `kubectl` can only connect to one cluster at a time.
 - Find the <mark><ins>**default Kubeconfig**</ins></mark> file in your device, paste it into it to connect and work with your cluster.
-- You can also set the `KUBECONFIG` environment variable or use the `--kubeconfig` flag with `kubectl` to specify a custom location. Check [docs](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/#:~:text=To%20set%20environment%20variables%2C%20include%20the%20env%20or,value%20directly%20for%20each%20variable%20that%20you%20name.) for more.
-- 
+ 
 <br>
 
 > [!tip]
 > ### How to find your Kubeconfig file?
 >
-> ##### 1. On Linux, Ubuntu:
+> ##### 1. On Linux, Ubuntu and MacOS
 > ###### • You can check if it exists by running: `ls ~/.kube/config`
 > ###### • Default config file storage at:
 > </div>
@@ -171,10 +166,9 @@ $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/ku
 >    <br>
 > </div>
 >
-> <br>
->
 > ##### 2. On Windows
-> ###### • You need to open `C:\Users\%USERNAME%` and create a folder `.kube` & a file name `config` as a manual method. Create or verify its existence using: `dir %USERPROFILE%\.kube\config`
+> ###### • Manual method: Open `C:\Users\%USERNAME%` and create a folder <mark>`.kube`</mark> & a file name <mark>`config`</mark> inside it. 
+> ###### • In advance, you can create or verify its existence using: `dir %USERPROFILE%\.kube\config`
 > ###### • The default location is
 > <div align="left">
 >     <img src="https://user-images.githubusercontent.com/100349044/222041299-5ed55daf-ec51-4cbe-a973-96cc6b7123a7.png" alt="uvu" width="300">
@@ -182,80 +176,31 @@ $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/ku
 >     <br>
 > </div>
 >
-> <br>
->
-> ##### 3. On MacOS:
-> ###### • Same location, steps with Linux
-> <div align="left">
->    <img src="https://user-images.githubusercontent.com/100349044/222041470-074745c4-39a7-432c-bf3b-3c7ec75ba988.png" alt="uvu" width="200">
->    <br>
->    <br>
-> </div>
----
+> ##### You can also set the `KUBECONFIG` environment variable or use the `--kubeconfig` flag with `kubectl` to specify a custom location. Check [docs](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/#:~:text=To%20set%20environment%20variables%2C%20include%20the%20env%20or,value%20directly%20for%20each%20variable%20that%20you%20name.) for more.
 
-## ❗️ Part 2: Install tools to work with K8s
-<details>
-<summary><samp>&#9776;</samp> Click to expand </summary>
-
-### ⚒ Guides:
-
-#### 1. Tools
-- There are a bunch of things I'm using and ofc, you should install it too. They're:
-
-<div align="center">
-
-| Name | Type | Functions / Explaination |
-| :---: | :---: | :---: |
-| Kubectl, Helm, ArgoCD-cli | Tools | Local tools to connect and work with your cluster |
-| Scoop, Homebrew, Apt | Package manager | this is for your OS, help you to install tool eaiser|
-| Rancher Desktop, Docker Desktop,... | Local Applications | Client in your local (*this is optional*)
-
-</div>
-
-#### 2. Docs: 
-- If you need docs or guides, scroll back to "***About things you should know***"
-
-<br>
-
-
-### ⚒ Installation:
-
-#### 1. Sumary:
-- Every tool has its own way to install. Based on what tool you're choosing and what OS you're using, you must choose between using a binary file or using commands to install it.
-- Below is the command list and way to install through a binary file; choose your OS and follow it. Gud luck
-#### 2. Things list you need to install and installation docs for it:
-- [Linux, Ubuntu](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/Linux%2C%20Ubuntu)
-- [Windows](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/Windows)
-- [MacOS](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/MacOS)
-
+#### <ins>6:</ins>
+##### Follow this installation guides with your OS
+- [***Linux, Ubuntu***](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/Linux%2C%20Ubuntu)
+- [***Windows***](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/Windows)
+- [***MacOS***](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/MacOS)
 ---
 
 <br>
 
-</details>
+### ✨ <ins>Install ArgoCD and Setup Pipelines</ins>
+#### <ins>1:</ins>
+- Install ArgoCD on [***Windows***](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/ArgoCD-CLI).
+- Install ArgoCD on [***MacOS***](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/ArgoCD-CLI).
+- Install ArgoCD on [***Linux, Ubuntu***](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/ArgoCD-CLI).
 
 <br>
 
-## ❗️ Part 3: Install ArgoCD and Setup Pipelines
-<details>
-<summary><samp>&#9776;</samp> Click to expand </summary>
-
-### ⚒ Install ArgoCD-CLI:
-
-- Base on your OS and follow the commands guide
-  - ***Windows***: Use `PowerShell` or `Terminal` and follow [this](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/ArgoCD-CLI)
-  - ***MacOS***: On Desktop -> `Go` -> `Applications` -> `Utilities` -> `Terminal` and follow [this](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/ArgoCD-CLI)
-  - ***Linux, Ubuntu***: Use `Terminal` in basic Utilities and follow [this](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/ArgoCD-CLI)
-
-<br>
-
-### ⚒ Setup ArgoCD 🟠
-
-#### 1. Install ArgocCD on Cluster - Create a namespace✨
-```bash
-$ kubectl create namespace argocd
-$ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
-```
+#### <ins>2:</ins>
+- Create namespace
+  ```json
+  $ kubectl create namespace argocd
+  $ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+  ```
 
 <div align="center">
     <img src="https://user-images.githubusercontent.com/100349044/223318199-ee2a4732-5e44-400b-896a-dd7fcb69bf71.png" alt="uvu" width="800">
@@ -344,10 +289,6 @@ $ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.p
 </div>
 
 ---
-
-<br>
-
-</details>
 
 <br>
 
