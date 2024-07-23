@@ -51,7 +51,7 @@
 
 <br>
 
-> [!NOTE]
+> [!caution]
 > - Take your own risk before using if you modify my script. the only thing in the script i modify is just sth kinda: `IP address`, `VMame`, `Password`,...etc
 > - Remember to put your files in **2 separate folders**.
 > - Remember to re-name them and change the file type to <mark>`Vagrantfile`</mark> not the <mark>`.txt`</mark> or any.
@@ -76,7 +76,7 @@
 
 ### ✨ <ins>Setup VMBox & Cluster</ins>
 
-> [!caution]
+> [!warning]
 > - Please, always use the root user at first.
 >   ```json
 >   $ sudo su
@@ -111,45 +111,40 @@
   ```
 
 #### <ins>3:</ins>
-- Navigate to the `IP Address` of the `masternode`
+- Navigate to the `IP Address` (*base on your config*) of your `masternode`
   ```yaml
-  # to access masternode in this case
   https://192.168.56.200
-  https://192.168.56.200/g (recommend)
+  https://192.168.56.200/g (recommend this one because its friendly for begginers)
   ```
-  
 
+- Login to the Rancher with username:`admin` and the `password` your just got it earlier. <!--(In this case `admin / J-L1fXH0OwibH60HlcVv` was mine)-->  
 
-
-
- 
-- Login to the Rancher, in this case: `admin / J-L1fXH0OwibH60HlcVv`
 - Choose the <ins>**Custom**</ins> mode
-
 <div align="center">
-    <img src="https://user-images.githubusercontent.com/100349044/222045349-2a57a602-aa60-4621-ba25-01b6fb166668.png" alt="uvu" width="800">
+    <img src="https://user-images.githubusercontent.com/100349044/222045349-2a57a602-aa60-4621-ba25-01b6fb166668.png" alt="uvu" width="800"> </br> <sup>Setting 1</sup>
     <br>
     <br>
 </div>
 
-- Set a name then click next, tick on the `etcd` and `Control Panel` it will show you a script:
+- Set a name for it, setting like the image below and copy the scripts.
 <div align="center">
-    <img src="https://user-images.githubusercontent.com/100349044/222045781-fed45b98-6a0a-4dc0-ae70-7daa7db23490.png" alt="uvu" width="800">
+    <img src="https://user-images.githubusercontent.com/100349044/222045781-fed45b98-6a0a-4dc0-ae70-7daa7db23490.png" alt="uvu" width="800"> </br> <sup>Setting 2</sup>
     <br>
     <br>
 </div>
 
-#### ✏️ <ins>Step 5:</ins> 
-- Copy it and add `--address worker_IP` before the `--etcd` and you'll get the final script like this:
-```bash
+#### <ins>4:</ins>
+- Add <mark>`--address worker_IP`</mark> (replace `worker_IP` with your real `workernode IP`) before the <mark>`--etcd`</mark> and you'll get the final script like this:
+```json
 $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/kubernetes:/etc/kubernetes -v /var/run:/var/run  rancher/rancher-agent:v2.7-091ed163cc5c53efc50bd1a580cb4e54fa097e82-head --server https://192.168.56.200/ --token p5zcnnpcb5cx8pg89vkk5nkx8gbzltk9wbkmfjp6rsn9n6kf729vjp --ca-checksum 37bde28c0dc9fbd360146f727ff4b1cd254d9f17490789f93775fb2ce15b58da --address your_worker_IP --etcd --controlplane --worker
 ```
 
-#### ✏️ <ins>Step 6:</ins>
-- SSH into the worker-node: `ssh username@your_ip_address`
-- Run `sudo su` & `docker version`
-- Run the copied script 
-- Get into the masternode and copy the config file. Its look like this:
+- Do the same these [steps](https://github.com/nnbaocuong99/k8s/edit/main/README.md#1) and SSH into the worker-node.`
+
+- Run the copied script up there.
+
+#### <ins>5:</ins>
+- Get back to your masternode and open the config file. It will look like this:
 
 <div align="center">
     <img src="https://user-images.githubusercontent.com/100349044/222042743-1cf31c2b-ed01-4eb1-8ef9-45a4de0dd9b4.png" alt="uvu" width="1000">
@@ -157,45 +152,45 @@ $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/ku
     <br>
 </div>
 
+- Whatever you did, copy and save it because its important if your have more the 5 clusters.
+- Find the <mark><ins>**default Kubeconfig**</ins></mark> file in your device, paste it into it to connect and work with your cluster.
+- You can also set the `KUBECONFIG` environment variable or use the `--kubeconfig` flag with `kubectl` to specify a custom location. Check [docs](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/#:~:text=To%20set%20environment%20variables%2C%20include%20the%20env%20or,value%20directly%20for%20each%20variable%20that%20you%20name.) for more.
+- 
+<br>
 
-#### ✏️ <ins>Step 6:</ins>
-- Copy to clipboard or save that config if you need it.
-- Paste the config to <ins>**default Kubeconfig**</ins> file connect to the cluster
-- Default Kubeconfig location in:
-
-<div align="center">
-  1. Linux, Ubuntu:
-</div>
-
-<div align="center">
-    <img src="https://user-images.githubusercontent.com/100349044/222038197-c05c1c93-b440-4b14-afcf-cbb43a33a7d8.png" alt="uvu" width="200">
-    <br>
-    <br>
-</div>
-
-<div align="center">
-  2. Windows:
-</div>
-
-> you need to open `C:\Users\%USERNAME%` and create a folder `.kube` & a file name `config` 
-
-<div align="center">
-    <img src="https://user-images.githubusercontent.com/100349044/222041299-5ed55daf-ec51-4cbe-a973-96cc6b7123a7.png" alt="uvu" width="300">
-    <br>
-    <br>
-</div>
-
-
-<div align="center">
-  3. MacOS:
-</div>
-
-<div align="center">
-    <img src="https://user-images.githubusercontent.com/100349044/222041470-074745c4-39a7-432c-bf3b-3c7ec75ba988.png" alt="uvu" width="200">
-    <br>
-    <br>
-</div>
-
+> [!tip]
+> ### How to find your Kubeconfig file?
+>
+> ##### 1. On Linux, Ubuntu:
+> ###### • You can check if it exists by running: `ls ~/.kube/config`
+> ###### • Default config file storage at:
+> </div>
+> <div align="left">
+>    <img src="https://user-images.githubusercontent.com/100349044/222038197-c05c1c93-b440-4b14-afcf-cbb43a33a7d8.png" alt="uvu" width="200">
+>    <br>
+>    <br>
+> </div>
+>
+> <br>
+>
+> ##### 2. On Windows
+> ###### • You need to open `C:\Users\%USERNAME%` and create a folder `.kube` & a file name `config` as a manual method. Create or verify its existence using: `dir %USERPROFILE%\.kube\config`
+> ###### • The default location is
+> <div align="left">
+>     <img src="https://user-images.githubusercontent.com/100349044/222041299-5ed55daf-ec51-4cbe-a973-96cc6b7123a7.png" alt="uvu" width="300">
+>     <br>
+>     <br>
+> </div>
+>
+> <br>
+>
+> ##### 3. On MacOS:
+> ###### • Same location, steps with Linux
+> <div align="left">
+>    <img src="https://user-images.githubusercontent.com/100349044/222041470-074745c4-39a7-432c-bf3b-3c7ec75ba988.png" alt="uvu" width="200">
+>    <br>
+>    <br>
+> </div>
 ---
 
 ## ❗️ Part 2: Install tools to work with K8s
@@ -667,7 +662,46 @@ affinity: {}
 
 
 
+<!--
+> [!tip]
+> ### How to find your Kubeconfig file?
+>
+> ##### 1. On Linux, Ubuntu:
+> ###### • You can check if it exists by running:
+> ```json
+> $ ls ~/.kube/config.
+> ```
+> ###### • Default config file storage at:
+> </div>
+> <div align="left">
+>    <img src="https://user-images.githubusercontent.com/100349044/222038197-c05c1c93-b440-4b14-afcf-cbb43a33a7d8.png" alt="uvu" width="200">
+>    <br>
+>    <br>
+> </div>
+>
+> <br>
+>
+> ##### 2. On Windows
+> ###### • You need to open `C:\Users\%USERNAME%` and create a folder `.kube` & a file name `config` as a manual method. Verify its existence using: 
+> ```json
+> $ dir %USERPROFILE%\.kube\config.
+> ```
+> ###### • The default location is
+> <div align="left">
+>     <img src="https://user-images.githubusercontent.com/100349044/222041299-5ed55daf-ec51-4cbe-a973-96cc6b7123a7.png" alt="uvu" width="300">
+>     <br>
+>     <br>
+> </div>
+>
+>
+> ##### 3. On MacOS:
+> <div align="left">
+>    <img src="https://user-images.githubusercontent.com/100349044/222041470-074745c4-39a7-432c-bf3b-3c7ec75ba988.png" alt="uvu" width="200">
+>    <br>
+>    <br>
+> </div>
 
+-->
 
 
 
