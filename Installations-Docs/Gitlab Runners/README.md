@@ -1,35 +1,93 @@
-# How to install Gitlab Runner?
+# How to <ins>Install</ins> and <ins>Register</ins> Gitlab Runner?
+
+### On Windows
+#### Remember to follow the prompts to enter your GitLab `instance URL`, `registration token`, and other details.
+
+- Create a folder on your system, for example, `C:\GitLab-Runner`.
+- Download the GitLab Runner binary for Windows from the official GitLab website. Place the downloaded binary in the folder you created.
+- Make sure to restrict write permissions on the GitLab Runner directory and executable to prevent unauthorized changes.
+- Open an elevated command prompt (Run as Administrator).
+- Navigate to the folder where you placed the binary and run the following command to register the runner:
+   ```ruby
+   $ cd C:\GitLab-Runner
+   $ .\gitlab-runner.exe register
+   ```
+- Run the following commands to install and start GitLab Runner as a service:
+  ```ruby
+  $ .\gitlab-runner.exe install
+  $ .\gitlab-runner.exe start
+   ```
+- Ensure the runner is running by checking the Windows Services or using the command:
+  ```ruby
+  $ .\gitlab-runner.exe status
+  ```
+
+<br>
+
+### On Linux
+- Download the GitLab Runner binary for your Linux distribution from the official GitLab website.
+- Move the binary to `/usr/local/bin` and give it executable permissions:
+  ```ruby
+  $ sudo mv gitlab-runner /usr/local/bin/gitlab-runner
+  $ sudo chmod +x /usr/local/bin/gitlab-runner
+  ```
+- Register the Runner: Run the following command to register the runner:
+  ```ruby
+  $ sudo gitlab-runner register
+  ```
+- Run the following commands to install and start GitLab Runner as a service:
+  ```ruby
+  $ sudo gitlab-runner install
+  $ sudo gitlab-runner start
+  ```
+- Ensure the runner is running by checking its status:
+  ```ruby
+  $ sudo gitlab-runner status
+  ```
+
+<br>
+
+### On MacOS
+#### Do the same steps with Linux
 
 
-## On Windows✨
-1. Create a folder in your system `C:\GitLab-Runner`
-
-2. Download the binary file for [64-bit](https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-windows-amd64.exe) or [32-bit](https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-windows-386.exe), put it into the folder in `1`
-
-3. In that folder open a  `PowerShell` or `Terminal`  and run an elevated command prompt:
-
-5. [Register a runner](https://docs.gitlab.com/runner/register/index.html)
-
-6. Install GitLab Runner as a service and start it: `gitlab-runner start`
-> You can either run the service using the Built-in System Account (recommended) or using a user account.
 
 
-## On Linux, Ubuntu✨
-> With me im using this way, in addition to have another way is [manual install](https://docs.gitlab.com/runner/install/linux-manually.html)
-1. Add the official GitLab repository:
-```bash
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+### On Windows
+- Create a folder in your system `C:\GitLab-Runner`
+- Download the binary file for [64-bit](https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-windows-amd64.exe) or [32-bit](https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-windows-386.exe), put it into the folder
+- Install GitLab Runner as a service and start it: `gitlab-runner start`
+
+<br>
+
+### On Linux, Ubuntu
+#### With me im using this way, in addition to have another way is [manual install](https://docs.gitlab.com/runner/install/linux-manually.html)
+```css
 $ curl -L "https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.deb.sh" | sudo bash
-```
-
-2. Install the latest version of GitLab Runner, or skip to the next step to install a specific version:
-```bash
 $ sudo apt-get install gitlab-runner
 ```
 
-3. [Register a runner](https://docs.gitlab.com/runner/register/index.html)
+<br>
 
-
-## On MacOS✨
+### On MacOS
 1. Download the binary:
 
 2. For Intel - amd / Apple Silicon - arm
@@ -58,11 +116,4 @@ $ gitlab-runner start
 6. Reboot your system.
 
 ---
-
-
-# How to register a runner? 
-
-
-## On Windows✨
-## On Linux, Ubuntu✨
-## On MacOS✨
+-->
