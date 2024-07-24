@@ -133,10 +133,10 @@
 
 #### <ins>4:</ins>
 - Add <mark>`--address worker_IP`</mark> (replace `worker_IP` with your real `workernode IP`) before the <mark>`--etcd`</mark> and you'll get the final script like this:
-```json
-$ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/kubernetes:/etc/kubernetes -v /var/run:/var/run  rancher/rancher-agent:v2.7-091ed163cc5c53efc50bd1a580cb4e54fa097e82-head --server https://192.168.56.200/ --token p5zcnnpcb5cx8pg89vkk5nkx8gbzltk9wbkmfjp6rsn9n6kf729vjp --ca-checksum 37bde28c0dc9fbd360146f727ff4b1cd254d9f17490789f93775fb2ce15b58da --address your_worker_IP --etcd --controlplane --worker
-```
-- Do the same these [steps](https://github.com/nnbaocuong99/k8s/edit/main/README.md#1) and SSH into the worker-node.`
+  ```json
+  $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/kubernetes:/etc/kubernetes -v /var/run:/var/run  rancher/rancher-agent:v2.7-091ed163cc5c53efc50bd1a580cb4e54fa097e82-head --server https://192.168.56.200/ --token p5zcnnpcb5cx8pg89vkk5nkx8gbzltk9wbkmfjp6rsn9n6kf729vjp --ca-checksum 37bde28c0dc9fbd360146f727ff4b1cd254d9f17490789f93775fb2ce15b58da --address your_worker_IP --etcd --controlplane --worker
+  ```
+- Do the same these [steps](https://github.com/nnbaocuong99/k8s/edit/main/README.md#1) and SSH into the `worker-node.`
 - Run the copied script up there.
 
 #### <ins>5:</ins>
@@ -166,6 +166,8 @@ $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/ku
 >    <br>
 > </div>
 >
+> <br>
+>
 > ##### 2. On Windows
 > ###### • Manual method: Open `C:\Users\%USERNAME%` and create a folder <mark>`.kube`</mark> & a file name <mark>`config`</mark> inside it. 
 > ###### • In advance, you can create or verify its existence using: `dir %USERPROFILE%\.kube\config`
@@ -179,7 +181,7 @@ $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/ku
 > ##### You can also set the `KUBECONFIG` environment variable or use the `--kubeconfig` flag with `kubectl` to specify a custom location. Check [docs](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/#:~:text=To%20set%20environment%20variables%2C%20include%20the%20env%20or,value%20directly%20for%20each%20variable%20that%20you%20name.) for more.
 
 #### <ins>6:</ins>
-##### Follow this installation guides with your OS
+##### Prepare for next steps, Make sure that you're installed all things below, follow this installation guides with your OS
 - [***Linux, Ubuntu***](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/Linux%2C%20Ubuntu)
 - [***Windows***](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/Windows)
 - [***MacOS***](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/MacOS)
@@ -187,16 +189,16 @@ $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/ku
 
 <br>
 
-### ✨ <ins>Install ArgoCD and Setup Pipelines</ins>
+### ✨ <ins>ArgoCD // Setup Pipelines</ins>
 #### <ins>1:</ins>
-- Install ArgoCD on [***Windows***](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/ArgoCD-CLI).
-- Install ArgoCD on [***MacOS***](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/ArgoCD-CLI).
-- Install ArgoCD on [***Linux, Ubuntu***](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/ArgoCD-CLI).
+Install ArgoCD on your OS first:
 
-<br>
+- On [***Windows***](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/ArgoCD-CLI).
+- On [***MacOS***](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/ArgoCD-CLI).
+- On [***Linux, Ubuntu***](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/ArgoCD-CLI).
 
-#### <ins>2:</ins>
-- Create namespace
+#### <ins>2. Setup steps:</ins>
+- After insalled, you must create a namespace for it by running:
   ```json
   $ kubectl create namespace argocd
   $ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
@@ -208,90 +210,135 @@ $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/ku
     <br>
 </div>
 
-- Change the ArgoCD-server service type to LoadBalancer:
-  ```json
+- <mark>***Run this command if you need, If everything went well, skip this step***</mark>, change the ArgoCD-server service type to LoadBalancer:
+
+  <details>
+  <summary><samp>&#9776;</samp> click to expand </summary>
+      
+  ```css
   $ kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
   ```
+  
+  <div align="center">
+      <img src="https://user-images.githubusercontent.com/100349044/223318334-d9d6ba33-d86a-4f4f-9bb8-0fd26dfe0477.png" alt="uvu" width="800">
+      <br>
+      <br>
+  </div>
+  </details>
 
-<div align="center">
-    <img src="https://user-images.githubusercontent.com/100349044/223318334-d9d6ba33-d86a-4f4f-9bb8-0fd26dfe0477.png" alt="uvu" width="900">
-    <br>
-    <br>
-</div>
+<br>
 
-- Run the port forward command to expose the services:
+- Make sure you expose the services before using it by running:
   ```json
   $ kubectl port-forward svc/argocd-server -n argocd 8080:443
   ```
 
-<div align="center">
-    <img src="https://user-images.githubusercontent.com/100349044/223347531-b88c2478-a3e7-422c-bb2c-fcffa8de5ad2.png" alt="uvu" width="650">
-    <br>
-    <br>
-</div>
+  <div align="center">
+      <img src="https://user-images.githubusercontent.com/100349044/223347531-b88c2478-a3e7-422c-bb2c-fcffa8de5ad2.png" alt="uvu" width="600">
+      <br>
+      <br>
+  </div>
 
+<br>
 
-> [!Warning] 
-> #### You can choose between 2 easier way for you is
-> - Change from `port-forward` to `node-port` (you can do a research because im not gonna using it in this project)
-> - Use the port to get direct into it with `node-IP` *in this case this is gonna be*
+> [!note] 
+> ### 🌟BONUS // Lemme explain for you real quick
+> #### Depending on the project you’re working on and the context, you’ll choose one of the two options to ensure your services run smoothly and avoid errors
+> #### Simply in this project, Im gonna get direct into with `node IP`
+> #### Port-forwarding
+> - Allows you to access services running inside a Kubernetes cluster from your local machine.
+> - When you run `kubectl port-forward svc/argocd-server -n argocd 8080:443`, it sets up a proxy so that you can communicate with the ArgoCD server through port 8080 on your local machine.
+> - Use Case: Useful for debugging, testing, or accessing the ArgoCD API server without exposing it externally.
+> - Access: You can then access the ArgoCD API server using `localhost:8080`.
+> 
+> <br>
+>
+> #### Node-port
+> - NodePort exposes a service on a specific port on each node in the cluster.
+> - When you create a NodePort service, Kubernetes allocates a port (usually in the range 30000-32767) on each node. Requests to that port are forwarded to the service.
+> - Typically used for exposing services externally, especially when you need to access them from outside the cluster.
+> - You can access the ArgoCD service using the node’s IP address and the assigned NodePort.
+> 
+> <br>
+>
+> #### In short
+> - In the case of NodePort, once your cluster starts, the specified port is automatically exposed, ensuring seamless external access to your services.
+> - Port forwarding is more suitable for local development and debugging, while NodePort is better for exposing services externally. Choose the approach that aligns with your use case!
 
-- Run the following command to get your port:
-```ruby
-kubectl get service -n argocd
-```
+<br>
 
-<div align="center">
-    <img src="https://github.com/nnbaocuong99/k8s/assets/100349044/02c2de93-1373-417a-b0c4-6b038e261af1" alt="uvu" width="700">
-    <br>
-    <br>
-</div>
+#### <ins>3. Work steps:</ins>
+- Use Kubectl to get your port:
+  ```json
+  $ kubectl get service -n argocd
+  ```
 
-- In this case, my result - the port is: `32294` copy it and merge with your node IP: 
+  <div align="center">
+      <img src="https://github.com/nnbaocuong99/k8s/assets/100349044/02c2de93-1373-417a-b0c4-6b038e261af1" alt="uvu" width="700">
+      <br>
+      <br>
+  </div>
+
+- Once you got your port (in this case, `32294` was mine. Copy and merge it with your `worker-node` IP, paste it into your browser like this
+  <div align="center">
+      <img src="https://github.com/nnbaocuong99/k8s/assets/100349044/540ce773-be5a-4798-8b57-37a5d2208210" alt="uvu" width="550">
+      <br>
+      <br>
+  </div>
+
+  <details>
+  <summary> URL </summary>
+      
+  ```ruby
+  # the URL
+  https://192.168.56.201:32294/login?return_url=https%3A%2F%2F192.168.56.201%3A32294%2Fapplications
+  ```
   
-![image](https://github.com/nnbaocuong99/k8s/assets/100349044/540ce773-be5a-4798-8b57-37a5d2208210)
+  </details>
 
-```html
-https://192.168.56.201:32294/login?return_url=https%3A%2F%2F192.168.56.201%3A32294%2Fapplications
-```
+<br>
 
+- Retrieve your ArgoCD password for next steps // <ins>*(Install [**based64**](https://github.com/RickStrahl/Base64) If you haven’t)*</ins>
+  ```json
+  $ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
+  ```
 
+  <div align="center">
+      <img src="https://user-images.githubusercontent.com/100349044/223346388-26210ddf-a562-4a62-95d5-fd89dda63c8e.png" alt="uvu" width="900">
+      <br>
+      <br>
+  </div>
 
-#### 3. Access✨
-- Once the command exposed, you can access to https://localhost:8080 and it will require to login with `admin` and `password`
-<div align="center">
-    <img src="https://user-images.githubusercontent.com/100349044/223347770-c13a1d22-3f17-4bec-9f88-cbdced92a4db.png" alt="uvu" width="1000">
-    <br>
-    <br>
-</div>
+- Once the command exposed, Navigate to `ttps://localhost:8080` and login.
+  ```css
+  admin
+  6vH7QkjCQFiPPHPZ
+  ```
+  
+  <div align="center">
+      <img src="https://user-images.githubusercontent.com/100349044/223347770-c13a1d22-3f17-4bec-9f88-cbdced92a4db.png" alt="uvu" width="1000">
+      <br>
+      <br>
+  </div>
 
+- Logged in successfully, and this is what your result looks like
 
-- Back to local terminal and get argocd password (**based64** installed recommend) by run the command
-```shell
-$ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
-```
-
-<div align="center">
-    <img src="https://user-images.githubusercontent.com/100349044/223346388-26210ddf-a562-4a62-95d5-fd89dda63c8e.png" alt="uvu" width="800">
-    <br>
-    <br>
-</div>
-
-- In this case, this is the result
-> username: `admin` | password: `6vH7QkjCQFiPPHPZ`
-
-<div align="center">
-    <img src="https://user-images.githubusercontent.com/100349044/223376752-e0cc22de-5383-4307-9afc-370050b4e4c1.png" alt="uvu" width="1000">
-    <br>
-    <br>
-</div>
+  <div align="center">
+      <img src="https://user-images.githubusercontent.com/100349044/223376752-e0cc22de-5383-4307-9afc-370050b4e4c1.png" alt="uvu" width="1000">
+      <br>
+      <br>
+  </div>
 
 ---
 
 <br>
 
-## ❗️ Part 4: CI/CD 🟠
-> <ins>**First of all**</ins> , check [this](https://www.geeksforgeeks.org/what-is-ci-cd/) to get to know more about CI/CD before you start it
+### ✨ <ins>CI/CD</ins>
+##### **First of all**</ins> , check [this](https://www.geeksforgeeks.org/what-is-ci-cd/) to get to know more about CI/CD before you start it
+
+
+
+<!--
 #### *In this part I'll show my result and how to setup also finish the CI/CD project. Lets go!*
 
 <details>
@@ -600,82 +647,3 @@ affinity: {}
 
 
 
-
-<!--
-> [!tip]
-> ### How to find your Kubeconfig file?
->
-> ##### 1. On Linux, Ubuntu:
-> ###### • You can check if it exists by running:
-> ```json
-> $ ls ~/.kube/config.
-> ```
-> ###### • Default config file storage at:
-> </div>
-> <div align="left">
->    <img src="https://user-images.githubusercontent.com/100349044/222038197-c05c1c93-b440-4b14-afcf-cbb43a33a7d8.png" alt="uvu" width="200">
->    <br>
->    <br>
-> </div>
->
-> <br>
->
-> ##### 2. On Windows
-> ###### • You need to open `C:\Users\%USERNAME%` and create a folder `.kube` & a file name `config` as a manual method. Verify its existence using: 
-> ```json
-> $ dir %USERPROFILE%\.kube\config.
-> ```
-> ###### • The default location is
-> <div align="left">
->     <img src="https://user-images.githubusercontent.com/100349044/222041299-5ed55daf-ec51-4cbe-a973-96cc6b7123a7.png" alt="uvu" width="300">
->     <br>
->     <br>
-> </div>
->
->
-> ##### 3. On MacOS:
-> <div align="left">
->    <img src="https://user-images.githubusercontent.com/100349044/222041470-074745c4-39a7-432c-bf3b-3c7ec75ba988.png" alt="uvu" width="200">
->    <br>
->    <br>
-> </div>
-
--->
-
-
-
-<!--
-> Explaination
-> - `-a:` all.     | Works even if your container is not running.
-> - -q: quietmode. | Output only display numeric container IDs.
-> - -f: filter.    | Filter output based on conditions provided.
-
-[PowerShell](https://learn.microsoft.com/en-us/powershell/) or basically just [Terminal](https://apps.microsoft.com/store/detail/windows-terminal/)
-
-<h1 align="center"> ✨ how to install k8s step by step </h1> 
-https://user-images.githubusercontent.com/100349044/225245044-9004d673-eb69-4ea7-ae61-7d3e5cc1f39b.mp4
-<p align='right'> © nnbaocuong99 - Spagbo - https://bio.link/spagbo </p>
-  - This is my *Report,Research Repo/Project* about how to install k8s cluster and CI/CD Pipeline for a Java project. This also a good template for a beginners (i think so xD). BTW, huge thanks to [@QuocNVC](https://github.com/quoc9x) and [@TruongLM](https://github.com/lmt2407) for the help 😍
-  - <ins>***Firstly***</ins>, imo this will be sufficient requirements for what u will need to learn and do. / also really wanna hear others opinions abt what im missing, or not listed in this project. 
-  - <ins>***Secondly***</ins>, heading to the point this is basic CI/CD template project for users who new to docker and starting to learn about backend and CI/CD pipline. This project included: k8s, Docker, helm, Vmbox and vagrant script.
-  - <ins>***Last***</ins>, many thanks for reading but one more thing this is template. Remember create your own stuff, DO NOT try to stalk, copy or join into other projects and say thats yours. Thats suck and only losers do it
-
--->
-
-
-<!--
-![image](https://user-images.githubusercontent.com/100349044/225504635-192335ff-7f10-4349-9cb5-00482fb79611.png)
-
-![photo_2023-03-09_15-47-10](https://user-images.githubusercontent.com/100349044/225504816-f23fa704-cb48-46a7-a26c-0e8b556cd0e8.jpg)
-![1](https://user-images.githubusercontent.com/100349044/225269790-5d818597-62fa-4f41-b405-99250245c5f3.jpg)
-![photo_2023-03-09_15-39-25](https://user-images.githubusercontent.com/100349044/225295383-0907a37e-2200-4f1b-98e8-835346de2355.jpg)
-![2](https://user-images.githubusercontent.com/100349044/225269903-9aab72cf-748f-468d-93eb-d0eca293449a.jpg)
-
-<div align="center">
-    <img src="https://user-images.githubusercontent.com/100349044/225248069-39650b53-5079-4268-8f1d-e6e83d8c5b5c.jpg" alt="uvu" width="800">
-    <br>
-    <br>
-</div>
-
-https://user-images.githubusercontent.com/100349044/225245044-9004d673-eb69-4ea7-ae61-7d3e5cc1f39b.mp4
---> 
