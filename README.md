@@ -31,13 +31,42 @@
 
 ### ✨<ins>***3. Updating features: (This project has been discontinued.)***</ins>:
 - [Mindmap](https://github.com/nnbaocuong99/details-k8s-project/tree/main/figma) and more example images for this project (WIP)
-- [Knowns error](https://github.com/nnbaocuong99/details-k8s-project/tree/main/error-report): Error while doing the project will be listed here. Feel free to submit your problem at [Issues](https://github.com/nnbaocuong99/k8s/issues) tab.
+- [Known errors](https://github.com/nnbaocuong99/details-k8s-project/tree/main/error-report): Error while doing the project will be listed here. Feel free to submit your problem at [Issues](https://github.com/nnbaocuong99/k8s/issues) tab.
+
+<br>
+
+### ✨<ins>***4. Table of contents***</ins>: 
+- Introducing
+    - Sumary
+    - Tools in project
+         - Official websites
+         - Package manager
+    - Updating features
+- Guides step by step
+    - [Setup VMbox](https://github.com/nnbaocuong99/k8s/edit/main/README.md#-setup-vmbox)
+         - Install tools
+         - Create VM 
+    - [Setup Rancher, cluster](https://github.com/nnbaocuong99/k8s/edit/main/README.md#-setup-rancher-cluster)
+         - SSH master node
+         - Rancher version guides
+         - Work // masternode
+         - Work // workernode
+         - Config files
+         - [tips](https://github.com/nnbaocuong99/k8s/edit/main/README.md#how-to-find-your-kubeconfig-file)    
+    - [Setup ArgoCD](https://github.com/nnbaocuong99/k8s/edit/main/README.md#-argocd--setup-pipelines)
+         - Install ArgoCD
+         - Setup steps & [Port explain](https://github.com/nnbaocuong99/k8s/edit/main/README.md#bonus--lemme-explain-for-you-real-quick)
+         - Work steps
+    - [CI/CD](https://github.com/nnbaocuong99/k8s/edit/main/README.md#-cicd)
+         - Get to know more about CI/CD
+         - CI
+         - CD
 ---
 
 <br>
 
 # ❗️ Guides step by step
-### ✨ <ins>Setup VMBox & Cluster</ins>
+### ✨ <ins>Setup VMBox</ins>
 #### 1. Install:
 - [Git](https://git-scm.com/)
 - [curl](https://curl.se/)
@@ -74,7 +103,7 @@
 
 <br>
 
-### ✨ <ins>Setup VMBox & Cluster</ins>
+### ✨ <ins>Setup Rancher, Cluster</ins>
 
 > [!warning]
 > - Please, always use the root user at first.
@@ -181,7 +210,7 @@
 > ##### You can also set the `KUBECONFIG` environment variable or use the `--kubeconfig` flag with `kubectl` to specify a custom location. Check [docs](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/#:~:text=To%20set%20environment%20variables%2C%20include%20the%20env%20or,value%20directly%20for%20each%20variable%20that%20you%20name.) for more.
 
 #### <ins>6:</ins>
-##### Prepare for next steps, Make sure that you're installed all things below, follow this installation guides with your OS
+Prepare for next steps, Make sure that you're installed all things below, follow this installation guides with your OS
 - [***Linux, Ubuntu***](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/Linux%2C%20Ubuntu)
 - [***Windows***](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/Windows)
 - [***MacOS***](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/MacOS)
@@ -334,46 +363,41 @@ Install ArgoCD on your OS first:
 <br>
 
 ### ✨ <ins>CI/CD</ins>
-##### **First of all**</ins> , check [this](https://www.geeksforgeeks.org/what-is-ci-cd/) to get to know more about CI/CD before you start it
-
-
-
-<!--
-#### *In this part I'll show my result and how to setup also finish the CI/CD project. Lets go!*
-
-<details>
-<summary><samp>&#9776;</samp> Click to expand </summary>
-
-### ⚒ CI
-
-#### ✏️ <ins>Step 1:</ins>
-***Setup and account***
-
+#### <ins>1. *First of all, check [this](https://about.gitlab.com/topics/ci-cd/) to get to know more about CI/CD before you start it*</ins>
+#### <ins>2. </ins>
 - Create and account on [Gitlab](https://gitlab.com/)
-> You totally can use others platform like Github or what ever, but in this case i highly recommend to use Gitlab because the CI/CD tool from Gitlab is extremely easy to use, all you need to do is create a file in the root location of your repository called `.gitlab-ci.yml`. This file is basically a recipe for how Gitlab should execute pipelines.
-- Create a repository, push your content or use the content in this project.
-- If you're already cloned this project but there is no file called `.gitlab-ci.yml` Create one and copy this content below into it. 
-```yaml
-stages:
-  - build
+- Make a new repository. Copy content in this project into it or your own.
+- <ins>(Optional)</ins> In case you using your contents, all you need to do is create a file in the root location of your repository called `.gitlab-ci.yml`. Copy the script below into.
 
-build-image:
-  stage: build
-  image: docker:latest
-  services:
-    - docker:dind
-  rules:
-  before_script:
-    - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWD
-  script:
-    - >
-      docker build
-      --build-arg DOCKER_USERNAME=$DOCKER_USERNAME
-      --build-arg DOCKER_PASSWD=$DOCKER_PASSWD
-      -t $DOCKER_USERNAME/demo-gitlabci:1.0 .
-    - docker push $DOCKER_USERNAME/demo-gitlabci:1.0
-```
-- Commit, push your code again and `Pipelines` will automatically start.
+  ```yaml
+  stages:
+    - build
+
+  build-image:
+    stage: build
+    image: docker:latest
+    services:
+      - docker:dind
+    rules:
+    before_script:
+      - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWD
+    script:
+      - >
+        docker build
+        --build-arg DOCKER_USERNAME=$DOCKER_USERNAME
+        --build-arg DOCKER_PASSWD=$DOCKER_PASSWD
+        -t $DOCKER_USERNAME/demo-gitlabci:1.0 .
+      - docker push $DOCKER_USERNAME/demo-gitlabci:1.0
+  ```
+
+- Commit to trigger the `Pipelines`. It will automatically start.
+
+
+
+
+> [!note]
+> - You totally can use others platform like Github or what ever. But in this case, I highly recommend you to use Gitlab because the CI/CD tools from Gitlab is extremely easy to use.
+> - `.yml` file is basically a recipe that specifies how GitLab should execute pipelines
 
 
 #### ✏️ <ins>Step 2:</ins>
@@ -626,7 +650,7 @@ affinity: {}
 
 <br>
 
-</details>
+
 
 <br>
 
