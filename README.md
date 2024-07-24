@@ -60,6 +60,7 @@
     - [CI/CD](https://github.com/nnbaocuong99/k8s/edit/main/README.md#-cicd)
          - Get to know more about CI/CD
          - CI
+         - Pics
          - CD
 ---
 
@@ -363,11 +364,19 @@ Install ArgoCD on your OS first:
 <br>
 
 ### ✨ <ins>CI/CD</ins>
-#### <ins>1. *First of all, check [this](https://about.gitlab.com/topics/ci-cd/) to get to know more about CI/CD before you start it*</ins>
-#### <ins>2. </ins>
-- Create and account on [Gitlab](https://gitlab.com/)
-- Make a new repository. Copy content in this project into it or your own.
-- <ins>(Optional)</ins> In case you using your contents, all you need to do is create a file in the root location of your repository called `.gitlab-ci.yml`. Copy the script below into.
+
+
+#### <ins>***1. Before you start // Get to know more***</ins>
+- Please make sure you understand and successfully follow all these steps up there until now.
+- Beginner? Read this [CI/CD Explained](https://about.gitlab.com/topics/ci-cd/) on Gitlab official website.
+- Or read my [Workflows Explaination](https://github.com/nnbaocuong99/k8s/tree/main/workflows) in short if these websites make you feel complicated.
+
+<br>
+
+#### <ins>***2. CI***</ins>
+- Create and account on [Gitlab](https://gitlab.com/) and make a repository.
+- Use the content in my repository if you have already cloned it before or conversely, push your own content.
+- <ins>(Optional)</ins> In case you using your contents, all you need to do is create a file in the root location of your repository called `.gitlab-ci.yml`. Copy the script below into it and `commit` to trigger the `Pipelines`. Then let it automatically start.
 
   ```yaml
   stages:
@@ -390,90 +399,95 @@ Install ArgoCD on your OS first:
       - docker push $DOCKER_USERNAME/demo-gitlabci:1.0
   ```
 
-- Commit to trigger the `Pipelines`. It will automatically start.
-
-
-
+<br>
 
 > [!note]
 > - You totally can use others platform like Github or what ever. But in this case, I highly recommend you to use Gitlab because the CI/CD tools from Gitlab is extremely easy to use.
-> - `.yml` file is basically a recipe that specifies how GitLab should execute pipelines
+> - `.yml` file is basically a recipe that specifies how GitLab should execute pipelines.
 
+<br>
 
-#### ✏️ <ins>Step 2:</ins>
 ***Add Variables***
-- In the Repo: `Settings` -> `CI/CD` -> `Variables` -> `Add Variables`
-- Add this:
-  - `$DOCKER_USERNAME` = your Docker username
-  - `$DOCKER_PASSWD`= your Docker password
+- In your repository: `Settings`/`CI/CD`/`Variables`/`Add Variables`
+- `Edit` and fill as:
+  ```css
+  $DOCKER_USERNAME = your Docker username
+  $DOCKER_PASSWD   = your Docker password
+  ```
+  <div align="center">
+      <img src="https://github.com/user-attachments/assets/9733685b-998a-4e3c-a647-64a668dff26f" alt="uvu" width="290">
+      <br>
+      <br>
+  </div>
 
-<div align="center">
-    <img src="https://user-images.githubusercontent.com/100349044/224215639-21e60eda-d930-456c-bdbd-969c0e46d1cf.png" alt="uvu" width="734">
-    <br>
-    <br>
-</div>
+- Result
+  <div align="center">
+      <img src="https://user-images.githubusercontent.com/100349044/224215639-21e60eda-d930-456c-bdbd-969c0e46d1cf.png" alt="uvu" width="780">
+      <br>
+      <br>
+  </div>
 
+<br>
 
-#### ✏️ <ins>Step 3:</ins>
 ***Register a Runner***
-- To make sure that your pipelines run correctly you must use `Runners` to run the `jobs`. First time hear about it? `GitLab Runner` is an application that works with GitLab CI/CD to run jobs in a pipeline ([See more](https://docs.gitlab.com/runner/)). Go to`Repository Settings` -> `CI/CD` -> `Runners` thenn you'll will see that you have 2 ways:
-  - Validate your account and use shared runners.
-  - Register an individual runner to run your jobs.
+- To make sure that your pipelines run correctly you must use `Runners` to run the jobs. [Read this](https://docs.gitlab.com/runner/) for more if this is your first time hear about it?  
+- Heading to `Repository Settings`/`CI/CD`/`Runners` and you can choose between: <ins>**Validate account and use shared runners**</ins> or <ins>**Register an individual runner**</ins>.
+- Up to you, you can skip or follow this guide [How to Install and Register Gitlab runners](https://github.com/nnbaocuong99/k8s/edit/main/Installations-Docs/Gitlab%20Runners)
+- This is how runners look when they have successfully registered:
 
-- To <ins>*install*</ins> Gitlab Runners on your OS follow [this](https://github.com/nnbaocuong99/details-k8s-project/blob/main/Installations-Docs/Gitlab%20Runners/README.md) guide.
-- To <ins>*register*</ins> Gitlab Runners on your OS follow [this](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/Gitlab%20Runners%20Register) guide.
+  <div align="center">
+      <img src="https://user-images.githubusercontent.com/100349044/225208767-177fac85-a0d9-49f4-8fd9-d99d75557f00.png" alt="uvu" width="900">
+      <br>
+      <br>
+  </div>
 
-> *When your runner has been successfully registered. It will look like this*
+  <div align="center">
+       <img src="https://user-images.githubusercontent.com/100349044/225203073-2c221aef-6760-47bf-9586-ca0c85699d78.png" alt="uvu" width="350">
+  </div>
+
+<br>
+
+#### <ins>***3. A few pics I took during the Pipeline***</ins>
 <div align="center">
-    <img src="https://user-images.githubusercontent.com/100349044/225208767-177fac85-a0d9-49f4-8fd9-d99d75557f00.png" alt="uvu" width="1000">
-    <br>
-    <br>
-</div>
- <img src="https://user-images.githubusercontent.com/100349044/225203073-2c221aef-6760-47bf-9586-ca0c85699d78.png" alt="uvu" width="430">
-
-
-#### ✏️ <ins>Step 4:</ins>
-***Run the Pipeline***
-- Commit your code or make changes anh the Pipeline will auto start itself
-- This is a few pic i took during it: 
-
-> 1. Runners in action
-<div align="center">
-    <img src="https://user-images.githubusercontent.com/100349044/227698536-de871019-3875-48c7-b9d5-4b0c44e4ef17.png" alt="uvu" width="300">
-    <img src="https://user-images.githubusercontent.com/100349044/227698573-3d136065-f088-4119-92d5-68b6612879d2.png" alt="uvu" width="700">
-    <br>
-    <br>
-</div>
-
-
-> 2. Logs and whats happening
-<div align="center">
-    <img src="https://user-images.githubusercontent.com/100349044/225229115-79c6f3f0-bfde-4ab4-9411-93cf1222e60c.png" alt="uvu" width="1100">
-    <br>
-    <br>
-</div>
-
-> 3. When the Pipeline finished it will look like this:
-<div align="center">
-    <img src="https://user-images.githubusercontent.com/100349044/225229048-78b48381-08c5-4bf9-ac1a-58fc0791f02e.png" alt="uvu" width="800">
-    <br>
-    <br>
-</div>
-
-> 4. You can check around or your [Docker Hub](https://hub.docker.com/) to make sure that this job is running correctly
-<div align="center">
-    <img src="https://user-images.githubusercontent.com/100349044/225229079-9bb9b104-3d78-4d2f-aa42-8ae581b482f8.png" alt="uvu" width="700">
+    <img src="https://user-images.githubusercontent.com/100349044/227698573-3d136065-f088-4119-92d5-68b6612879d2.png" alt="uvu" width="1000"> </br> <sup>Commit anything to trigger the piplines</sup>
     <br>
     <br>
 </div>
 
 <br>
 
-### ⚒ CD
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/100349044/227698536-de871019-3875-48c7-b9d5-4b0c44e4ef17.png" alt="uvu" width="300"> </br> <sup>Jobs running</sup>
+</div>
 
 <br>
 
-#### ✏️ <ins>Step 5:</ins>
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/100349044/225229115-79c6f3f0-bfde-4ab4-9411-93cf1222e60c.png" alt="uvu" width="1000"> </br> <sup>Logs</sup>
+    <br>
+    <br>
+</div>
+
+<br>
+
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/100349044/225229048-78b48381-08c5-4bf9-ac1a-58fc0791f02e.png" alt="uvu" width="800"> </br> <sup>Pipeline finished</sup>
+    <br>
+    <br>
+</div>
+
+<br>
+
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/100349044/225229079-9bb9b104-3d78-4d2f-aa42-8ae581b482f8.png" alt="uvu" width="800"> </br> <sup>Check around or your Docker Hub to make sure that this job is running correctly</sup>
+    <br>
+    <br>
+</div>
+
+<br>
+
+#### <ins>***4. CD***</ins>
+
 ***Connect Reposiory***
 - Now, scroll back and continue from the step where we got the password and login into ArgoCD.
 - On the left column menu bar: `Settings` -> `Connect Repo` then just fill it with your information and connect. (Id still recommend using Gitlab)
