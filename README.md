@@ -36,13 +36,13 @@
 <br>
 
 ### ✨<ins>***4. Table of contents***</ins>: 
-- Introducing
+- ***❗️Introducing***
     - Sumary
     - Tools in project
-         - Official websites
-         - Package manager
     - Updating features
-- Guides step by step
+<br>
+
+- ***❗️Guides step by step***
     - [Setup VMbox](https://github.com/nnbaocuong99/k8s/edit/main/README.md#-setup-vmbox)
          - Install tools
          - Create VM 
@@ -82,9 +82,9 @@
 <br>
 
 > [!caution]
-> - Take your own risk before using if you modify my script. recommend things in the script I suggest you to modify: OS version, `vm.network` (IP), `hostname`, `password`
-> - Remember to put your files in **2 separate folders**.
-> - Remember to re-name them and change the file type to <mark>`Vagrantfile`</mark> not the <mark>`.txt`</mark> or any.
+> - *Take your own risk before using if you modify my script. recommend things in the script I suggest you to modify: OS version, `vm.network`, `hostname`, `password`.*
+> - *Remember to put your files in **2 separate folders**.*
+> - *Remember to re-name them and change the file type to <mark>`Vagrantfile`</mark> not the <mark>`.txt`</mark> or any.*
 
 <div align="center"> 
     <img src="https://github.com/user-attachments/assets/3660636e-4882-421c-b44d-5debcd681028" alt="uvu" width="250"> </br> <sup>Vagrantfile on Windows will look like this</sup>
@@ -107,12 +107,12 @@
 ### ✨ <ins>Setup Rancher, Cluster</ins>
 
 > [!warning]
-> - Please, always use the root user at first.
+> - *Please, always use the root user at first.*
 >   ```json
 >   $ sudo su
 >   ```
-> - Your `username` and `ip_address` based on how you modify your `Vagrantfile`. (check [this](https://github.com/nnbaocuong99/k8s/edit/main/README.md#2-create-virtual-machines) for more).
-> - Remember to double-check if Docker has been installed yet.
+> - *Your `username` and `ip_address` based on how you modify your `Vagrantfile`. (check [this](https://github.com/nnbaocuong99/k8s/edit/main/README.md#2-create-virtual-machines) for more).*
+> - *Remember to double-check if Docker has been installed yet.*
 >   ```json
 >   $ docker version
 >   ```
@@ -180,15 +180,15 @@
 
 - Always save your configuration files and name them, as they are important. If you have more than 5 clusters, keep in mind that `kubectl` can only connect to one cluster at a time.
 - Find the <mark><ins>**default Kubeconfig**</ins></mark> file in your device, paste it into it to connect and work with your cluster.
- 
+- You can also set the `KUBECONFIG` environment variable or use the `--kubeconfig` flag with `kubectl` to specify a custom location. Check [docs](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/#:~:text=To%20set%20environment%20variables%2C%20include%20the%20env%20or,value%20directly%20for%20each%20variable%20that%20you%20name.) for more.
 <br>
 
 > [!tip]
-> ### How to find your Kubeconfig file?
+> ### *How to find your Kubeconfig file?*
 >
-> ##### 1. On Linux, Ubuntu and MacOS
-> ###### • You can check if it exists by running: `ls ~/.kube/config`
-> ###### • Default config file storage at:
+> ##### *1. On Linux, Ubuntu and MacOS*
+> ###### • *You can check if it exists by running: `ls ~/.kube/config`*
+> ###### • *Default config file storage at:*
 > </div>
 > <div align="left">
 >    <img src="https://user-images.githubusercontent.com/100349044/222038197-c05c1c93-b440-4b14-afcf-cbb43a33a7d8.png" alt="uvu" width="200">
@@ -198,17 +198,15 @@
 >
 > <br>
 >
-> ##### 2. On Windows
-> ###### • Manual method: Open `C:\Users\%USERNAME%` and create a folder <mark>`.kube`</mark> & a file name <mark>`config`</mark> inside it. 
-> ###### • In advance, you can create or verify its existence using: `dir %USERPROFILE%\.kube\config`
-> ###### • The default location is
+> ##### *2. On Windows*
+> ###### • *Manual method: Open `C:\Users\%USERNAME%` and create a folder <mark>`.kube`</mark> & a file name <mark>`config`</mark> inside it.*
+> ###### • *In advance, you can create or verify its existence using: `dir %USERPROFILE%\.kube\config`*
+> ###### • *Default config file storage at:*
 > <div align="left">
 >     <img src="https://user-images.githubusercontent.com/100349044/222041299-5ed55daf-ec51-4cbe-a973-96cc6b7123a7.png" alt="uvu" width="300">
 >     <br>
 >     <br>
 > </div>
->
-> ##### You can also set the `KUBECONFIG` environment variable or use the `--kubeconfig` flag with `kubectl` to specify a custom location. Check [docs](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/#:~:text=To%20set%20environment%20variables%2C%20include%20the%20env%20or,value%20directly%20for%20each%20variable%20that%20you%20name.) for more.
 
 #### <ins>6:</ins>
 Prepare for next steps, Make sure that you're installed all things below, follow this installation guides with your OS
@@ -221,7 +219,7 @@ Prepare for next steps, Make sure that you're installed all things below, follow
 
 ### ✨ <ins>ArgoCD // Setup Pipelines</ins>
 #### <ins>1:</ins>
-Install ArgoCD on your OS first:
+***Install ArgoCD on your OS first:***
 
 - On [***Windows***](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/ArgoCD-CLI).
 - On [***MacOS***](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/ArgoCD-CLI).
@@ -229,7 +227,8 @@ Install ArgoCD on your OS first:
 
 <br>
 
-#### <ins>2. Setup steps:</ins>
+#### <ins>2:</ins>
+***Setup steps***
 - After insalled, you must create a namespace for it by running:
   ```json
   $ kubectl create namespace argocd
@@ -277,29 +276,33 @@ Install ArgoCD on your OS first:
 > ### 🌟BONUS // Lemme explain for you real quick
 > #### Depending on the project you’re working on and the context, you’ll choose one of the two options to ensure your services run smoothly and avoid errors
 > #### Simply in this project, Im gonna get direct into with `node IP`
+> 
+> <br>
+>
 > #### Port-forwarding
-> - Allows you to access services running inside a Kubernetes cluster from your local machine.
-> - When you run `kubectl port-forward svc/argocd-server -n argocd 8080:443`, it sets up a proxy so that you can communicate with the ArgoCD server through port 8080 on your local machine.
-> - Use Case: Useful for debugging, testing, or accessing the ArgoCD API server without exposing it externally.
-> - Access: You can then access the ArgoCD API server using `localhost:8080`.
+> - *Allows you to access services running inside a Kubernetes cluster from your local machine.*
+> - *When you run `kubectl port-forward svc/argocd-server -n argocd 8080:443`, it sets up a proxy so that you can communicate with the ArgoCD server through port 8080 on your local machine.*
+> - *Use Case: Useful for debugging, testing, or accessing the ArgoCD API server without exposing it externally.*
+> - *Access: You can then access the ArgoCD API server using `localhost:8080`.*
 > 
 > <br>
 >
 > #### Node-port
-> - NodePort exposes a service on a specific port on each node in the cluster.
-> - When you create a NodePort service, Kubernetes allocates a port (usually in the range 30000-32767) on each node. Requests to that port are forwarded to the service.
-> - Typically used for exposing services externally, especially when you need to access them from outside the cluster.
-> - You can access the ArgoCD service using the node’s IP address and the assigned NodePort.
+> - *NodePort exposes a service on a specific port on each node in the cluster.*
+> - *When you create a NodePort service, Kubernetes allocates a port (usually in the range 30000-32767) on each node. Requests to that port are forwarded to the service.*
+> - *Typically used for exposing services externally, especially when you need to access them from outside the cluster.*
+> - *You can access the ArgoCD service using the node’s IP address and the assigned NodePort.*
 > 
 > <br>
 >
 > #### In short
-> - In the case of NodePort, once your cluster starts, the specified port is automatically exposed, ensuring seamless external access to your services.
-> - Port forwarding is more suitable for local development and debugging, while NodePort is better for exposing services externally. Choose the approach that aligns with your use case!
+> - *In the case of NodePort, once your cluster starts, the specified port is automatically exposed, ensuring seamless external access to your services.*
+> - *Port forwarding is more suitable for local development and debugging, while NodePort is better for exposing services externally. Choose the approach that aligns with your use case!*
 
 <br>
 
-#### <ins>3. Work steps:</ins>
+#### <ins>3:</ins>
+***Work steps***
 - Use Kubectl to get your port:
   ```json
   $ kubectl get service -n argocd
@@ -404,8 +407,8 @@ Install ArgoCD on your OS first:
 <br>
 
 > [!note]
-> - You totally can use others platform like Github or what ever. But in this case, I highly recommend you to use Gitlab because the CI/CD tools from Gitlab is extremely easy to use.
-> - `.yml` file is basically a recipe that specifies how GitLab should execute pipelines.
+> - *You totally can use others platform like Github or what ever. But in this case, I highly recommend you to use Gitlab because the CI/CD tools from Gitlab is extremely easy to use.*
+> - *`.yml` file is basically a recipe that specifies how GitLab should execute pipelines.*
 
 <br>
 
@@ -452,7 +455,6 @@ Install ArgoCD on your OS first:
 #### <ins>***3. Some photos taken during the Pipline process.***</ins>
 
 <details>
-<summary><samp>&#9776;</samp>Click to expand</summary>
 <br>
 
 <div align="center">
@@ -626,77 +628,64 @@ Install ArgoCD on your OS first:
       ```
 
 ***Create an application***
-- Okay! final step. 
-  <details>
-  <summary><samp>&#9776;</samp>Optinal</summary>
-  (<mark>Optional</mark>: check this [docs](https://argo-cd.readthedocs.io/en/stable/getting_started/#6-create-an-application-from-a-git-repository) for more if you want advance settings and deploy method).
-  </details>details>
-  
-- Get back to the main screen of the ArgoCD and make your own <ins>**Application**</ins> by click on `+ NEW APP` or `CREATE APPLICATION`.
-- Fill your information into it like this and make sure that's correct.
+
 
 > [!caution]
-> - The application name should have `-` or `_` between every single word` 
+> - *Check this [docs](https://argo-cd.readthedocs.io/en/stable/getting_started/#6-create-an-application-from-a-git-repository) for more if you want advanced settings and CLI deploy method*
+> - *The application name should have <mark>`-`</mark> or <mark>`_`</mark> between every single word.*
+> - *`https://gitlab.com/nnbaocuong99/k8s` is MY REPOSITORY link. Replace it with your own repository link.*
+> - ***Destination** should be default `https://kubernetes.default.svc` and `argocd`*
+> - *<ins>If everything is done correctly, the</ins> `values.yaml` <ins>file will be automatically detected</ins>*
 
-  - Replace the `https://gitlab.com/nnbaocuong99/k8s` with your repo link.
-  - **Destination** should be default `https://kubernetes.default.svc` and `argocd`
-  - <ins>***If everything is done correctly, the</ins> `values.yaml` <ins>file will be automatically detected***</ins>
-
+- Get back to the main screen of the ArgoCD and `+ NEW APP` or `CREATE APPLICATION` and fill the information, configurations.
 <div align="center">
-    <img src="https://user-images.githubusercontent.com/100349044/225269790-5d818597-62fa-4f41-b405-99250245c5f3.jpg" width="500" />
-    <img src="https://user-images.githubusercontent.com/100349044/225269903-9aab72cf-748f-468d-93eb-d0eca293449a.jpg" width="500" /> 
-    <br>
-    <br>
-</div>
-
-- Click on `Create` and if you see the result like this, congrats! you just created your app. And what it gonna do?.. details in the second pic. 
-
-<div align="center">
-    <img src="https://user-images.githubusercontent.com/100349044/225292869-a7a4f0ed-dff6-49b5-92bd-cf6ab9481075.png" alt="uvu" width="800">
-    <br>
-    <br>
-</div>
-
-> details in the app
-<div align="center">
-    <img src="https://user-images.githubusercontent.com/100349044/225295383-0907a37e-2200-4f1b-98e8-835346de2355.jpg" alt="uvu" width="1000">
-    <br>
-    <br>
-</div>
-
-- Last step, now just simply click on `Sync` button and your app will become like this: 
-<div align="center">
-    <img src="https://user-images.githubusercontent.com/100349044/225504635-192335ff-7f10-4349-9cb5-00482fb79611.png" alt="uvu" width="1000">
+    <img src="https://user-images.githubusercontent.com/100349044/225269790-5d818597-62fa-4f41-b405-99250245c5f3.jpg" width="700" />
     <br>
     <br>
 </div>
 
 <div align="center">
-    <img src="https://user-images.githubusercontent.com/100349044/225504816-f23fa704-cb48-46a7-a26c-0e8b556cd0e8.jpg" alt="uvu" width="500">
+    <img src="https://user-images.githubusercontent.com/100349044/225269903-9aab72cf-748f-468d-93eb-d0eca293449a.jpg" width="700" /> 
     <br>
     <br>
 </div>
 
 <br>
 
+- If your result look like this, congrats! you just created your app.
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/100349044/225292869-a7a4f0ed-dff6-49b5-92bd-cf6ab9481075.png" alt="uvu" width="700"> </br> <sup>If you have more than 1 app. They will appear here.</sup>
+    <br>
+    <br>
+</div>
 
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/100349044/225295383-0907a37e-2200-4f1b-98e8-835346de2355.jpg" alt="uvu" width="1000"> </br> <sup>When you open your app. It gonna look like this.</sup>
+    <br>
+    <br>
+</div>
 
 <br>
 
-## ❗️ Part 5: [Create Database and how to work with it on k8s](https://github.com/nnbaocuong99/Database) (WIP - Coming soon)
+- Now, just simply click on `Sync` button and your app is ready to work
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/100349044/225504635-192335ff-7f10-4349-9cb5-00482fb79611.png" alt="uvu" width="900">
+    <br>
+    <br>
+</div>
 
-
-<br>
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/100349044/225504816-f23fa704-cb48-46a7-a26c-0e8b556cd0e8.jpg" alt="uvu" width="400">
+    <br>
+    <br>
+</div>
 
 ---
 
 <br>
 
-***If you've arrived this far, thank you for taking time out of your day to, read these guides, my project. And the most important thing is good luck on your CI/CD pipelines!***
+***<div align="center"> If you've arrived this far, congratulations! you’ve completed a comprehensive exercise on the CI/CD using the GitOps + ArgoCD, Helm approach. I hope my exercise has been helpful to you. Thank you for taking time out of your day to, read these guides, my project. And the most important thing is good luck on your CI/CD pipelines! </div>***
 
-✨ *Best wishes*,
-𝓃𝓃𝒷𝒸,
+***<div align="right"> ✨ *Best wishes*, </br> 𝓃𝓃𝒷𝒸,</div>***
 
-
-
-
+###### <div align="right"> Upcoming project (WIP) [Create Database and how to work with it on k8s](https://github.com/nnbaocuong99/Database)</div>
