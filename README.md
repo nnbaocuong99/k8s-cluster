@@ -1,6 +1,20 @@
+###### <div align="center"> © Spagbo 8 Aug, 2022 // 2022-2024 </div>
+
+<br>
+
 # ❗️ Introducing
 
-### ✨<ins>***1. Sumary***</ins>:
+### ✨<ins>***1. Credit & Usage // Sumary***</ins>:
+***Credit & Usage***
+- This project is written by me and wouldn't be possible without the hard work and contributions of the following individuals:
+  - [@QuocNVC](https://github.com/quoc9x) - Bug fixes and enhancements.
+  - [@TruongLM](https://github.com/lmt2407) - VM script writer.
+  - Special thanks to the open-source community for their support and inspiration!
+- This project is for ***<mark><ins>learning-purposes Only***</mark></ins>, meant for educational and non-commercial use. Feel free to study, learn from it.
+- This project has ***<mark><ins>No Unauthorized Copying***</mark></ins>. Please refrain from directly copying or using it for any commercial or production purposes without proper authorization.
+- If you find this project helpful, consider giving credit by linking back to this repository. Mentioning it in your own project's documentation or `README` is appreciated.
+
+***Sumary***
 - This is my research report and project template on how to install a Kubernetes (k8s) cluster and set up a CI/CD pipeline for a Java project. It’s designed with beginners in mind, especially those who are new to Docker and want to learn about backend development and CI/CD pipelines.
 - In this project, I’m using both Windows and MacOS (similar to Linux). Keep in mind that the images in your project might look slightly different with mine, but dw abt it. Take your time to research, as they serve the same function.
 - I’d also love to hear others’ opinions on what might be missing or not listed in this project. Remember, though, that this is just a template. Feel free to create your own unique content pls don’t stalk, copy, or claim someone else’s work as your own. Let’s avoid that kind of behavior! 😊
@@ -37,7 +51,7 @@
 
 ### ✨<ins>***4. Table of contents***</ins>: 
 - ***❗️Introducing***
-    - Sumary
+    - Sumary & Credit
     - Tools in project
     - Updating features
 <br>
