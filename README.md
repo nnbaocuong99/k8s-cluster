@@ -227,6 +227,8 @@ Install ArgoCD on your OS first:
 - On [***MacOS***](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/ArgoCD-CLI).
 - On [***Linux, Ubuntu***](https://github.com/nnbaocuong99/details-k8s-project/tree/main/Installations-Docs/ArgoCD-CLI).
 
+<br>
+
 #### <ins>2. Setup steps:</ins>
 - After insalled, you must create a namespace for it by running:
   ```json
@@ -447,9 +449,14 @@ Install ArgoCD on your OS first:
 
 <br>
 
-#### <ins>***3. A few pics I took during the Pipeline***</ins>
+#### <ins>***3. Some photos taken during the Pipline process.***</ins>
+
+<details>
+<summary><samp>&#9776;</samp>Click to expand</summary>
+<br>
+
 <div align="center">
-    <img src="https://user-images.githubusercontent.com/100349044/227698573-3d136065-f088-4119-92d5-68b6612879d2.png" alt="uvu" width="1000"> </br> <sup>Commit anything to trigger the piplines</sup>
+    <img src="https://user-images.githubusercontent.com/100349044/227698573-3d136065-f088-4119-92d5-68b6612879d2.png" alt="uvu" width="1000"> </br> <sup>Pic 1. Commit anything to trigger the piplines</sup>
     <br>
     <br>
 </div>
@@ -457,21 +464,13 @@ Install ArgoCD on your OS first:
 <br>
 
 <div align="center">
-    <img src="https://user-images.githubusercontent.com/100349044/227698536-de871019-3875-48c7-b9d5-4b0c44e4ef17.png" alt="uvu" width="300"> </br> <sup>Jobs running</sup>
+    <img src="https://user-images.githubusercontent.com/100349044/227698536-de871019-3875-48c7-b9d5-4b0c44e4ef17.png" alt="uvu" width="300"> </br> <sup>Pic 2. Jobs running</sup>
 </div>
 
 <br>
 
 <div align="center">
-    <img src="https://user-images.githubusercontent.com/100349044/225229115-79c6f3f0-bfde-4ab4-9411-93cf1222e60c.png" alt="uvu" width="1000"> </br> <sup>Logs</sup>
-    <br>
-    <br>
-</div>
-
-<br>
-
-<div align="center">
-    <img src="https://user-images.githubusercontent.com/100349044/225229048-78b48381-08c5-4bf9-ac1a-58fc0791f02e.png" alt="uvu" width="800"> </br> <sup>Pipeline finished</sup>
+    <img src="https://user-images.githubusercontent.com/100349044/225229115-79c6f3f0-bfde-4ab4-9411-93cf1222e60c.png" alt="uvu" width="1000"> </br> <sup>Pic 3. Logs</sup>
     <br>
     <br>
 </div>
@@ -479,150 +478,166 @@ Install ArgoCD on your OS first:
 <br>
 
 <div align="center">
-    <img src="https://user-images.githubusercontent.com/100349044/225229079-9bb9b104-3d78-4d2f-aa42-8ae581b482f8.png" alt="uvu" width="800"> </br> <sup>Check around or your Docker Hub to make sure that this job is running correctly</sup>
+    <img src="https://user-images.githubusercontent.com/100349044/225229048-78b48381-08c5-4bf9-ac1a-58fc0791f02e.png" alt="uvu" width="800"> </br> <sup>Pic 4. Pipeline finished</sup>
     <br>
     <br>
 </div>
+
+<br>
+
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/100349044/225229079-9bb9b104-3d78-4d2f-aa42-8ae581b482f8.png" alt="uvu" width="800"> </br> <sup>Pic 5. Check around or your Docker Hub to make sure that this job is running correctly</sup>
+    <br>
+    <br>
+</div>
+
+<br>
+</details>
 
 <br>
 
 #### <ins>***4. CD***</ins>
 
 ***Connect Reposiory***
-- Now, scroll back and continue from the step where we got the password and login into ArgoCD.
-- On the left column menu bar: `Settings` -> `Connect Repo` then just fill it with your information and connect. (Id still recommend using Gitlab)
-- Alright, when you are all set. It will look like this
+- Now, get back to the tab where you left off with ArgoCD logged in.
+- Click <mark>`Settings`</mark> on the left menu <mark>`Connect Repo`</mark>, fill your information and connect.
 
-<div align="center">
-    <img src="https://user-images.githubusercontent.com/100349044/225237699-b14b9456-18ec-41d9-aa5d-f78f2c24c269.png" alt="uvu" width="1000">
-    <br>
-    <br>
-</div>
+  <div align="center">
+      <img src="https://user-images.githubusercontent.com/100349044/225237699-b14b9456-18ec-41d9-aa5d-f78f2c24c269.png" alt="uvu" width="1000">
+      <br>
+      <br>
+  </div>
 
-#### ✏️ <ins>Step 6:</ins>
 ***Create Chart and values files***
-- Back to your repo and create 2 files name `Chart.yaml` and `values.yaml`. Take a look on my [Chart](https://github.com/nnbaocuong99/details-k8s-project/blob/main/demo-app/Chart.yaml) and [values](https://github.com/nnbaocuong99/details-k8s-project/blob/main/demo-app/values.yaml) files.
-- Or copy the content and make your own: 
-> Chart.yaml | replace the `name` to what you desired
-```yaml
-apiVersion: v2
-name: demo-app
-description: A Helm chart for Kubernetes
+- Get back to your repo, create 2 files name `Chart.yaml` and `values.yaml`.
+  - `chart.yaml` might look like
+    ```yaml
+    apiVersion: v2
+    name: demo-app
+    description: A Helm chart for Kubernetes
 
-# A chart can be either an 'application' or a 'library' chart.
-#
-# Application charts are a collection of templates that can be packaged into versioned archives
-# to be deployed.
-#
-# Library charts provide useful utilities or functions for the chart developer. They're included as
-# a dependency of application charts to inject those utilities and functions into the rendering
-# pipeline. Library charts do not define any templates and therefore cannot be deployed.
-type: application
+    # A chart can be either an 'application' or a 'library' chart.
+    #
+    # Application charts are a collection of templates that can be packaged into versioned archives
+    # to be deployed.
+    #
+    # Library charts provide useful utilities or functions for the chart developer. They're included as
+    # a dependency of application charts to inject those utilities and functions into the rendering
+    # pipeline. Library charts do not define any templates and therefore cannot be deployed.
+    type: application
 
-# This is the chart version. This version number should be incremented each time you make changes
-# to the chart and its templates, including the app version.
-# Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 0.1.0
+    # This is the chart version. This version number should be incremented each time you make changes
+    # to the chart and its templates, including the app version.
+    # Versions are expected to follow Semantic Versioning (https://semver.org/)
+    version: 0.1.0
 
-# This is the version number of the application being deployed. This version number should be
-# incremented each time you make changes to the application. Versions are not expected to
-# follow Semantic Versioning. They should reflect the version the application is using.
-# It is recommended to use it with quotes.
-appVersion: "1.16.0"
-```
+    # This is the version number of the application being deployed. This version number should be
+    # incremented each time you make changes to the application. Versions are not expected to
+    # follow Semantic Versioning. They should reflect the version the application is using.
+    # It is recommended to use it with quotes.
+    appVersion: "1.16.0"
+    ```
+    <br>
+    
+  - `values.yaml` might look like <ins>*(you can replace the `repository`, `tag` to what you desired)*</ins>
+    ```yaml
+    # Default values for demo-app.
+    # This is a YAML-formatted file.
+    # Declare variables to be passed into your templates.
 
-> values.yaml | replace the `repository`, `tag` to what you desired
-```yaml
-# Default values for demo-app.
-# This is a YAML-formatted file.
-# Declare variables to be passed into your templates.
+    replicaCount: 1
 
-replicaCount: 1
+    image:
+      repository: nnbaocuong99/details-k8s-project
+      pullPolicy: Always
+      # Overrides the image tag whose default is the chart appVersion.
+      tag: "1.0"
 
-image:
-  repository: nnbaocuong99/details-k8s-project
-  pullPolicy: Always
-  # Overrides the image tag whose default is the chart appVersion.
-  tag: "1.0"
+      imagePullSecrets: []
+      nameOverride: ""
+      fullnameOverride: ""
 
-imagePullSecrets: []
-nameOverride: ""
-fullnameOverride: ""
+      serviceAccount:
+        # Specifies whether a service account should be created
+        create: true
+        # Annotations to add to the service account
+        annotations: {}
+        # The name of the service account to use.
+        # If not set and create is true, a name is generated using the fullname template
+        name: ""
 
-serviceAccount:
-  # Specifies whether a service account should be created
-  create: true
-  # Annotations to add to the service account
-  annotations: {}
-  # The name of the service account to use.
-  # If not set and create is true, a name is generated using the fullname template
-  name: ""
+      podAnnotations: {}
 
-podAnnotations: {}
+      podSecurityContext: {}
+        # fsGroup: 2000
 
-podSecurityContext: {}
-  # fsGroup: 2000
+      securityContext: {}
+        # capabilities:
+        #   drop:
+        #   - ALL
+        # readOnlyRootFilesystem: true
+        # runAsNonRoot: true
+        # runAsUser: 1000
 
-securityContext: {}
-  # capabilities:
-  #   drop:
-  #   - ALL
-  # readOnlyRootFilesystem: true
-  # runAsNonRoot: true
-  # runAsUser: 1000
+      service:
+        type: NodePort
+        port: 80
 
-service:
-  type: NodePort
-  port: 80
+      ingress:
+        enabled: false
+        className: ""
+        annotations: {}
+          # kubernetes.io/ingress.class: nginx
+          # kubernetes.io/tls-acme: "true"
+        hosts:
+          - host: chart-example.local
+            paths:
+              - path: /
+                pathType: ImplementationSpecific
+        tls: []
+        #  - secretName: chart-example-tls
+        #    hosts:
+        #      - chart-example.local
 
-ingress:
-  enabled: false
-  className: ""
-  annotations: {}
-    # kubernetes.io/ingress.class: nginx
-    # kubernetes.io/tls-acme: "true"
-  hosts:
-    - host: chart-example.local
-      paths:
-        - path: /
-          pathType: ImplementationSpecific
-  tls: []
-  #  - secretName: chart-example-tls
-  #    hosts:
-  #      - chart-example.local
+      resources:
+        # We usually recommend not to specify default resources and to leave this as a conscious
+        # choice for the user. This also increases chances charts run on environments with little
+        # resources, such as Minikube. If you do want to specify resources, uncomment the following
+        # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+        limits:
+          cpu: 100m
+          memory: 128Mi
+        requests:
+          cpu: 100m
+          memory: 128Mi
 
-resources:
-  # We usually recommend not to specify default resources and to leave this as a conscious
-  # choice for the user. This also increases chances charts run on environments with little
-  # resources, such as Minikube. If you do want to specify resources, uncomment the following
-  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-  limits:
-    cpu: 100m
-    memory: 128Mi
-  requests:
-    cpu: 100m
-    memory: 128Mi
+      autoscaling:
+        enabled: false
+        minReplicas: 1
+        maxReplicas: 100
+        targetCPUUtilizationPercentage: 80
+        # targetMemoryUtilizationPercentage: 80
 
-autoscaling:
-  enabled: false
-  minReplicas: 1
-  maxReplicas: 100
-  targetCPUUtilizationPercentage: 80
-  # targetMemoryUtilizationPercentage: 80
+      nodeSelector: {}
 
-nodeSelector: {}
+      tolerations: []
 
-tolerations: []
+      affinity: {}
+      ```
 
-affinity: {}
-```
-
-#### ✏️ <ins>Step 7:</ins>
 ***Create an application***
-- Now lets get to the final step, back to the main screen of the ArgoCD and click on `+ NEW APP` or `CREATE APPLICATION`
+- Okay! final step. 
+  <details>
+  <summary><samp>&#9776;</samp>Optinal</summary>
+  (<mark>Optional</mark>: check this [docs](https://argo-cd.readthedocs.io/en/stable/getting_started/#6-create-an-application-from-a-git-repository) for more if you want advance settings and deploy method).
+  </details>details>
+  
+- Get back to the main screen of the ArgoCD and make your own <ins>**Application**</ins> by click on `+ NEW APP` or `CREATE APPLICATION`.
 - Fill your information into it like this and make sure that's correct.
-- A few things to pay attentions on it:
-  - The application name should have `-` or `_` between every single word` 
+
+> [!caution]
+> - The application name should have `-` or `_` between every single word` 
+
   - Replace the `https://gitlab.com/nnbaocuong99/k8s` with your repo link.
   - **Destination** should be default `https://kubernetes.default.svc` and `argocd`
   - <ins>***If everything is done correctly, the</ins> `values.yaml` <ins>file will be automatically detected***</ins>
