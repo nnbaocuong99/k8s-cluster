@@ -57,21 +57,21 @@
 <br>
 
 - ***❗️Guides step by step***
-    - [Setup VMbox](https://github.com/nnbaocuong99/k8s/edit/main/README.md#-setup-vmbox)
+    - [Setup VMbox]()
          - Install tools
          - Create VM 
-    - [Setup Rancher, cluster](https://github.com/nnbaocuong99/k8s/edit/main/README.md#-setup-rancher-cluster)
+    - [Setup Rancher, cluster]()
          - SSH master node
          - Rancher version guides
          - Work // masternode
          - Work // workernode
          - Config files
-         - [tips](https://github.com/nnbaocuong99/k8s/edit/main/README.md#how-to-find-your-kubeconfig-file)    
+         - [tips]()    
     - [Setup ArgoCD](https://github.com/nnbaocuong99/k8s/edit/main/README.md#-argocd--setup-pipelines)
          - Install ArgoCD
-         - Setup steps & [Port explain](https://github.com/nnbaocuong99/k8s/edit/main/README.md#bonus--lemme-explain-for-you-real-quick)
+         - Setup steps & [Port explain]()
          - Work steps
-    - [CI/CD](https://github.com/nnbaocuong99/k8s/edit/main/README.md#-cicd)
+    - [CI/CD]()
          - Get to know more about CI/CD
          - CI
          - Pics
